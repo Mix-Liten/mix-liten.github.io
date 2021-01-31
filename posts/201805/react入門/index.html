@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Mix_Liten ">
+<meta name="description" content="這幾天因為JS30單個章節長達30分鐘，有點沒耐心，就去看了一下之前存下來準備之後有時間看的內容，分享一下近年來使用率極高的React的相關資源，僅止於入門。
+ React 官網 React 簡中官網 翻譯的版本稍微落後一點，右鍵翻譯成繁中即可，如果對大陸用語不習慣，最近剛好有人做轉換套件，效用是把數組-&amp;gt;陣列之類的。 ReactJS 101 標榜從零開始學 ReactJS，希望讓初學者一看就懂的，不過解釋和說明的部分，如果是幾個月前我還沒學Vue還真看不懂，延伸資源和Google會很有幫助。 激戰 ReactJS 30天 IT邦幫忙鐵人賽的文章，號稱連續30天不間斷發文分享挑戰，但通常第一天和最後一天會寫引言和感想。  專案的組件越來越多的情況下，裡面的state比較難管理，可用一些套件幫忙管理狀態，如Flux、Redux、MobX，影片教學在youtube很多，像是Redux的教學就有：
+ wes bos LearnCode.academy thenewboston  順便記錄一個之前用Vue就有的疑問，為什麼組件最外層都是div，先來看看官網最基礎的範例 如果同個組件，hello world後面還想放一個p段落，試著把下方兩種寫法貼到範例連結試試，原因其實是組件的解析只能有一層，不能並排。
+&amp;lt;script type=&amp;#34;text/babel&amp;#34;&amp;gt; // 錯誤 ReactDOM.render( &amp;lt;h1&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;content&amp;lt;/p&amp;gt;, document.getElementById(&amp;#39;example&amp;#39;) ); &amp;lt;/script&amp;gt; &amp;lt;script type=&amp;#34;text/babel&amp;#34;&amp;gt; /* 正確 */ ReactDOM.render( &amp;lt;div&amp;gt; &amp;lt;h1&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;content&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt;, document.getElementById(&amp;#39;example&amp;#39;) ); &amp;lt;/script&amp;gt; 總的來說，React的JSX其實只是讓你可以在js裡寫html，不過略有不同，詳細可以看官網介紹或是TechBridge 技術共筆部落格的分享。 React較精深的部分(官網的進階指引)目前我也還看不太懂，大略只知道它本身有提供一些能提高效能的作法。" />
+<meta name="keywords" content=", js, React" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://mix-liten.github.io/posts/201805/react%E5%85%A5%E9%96%80/" />
+
+
+    <title>
+        
+            React 入門 :: 墨非默 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mix-liten.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://mix-liten.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://mix-liten.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://mix-liten.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://mix-liten.github.io/safari-pinned-tab.svg" color="#1b1c1d">
+    <link rel="shortcut icon" href="https://mix-liten.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1b1c1d">
+    <meta name="theme-color" content="#1b1c1d">
+
+
+
+<meta itemprop="name" content="React 入門">
+<meta itemprop="description" content="這幾天因為JS30單個章節長達30分鐘，有點沒耐心，就去看了一下之前存下來準備之後有時間看的內容，分享一下近年來使用率極高的React的相關資源，僅止於入門。
+ React 官網 React 簡中官網 翻譯的版本稍微落後一點，右鍵翻譯成繁中即可，如果對大陸用語不習慣，最近剛好有人做轉換套件，效用是把數組-&gt;陣列之類的。 ReactJS 101 標榜從零開始學 ReactJS，希望讓初學者一看就懂的，不過解釋和說明的部分，如果是幾個月前我還沒學Vue還真看不懂，延伸資源和Google會很有幫助。 激戰 ReactJS 30天 IT邦幫忙鐵人賽的文章，號稱連續30天不間斷發文分享挑戰，但通常第一天和最後一天會寫引言和感想。  專案的組件越來越多的情況下，裡面的state比較難管理，可用一些套件幫忙管理狀態，如Flux、Redux、MobX，影片教學在youtube很多，像是Redux的教學就有：
+ wes bos LearnCode.academy thenewboston  順便記錄一個之前用Vue就有的疑問，為什麼組件最外層都是div，先來看看官網最基礎的範例 如果同個組件，hello world後面還想放一個p段落，試著把下方兩種寫法貼到範例連結試試，原因其實是組件的解析只能有一層，不能並排。
+&lt;script type=&#34;text/babel&#34;&gt; // 錯誤 ReactDOM.render( &lt;h1&gt;Hello, world!&lt;/h1&gt; &lt;p&gt;content&lt;/p&gt;, document.getElementById(&#39;example&#39;) ); &lt;/script&gt; &lt;script type=&#34;text/babel&#34;&gt; /* 正確 */ ReactDOM.render( &lt;div&gt; &lt;h1&gt;Hello, world!&lt;/h1&gt; &lt;p&gt;content&lt;/p&gt; &lt;/div&gt;, document.getElementById(&#39;example&#39;) ); &lt;/script&gt; 總的來說，React的JSX其實只是讓你可以在js裡寫html，不過略有不同，詳細可以看官網介紹或是TechBridge 技術共筆部落格的分享。 React較精深的部分(官網的進階指引)目前我也還看不太懂，大略只知道它本身有提供一些能提高效能的作法。">
+<meta itemprop="datePublished" content="2018-05-28T22:11:36+00:00" />
+<meta itemprop="dateModified" content="2018-05-28T22:11:36+00:00" />
+<meta itemprop="wordCount" content="50">
+<meta itemprop="image" content="https://mix-liten.github.io/"/>
+
+
+
+<meta itemprop="keywords" content="js,React," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://mix-liten.github.io/"/>
+
+<meta name="twitter:title" content="React 入門"/>
+<meta name="twitter:description" content="這幾天因為JS30單個章節長達30分鐘，有點沒耐心，就去看了一下之前存下來準備之後有時間看的內容，分享一下近年來使用率極高的React的相關資源，僅止於入門。
+ React 官網 React 簡中官網 翻譯的版本稍微落後一點，右鍵翻譯成繁中即可，如果對大陸用語不習慣，最近剛好有人做轉換套件，效用是把數組-&gt;陣列之類的。 ReactJS 101 標榜從零開始學 ReactJS，希望讓初學者一看就懂的，不過解釋和說明的部分，如果是幾個月前我還沒學Vue還真看不懂，延伸資源和Google會很有幫助。 激戰 ReactJS 30天 IT邦幫忙鐵人賽的文章，號稱連續30天不間斷發文分享挑戰，但通常第一天和最後一天會寫引言和感想。  專案的組件越來越多的情況下，裡面的state比較難管理，可用一些套件幫忙管理狀態，如Flux、Redux、MobX，影片教學在youtube很多，像是Redux的教學就有：
+ wes bos LearnCode.academy thenewboston  順便記錄一個之前用Vue就有的疑問，為什麼組件最外層都是div，先來看看官網最基礎的範例 如果同個組件，hello world後面還想放一個p段落，試著把下方兩種寫法貼到範例連結試試，原因其實是組件的解析只能有一層，不能並排。
+&lt;script type=&#34;text/babel&#34;&gt; // 錯誤 ReactDOM.render( &lt;h1&gt;Hello, world!&lt;/h1&gt; &lt;p&gt;content&lt;/p&gt;, document.getElementById(&#39;example&#39;) ); &lt;/script&gt; &lt;script type=&#34;text/babel&#34;&gt; /* 正確 */ ReactDOM.render( &lt;div&gt; &lt;h1&gt;Hello, world!&lt;/h1&gt; &lt;p&gt;content&lt;/p&gt; &lt;/div&gt;, document.getElementById(&#39;example&#39;) ); &lt;/script&gt; 總的來說，React的JSX其實只是讓你可以在js裡寫html，不過略有不同，詳細可以看官網介紹或是TechBridge 技術共筆部落格的分享。 React較精深的部分(官網的進階指引)目前我也還看不太懂，大略只知道它本身有提供一些能提高效能的作法。"/>
+
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2018-05-28 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://mix-liten.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://mix-liten.github.io/about/">About</a></li><li><a href="https://mix-liten.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        One minute
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://mix-liten.github.io/posts/201805/react%E5%85%A5%E9%96%80/">React 入門</a>
+      </h1>
+
+      
+
+      
+
+      <div class="post-content">
+        <p>這幾天因為JS30單個章節長達30分鐘，有點沒耐心，就去看了一下之前存下來準備之後有時間看的內容，分享一下近年來使用率極高的React的相關資源，僅止於入門。</p>
+<ol>
+<li><a href="https://reactjs.org/">React 官網</a></li>
+<li><a href="https://doc.react-china.org/">React 簡中官網</a>
+翻譯的版本稍微落後一點，右鍵翻譯成繁中即可，如果對大陸用語不習慣，最近剛好有人做<a href="https://chrome.google.com/webstore/detail/cn2tw4programmer/emjpciklgncophlffcjipabmigmdkdmc">轉換套件</a>，效用是把數組-&gt;陣列之類的。</li>
+<li><a href="https://github.com/kdchang/reactjs101">ReactJS 101</a>
+標榜從零開始學 ReactJS，希望讓初學者一看就懂的，不過解釋和說明的部分，如果是幾個月前我還沒學Vue還真看不懂，延伸資源和Google會很有幫助。</li>
+<li><a href="https://ithelp.ithome.com.tw/users/20107674/ironman/1472">激戰 ReactJS 30天</a>
+IT邦幫忙鐵人賽的文章，號稱連續30天不間斷發文分享挑戰，但通常第一天和最後一天會寫引言和感想。</li>
+</ol>
+<p>專案的組件越來越多的情況下，裡面的state比較難管理，可用一些套件幫忙管理狀態，如Flux、Redux、MobX，影片教學在youtube很多，像是Redux的教學就有：</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=hmwBow1PUuo&amp;list=PLu8EoSxDXHP5uyzEWxdlr9WQTJJIzr6jy">wes bos</a></li>
+<li><a href="https://www.youtube.com/watch?v=1w-oQ-i1XB8&amp;list=PLoYCgNOIyGADILc3iUJzygCqC8Tt3bRXt">LearnCode.academy</a></li>
+<li><a href="https://www.youtube.com/watch?v=DiLVAXlVYR0&amp;list=PL6gx4Cwl9DGBbSLZjvleMwldX8jGgXV6a">thenewboston</a></li>
+</ul>
+<p>順便記錄一個之前用Vue就有的疑問，為什麼組件最外層都是div，先來看看官網最基礎的<a href="http://jsbin.com/hefuvolixa/edit?html,output">範例</a>
+如果同個組件，hello world後面還想放一個p段落，試著把下方兩種寫法貼到範例連結試試，原因其實是組件的解析只能有一層，不能並排。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/babel&#34;</span>&gt;
+<span style="color:#75715e">// 錯誤 
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">render</span>(
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">Hello</span>, <span style="color:#a6e22e">world</span><span style="color:#f92672">!&lt;</span><span style="color:#960050;background-color:#1e0010">/h1&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">p</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">content</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/p&gt;,</span>
+  document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;example&#39;</span>)
+);
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/babel&#34;</span>&gt;
+<span style="color:#75715e">/* 正確 */</span>
+<span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">render</span>(
+  <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">Hello</span>, <span style="color:#a6e22e">world</span><span style="color:#f92672">!&lt;</span><span style="color:#960050;background-color:#1e0010">/h1&gt;</span>
+    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">p</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">content</span><span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/p&gt;</span>
+  <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/div&gt;,</span>
+  document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;example&#39;</span>)
+);
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><p>總的來說，React的JSX其實只是讓你可以在js裡寫html，不過略有不同，詳細可以看官網介紹或是<a href="https://blog.techbridge.cc/2016/04/21/react-jsx-introduction/">TechBridge 技術共筆部落格</a>的分享。
+React較精深的部分(官網的進階指引)目前我也還看不太懂，大略只知道它本身有提供一些能提高效能的作法。</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://mix-liten.github.io/tags/js/">js</a></span>
+        <span class="tag"><a href="https://mix-liten.github.io/tags/react/">React</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        50 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2018-05-28 08:00
+        
+
+         
+          
+            
+              (Last updated: 2018-05-29 06:11)
+            
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://mix-liten.github.io/posts/201806/diary-1/">
+                <span class="button__icon">←</span>
+                <span class="button__text">雜記 - 近日談</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://mix-liten.github.io/posts/201805/js30-day14day15day16/">
+                <span class="button__text">JS30-Day14 &amp; Day15 &amp; Day16</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
+            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+
+
+
+    </body>
+</html>

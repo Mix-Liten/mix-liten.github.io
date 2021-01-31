@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vuex on 墨非默</title>
+    <link>https://mix-liten.github.io/tags/vuex/</link>
+    <description>Recent content in Vuex on 墨非默</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Fri, 26 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://mix-liten.github.io/tags/vuex/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vuex入門 Part2</title>
+      <link>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part2/</link>
+      <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part2/</guid>
+      <description>前言 系列文(?)的第二篇，本篇會以參考三的語法表為主軸，文中範例的環境是以 Vue CLI 以上來說明，可參考Vuex_Todo範例幫助理解。
+參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  語法(三步驟說明)  使用第一步，把 Vuex 加進 Vue 的實例裡  // main.js, CLI import Vue from &amp;#39;vue&amp;#39; import Vuex from &amp;#39;vuex&amp;#39; import store from &amp;#39;./store&amp;#39; // Vuex 實例  Vue.use(Vuex) // 等同於 Vue.prototype.$store = Vuex; 讓所有元件都可藉由 this.$store 使用 vuex  new Vue({ el: &amp;#39;#app&amp;#39;, store }) // with script src, 偶爾在 codepen 上寫寫 Demo 用 // 照順序引入 Vue, Vuex 的 CDN // 建立 Vuex 實例 var store = new Vuex.</description>
+    </item>
+    
+    <item>
+      <title>Vuex入門 Part1</title>
+      <link>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part1/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part1/</guid>
+      <description>前言 Vuex 是 Vue.js 的一種狀態管理模式(工具)，其他前端框架也有類似的管理工具，用來解決多個元件共用資料導致資料流混亂的問題，參考一的動圖解釋雖然是以 Redux 為例，但清楚的說明了狀態管理的使用情境。 參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  概述 下方以 Counter 舉例，大概看一下應該會發現跟原本的 Vue 差不多，也是有 data、methods、computed，只是在 Vuex 裡改叫 state、mutations、getters，還多了跟 emit 很像的 actions 屬性。
+// src/store/index.js const store = new Vuex.Store({ state: { count: 0, }, getters: { count: (state) =&amp;gt; state.count, }, mutations: { incrementMutation: (state) =&amp;gt; state.count++, decrementMutation: (state) =&amp;gt; state.count--, }, actions: { incrementAction: ({ commit }) =&amp;gt; commit(&amp;#39;incrementMutation&amp;#39;), decrementAction: ({ commit }) =&amp;gt; commit(&amp;#39;decrementMutation&amp;#39;), } }) // template const Counter = { template: ` &amp;lt;div id=&amp;#34;counter&amp;#34;&amp;gt; &amp;lt;p&amp;gt; {{ count }} &amp;lt;/p&amp;gt; &amp;lt;p&amp;gt; &amp;lt;button @click=&amp;#34;increment&amp;#34;&amp;gt;+&amp;lt;/button&amp;gt; &amp;lt;button @click=&amp;#34;decrement&amp;#34;&amp;gt;-&amp;lt;/button&amp;gt; &amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; `, computed: { count() { return this.</description>
+    </item>
+    
+  </channel>
+</rss>

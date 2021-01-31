@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Mix_Liten ">
+<meta name="description" content="OOCSS (Object-oriented CSS) Bootstrap的作法
+.mt-1 { margin-top: 1rem; } .mt-2 { margin-top: 1.5rem; } .text-blue { color: #00f; } .text-shadow { box-shadow: 2px 2px 5px black; } 規劃、做好OOCSS，達到不需要再碰CSS，參考設計者的文件添加class，就能做出有style的網頁。 顯而易見的缺點是會很呆板，所以即使使用Bootstrap、Semantic UI之類的工具，稍微寫點個性化CSS是個不錯的選擇。 當然如果只是想快速做個樣式，到他們的官網copy範例改一改就好。
+SMACSS (Scalable and Modular Architecture for CSS)  基本結構    Base 放 Reset CSS 和 一開始設計網頁時規定好的基礎樣式設定(字體設定、連結hover設定&amp;hellip;)
+  Layout 放出現頻率很高的區塊的CSS，如Header、Footer，還有一些常用區塊，如簡單呈現會員資料(頭像&#43;名字&#43;會員等級&amp;hellip;)
+  Module 寫好模組階層，建議用class，方便平行使用。
+  &amp;lt;div class=&amp;#34;fly&amp;#34;&amp;gt; &amp;lt;span class=&amp;#34;fly-name&amp;#34;&amp;gt;Name&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;#34;fly-age&amp;#34;&amp;gt;25 years old&amp;lt;/span&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;article class=&amp;#34;fly&amp;#34;&amp;gt; &amp;lt;p class=&amp;#34;fly-name&amp;#34;&amp;gt;Name&amp;lt;/p&amp;gt; &amp;lt;p class=&amp;#34;fly-age&amp;#34;&amp;gt;25 years old&amp;lt;/p&amp;gt; &amp;lt;/article&amp;gt; &amp;lt;style&amp;gt; ." />
+<meta name="keywords" content=", css，設計模式" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://mix-liten.github.io/posts/201805/css%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F/" />
+
+
+    <title>
+        
+            CSS設計模式 :: 墨非默 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mix-liten.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://mix-liten.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://mix-liten.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://mix-liten.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://mix-liten.github.io/safari-pinned-tab.svg" color="#1b1c1d">
+    <link rel="shortcut icon" href="https://mix-liten.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1b1c1d">
+    <meta name="theme-color" content="#1b1c1d">
+
+
+
+<meta itemprop="name" content="CSS設計模式">
+<meta itemprop="description" content="OOCSS (Object-oriented CSS) Bootstrap的作法
+.mt-1 { margin-top: 1rem; } .mt-2 { margin-top: 1.5rem; } .text-blue { color: #00f; } .text-shadow { box-shadow: 2px 2px 5px black; } 規劃、做好OOCSS，達到不需要再碰CSS，參考設計者的文件添加class，就能做出有style的網頁。 顯而易見的缺點是會很呆板，所以即使使用Bootstrap、Semantic UI之類的工具，稍微寫點個性化CSS是個不錯的選擇。 當然如果只是想快速做個樣式，到他們的官網copy範例改一改就好。
+SMACSS (Scalable and Modular Architecture for CSS)  基本結構    Base 放 Reset CSS 和 一開始設計網頁時規定好的基礎樣式設定(字體設定、連結hover設定&hellip;)
+  Layout 放出現頻率很高的區塊的CSS，如Header、Footer，還有一些常用區塊，如簡單呈現會員資料(頭像&#43;名字&#43;會員等級&hellip;)
+  Module 寫好模組階層，建議用class，方便平行使用。
+  &lt;div class=&#34;fly&#34;&gt; &lt;span class=&#34;fly-name&#34;&gt;Name&lt;/span&gt; &lt;span class=&#34;fly-age&#34;&gt;25 years old&lt;/span&gt; &lt;/div&gt; &lt;article class=&#34;fly&#34;&gt; &lt;p class=&#34;fly-name&#34;&gt;Name&lt;/p&gt; &lt;p class=&#34;fly-age&#34;&gt;25 years old&lt;/p&gt; &lt;/article&gt; &lt;style&gt; .">
+<meta itemprop="datePublished" content="2018-05-19T02:56:26+00:00" />
+<meta itemprop="dateModified" content="2018-05-19T02:56:26+00:00" />
+<meta itemprop="wordCount" content="134">
+<meta itemprop="image" content="https://mix-liten.github.io/"/>
+
+
+
+<meta itemprop="keywords" content="css，設計模式," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://mix-liten.github.io/"/>
+
+<meta name="twitter:title" content="CSS設計模式"/>
+<meta name="twitter:description" content="OOCSS (Object-oriented CSS) Bootstrap的作法
+.mt-1 { margin-top: 1rem; } .mt-2 { margin-top: 1.5rem; } .text-blue { color: #00f; } .text-shadow { box-shadow: 2px 2px 5px black; } 規劃、做好OOCSS，達到不需要再碰CSS，參考設計者的文件添加class，就能做出有style的網頁。 顯而易見的缺點是會很呆板，所以即使使用Bootstrap、Semantic UI之類的工具，稍微寫點個性化CSS是個不錯的選擇。 當然如果只是想快速做個樣式，到他們的官網copy範例改一改就好。
+SMACSS (Scalable and Modular Architecture for CSS)  基本結構    Base 放 Reset CSS 和 一開始設計網頁時規定好的基礎樣式設定(字體設定、連結hover設定&hellip;)
+  Layout 放出現頻率很高的區塊的CSS，如Header、Footer，還有一些常用區塊，如簡單呈現會員資料(頭像&#43;名字&#43;會員等級&hellip;)
+  Module 寫好模組階層，建議用class，方便平行使用。
+  &lt;div class=&#34;fly&#34;&gt; &lt;span class=&#34;fly-name&#34;&gt;Name&lt;/span&gt; &lt;span class=&#34;fly-age&#34;&gt;25 years old&lt;/span&gt; &lt;/div&gt; &lt;article class=&#34;fly&#34;&gt; &lt;p class=&#34;fly-name&#34;&gt;Name&lt;/p&gt; &lt;p class=&#34;fly-age&#34;&gt;25 years old&lt;/p&gt; &lt;/article&gt; &lt;style&gt; ."/>
+
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2018-05-19 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://mix-liten.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://mix-liten.github.io/about/">About</a></li><li><a href="https://mix-liten.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        One minute
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://mix-liten.github.io/posts/201805/css%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F/">CSS設計模式</a>
+      </h1>
+
+      
+
+      
+        <hr />
+        <aside id="toc">
+          <div class="toc-title">Table of Contents</div>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#oocsshttpoocssorg-object-oriented-css"><a href="http://oocss.org/">OOCSS</a> (Object-oriented CSS)</a></li>
+    <li><a href="#smacsshttpssmacsscom-scalable-and-modular-architecture-for-css"><a href="https://smacss.com/">SMACSS</a> (Scalable and Modular Architecture for CSS)</a></li>
+    <li><a href="#bemhttpgetbemcom-block-element-modifier"><a href="http://getbem.com/">BEM</a> (Block Element Modifier)</a></li>
+    <li><a href="#mvcsshttpsmvcssycnetscom"><a href="https://mvcss.ycnets.com/">MVCSS</a></a></li>
+    <li><a href="#其他想說的話">其他想說的話</a></li>
+  </ul>
+</nav>
+        </aside>
+        <hr />
+
+      <div class="post-content">
+        <h2 id="oocsshttpoocssorg-object-oriented-css"><a href="http://oocss.org/">OOCSS</a> (Object-oriented CSS)</h2>
+<p>Bootstrap的作法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">.<span style="color:#a6e22e">mt-1</span> {
+  <span style="color:#66d9ef">margin-top</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">rem</span>;
+}
+
+.<span style="color:#a6e22e">mt-2</span> {
+  <span style="color:#66d9ef">margin-top</span>: <span style="color:#ae81ff">1.5</span><span style="color:#66d9ef">rem</span>;
+}
+
+.<span style="color:#a6e22e">text-blue</span> {
+  <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#00f</span>;
+}
+
+.<span style="color:#a6e22e">text-shadow</span> {
+  <span style="color:#66d9ef">box-shadow</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">black</span>;
+}
+</code></pre></div><p>規劃、做好OOCSS，達到不需要再碰CSS，參考設計者的文件添加class，就能做出有style的網頁。
+顯而易見的缺點是會很呆板，所以即使使用Bootstrap、Semantic UI之類的工具，稍微寫點個性化CSS是個不錯的選擇。
+當然如果只是想快速做個樣式，到他們的官網copy範例改一改就好。</p>
+<h2 id="smacsshttpssmacsscom-scalable-and-modular-architecture-for-css"><a href="https://smacss.com/">SMACSS</a> (Scalable and Modular Architecture for CSS)</h2>
+<ul>
+<li>基本結構</li>
+</ul>
+<ol>
+<li>
+<p>Base
+放 Reset CSS 和 一開始設計網頁時規定好的基礎樣式設定(字體設定、連結hover設定&hellip;)</p>
+</li>
+<li>
+<p>Layout
+放出現頻率很高的區塊的CSS，如Header、Footer，還有一些常用區塊，如簡單呈現會員資料(頭像+名字+會員等級&hellip;)</p>
+</li>
+<li>
+<p>Module
+寫好模組階層，建議用class，方便平行使用。</p>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fly&#34;</span>&gt;
+  &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fly-name&#34;</span>&gt;Name&lt;/<span style="color:#f92672">span</span>&gt; 
+  &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fly-age&#34;</span>&gt;25 years old&lt;/<span style="color:#f92672">span</span>&gt;
+&lt;/<span style="color:#f92672">div</span>&gt;
+
+&lt;<span style="color:#f92672">article</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fly&#34;</span>&gt;
+  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fly-name&#34;</span>&gt;Name&lt;/<span style="color:#f92672">p</span>&gt; 
+  &lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;fly-age&#34;</span>&gt;25 years old&lt;/<span style="color:#f92672">p</span>&gt;
+&lt;/<span style="color:#f92672">article</span>&gt;
+
+&lt;<span style="color:#f92672">style</span>&gt;
+.<span style="color:#a6e22e">fly</span>{<span style="color:#960050;background-color:#1e0010">...</span>}
+.<span style="color:#a6e22e">fly</span> .<span style="color:#a6e22e">fly-name</span>{}
+.<span style="color:#a6e22e">fly</span> .<span style="color:#a6e22e">fly-age</span>{}
+&lt;/<span style="color:#f92672">style</span>&gt;
+</code></pre></div><ol start="4">
+<li>
+<p>State
+顧名思義的狀態，應用在Layout與Module，如.is-disabled、.is-active，可用JavaScript來操作狀態，比較不共用的部分也可以直接寫在Module裡。</p>
+</li>
+<li>
+<p>Theme
+區別出主題，常用在切換多國語言樣式、網站主題風格，如</p>
+</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#75715e">/* Layout CSS -&gt; _layout.scss */</span>
+#comment {
+  <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span>;
+}
+
+<span style="color:#75715e">/* 樣式CSS -&gt; theme-default.scss */</span>
+#comment {
+    <span style="color:#66d9ef">border-color</span>: <span style="color:#66d9ef">black</span>;
+} 
+</code></pre></div><h2 id="bemhttpgetbemcom-block-element-modifier"><a href="http://getbem.com/">BEM</a> (Block Element Modifier)</h2>
+<p>用規定的命名方式，一眼看出這個CSS在做什麼</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css">.<span style="color:#a6e22e">block</span>{} <span style="color:#75715e">/* 區塊 (Block) */</span>
+.<span style="color:#a6e22e">block__element</span>{} <span style="color:#75715e">/* 元素 (Element) */</span>
+.<span style="color:#a6e22e">block--modifier</span>{} <span style="color:#75715e">/* 修飾符（Modifier） */</span>
+</code></pre></div><p>網站分很多區塊，以導覽列(nav)為例，nav是一個區塊(.nav{})，裡面的清單是元素(.nav__list{})，滑鼠放在元素上時的表現(.nav&ndash;focus{})。</p>
+<h2 id="mvcsshttpsmvcssycnetscom"><a href="https://mvcss.ycnets.com/">MVCSS</a></h2>
+<p>連結裡有翻譯過的說明，簡單說，它融合了前三種設計模式、參考了幾種CSS framework，需要比較多時間熟悉。</p>
+<h2 id="其他想說的話">其他想說的話</h2>
+<p>細節直接去官網看吧，這裡只是大略介紹。</p>
+<p>不管怎麼說，這些只是設計模式、風格，不是規定，所以不是必須要用，但是你也看到了，照著一定程度的規範寫，可讀性比較高，以防三個月後回頭看自己寫的都看不懂。</p>
+<p>命名可以語意話一點(#about)，不要隨便取(#aaa)。</p>
+<p>建議以功能命名(.primary-border)，而不是視覺效果命名(.blue-border)。</p>
+<p>除非必要，不要把CSS Selector寫得太死(nav ul li.first span)，這樣只要HTML結構稍微有點不一樣就會失效，簡單的寫個大方向就好(nav .first)。</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://mix-liten.github.io/tags/css%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F/">css，設計模式</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        134 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2018-05-19 08:00
+        
+
+         
+          
+            
+              (Last updated: 2018-05-19 10:56)
+            
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://mix-liten.github.io/posts/201805/js30-day11day12day13/">
+                <span class="button__icon">←</span>
+                <span class="button__text">JS30-Day11 &amp; Day12 &amp; Day13</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://mix-liten.github.io/posts/201805/js30-day8day9day10/">
+                <span class="button__text">JS30-Day8 &amp; Day9 &amp; Day10</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
+            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+
+
+
+    </body>
+</html>

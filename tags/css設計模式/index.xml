@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>css，設計模式 on 墨非默</title>
+    <link>https://mix-liten.github.io/tags/css%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F/</link>
+    <description>Recent content in css，設計模式 on 墨非默</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Sat, 19 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://mix-liten.github.io/tags/css%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CSS設計模式</title>
+      <link>https://mix-liten.github.io/posts/201805/css%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/css%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F/</guid>
+      <description>OOCSS (Object-oriented CSS) Bootstrap的作法
+.mt-1 { margin-top: 1rem; } .mt-2 { margin-top: 1.5rem; } .text-blue { color: #00f; } .text-shadow { box-shadow: 2px 2px 5px black; } 規劃、做好OOCSS，達到不需要再碰CSS，參考設計者的文件添加class，就能做出有style的網頁。 顯而易見的缺點是會很呆板，所以即使使用Bootstrap、Semantic UI之類的工具，稍微寫點個性化CSS是個不錯的選擇。 當然如果只是想快速做個樣式，到他們的官網copy範例改一改就好。
+SMACSS (Scalable and Modular Architecture for CSS)  基本結構    Base 放 Reset CSS 和 一開始設計網頁時規定好的基礎樣式設定(字體設定、連結hover設定&amp;hellip;)
+  Layout 放出現頻率很高的區塊的CSS，如Header、Footer，還有一些常用區塊，如簡單呈現會員資料(頭像+名字+會員等級&amp;hellip;)
+  Module 寫好模組階層，建議用class，方便平行使用。
+  &amp;lt;div class=&amp;#34;fly&amp;#34;&amp;gt; &amp;lt;span class=&amp;#34;fly-name&amp;#34;&amp;gt;Name&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;#34;fly-age&amp;#34;&amp;gt;25 years old&amp;lt;/span&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;article class=&amp;#34;fly&amp;#34;&amp;gt; &amp;lt;p class=&amp;#34;fly-name&amp;#34;&amp;gt;Name&amp;lt;/p&amp;gt; &amp;lt;p class=&amp;#34;fly-age&amp;#34;&amp;gt;25 years old&amp;lt;/p&amp;gt; &amp;lt;/article&amp;gt; &amp;lt;style&amp;gt; .</description>
+    </item>
+    
+  </channel>
+</rss>

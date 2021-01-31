@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>js on 墨非默</title>
+    <link>https://mix-liten.github.io/tags/js/</link>
+    <description>Recent content in js on 墨非默</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Wed, 14 Nov 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://mix-liten.github.io/tags/js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>釐清JS的export／exports／require／import</title>
+      <link>https://mix-liten.github.io/posts/201811/%E9%87%90%E6%B8%85js%E7%9A%84export%E8%88%87exports/</link>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201811/%E9%87%90%E6%B8%85js%E7%9A%84export%E8%88%87exports/</guid>
+      <description>前言 使用套件和框架經常看到 require / import / export / exports，因為之前都抱著「能用就好」的想法，一直沒有詳細了解，最近因為學習 Vue、React 和 Webpack，覺得有必要把這種偏向基礎但很重要的部分看懂。
+首先先了解它們原本的界定範圍： require： Node.js、ES6 export ／ import ： ES6 module.exports ／ exports： Node.js
+可能有疑問為什麼要說Node.js的語法，因為現在前端幾乎都仰賴Node.js的npm在做事，框架也不例外，另外跟原生的語法也滿容易搞混，用法和用詞都是。
+Node.js的用法 //exports.js const test = 100; console.log(module.exports); // {} console.log(exports); // {}  exports.output = test; // 同步修改 module.exports 為 {output : 100} /* 千萬不要 exports = test; */ //require.js const a = require(&amp;#39;./exports&amp;#39;); console.log(a) // {output : 100} 理論上 exports = module.exports = {}，但是有一點要注意，直接指定 exports 是無效的，而且也不會匯出，因為 require 拿到的只會是 module.</description>
+    </item>
+    
+    <item>
+      <title>React 入門</title>
+      <link>https://mix-liten.github.io/posts/201805/react%E5%85%A5%E9%96%80/</link>
+      <pubDate>Mon, 28 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/react%E5%85%A5%E9%96%80/</guid>
+      <description>這幾天因為JS30單個章節長達30分鐘，有點沒耐心，就去看了一下之前存下來準備之後有時間看的內容，分享一下近年來使用率極高的React的相關資源，僅止於入門。
+ React 官網 React 簡中官網 翻譯的版本稍微落後一點，右鍵翻譯成繁中即可，如果對大陸用語不習慣，最近剛好有人做轉換套件，效用是把數組-&amp;gt;陣列之類的。 ReactJS 101 標榜從零開始學 ReactJS，希望讓初學者一看就懂的，不過解釋和說明的部分，如果是幾個月前我還沒學Vue還真看不懂，延伸資源和Google會很有幫助。 激戰 ReactJS 30天 IT邦幫忙鐵人賽的文章，號稱連續30天不間斷發文分享挑戰，但通常第一天和最後一天會寫引言和感想。  專案的組件越來越多的情況下，裡面的state比較難管理，可用一些套件幫忙管理狀態，如Flux、Redux、MobX，影片教學在youtube很多，像是Redux的教學就有：
+ wes bos LearnCode.academy thenewboston  順便記錄一個之前用Vue就有的疑問，為什麼組件最外層都是div，先來看看官網最基礎的範例 如果同個組件，hello world後面還想放一個p段落，試著把下方兩種寫法貼到範例連結試試，原因其實是組件的解析只能有一層，不能並排。
+&amp;lt;script type=&amp;#34;text/babel&amp;#34;&amp;gt; // 錯誤 ReactDOM.render( &amp;lt;h1&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;content&amp;lt;/p&amp;gt;, document.getElementById(&amp;#39;example&amp;#39;) ); &amp;lt;/script&amp;gt; &amp;lt;script type=&amp;#34;text/babel&amp;#34;&amp;gt; /* 正確 */ ReactDOM.render( &amp;lt;div&amp;gt; &amp;lt;h1&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;content&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt;, document.getElementById(&amp;#39;example&amp;#39;) ); &amp;lt;/script&amp;gt; 總的來說，React的JSX其實只是讓你可以在js裡寫html，不過略有不同，詳細可以看官網介紹或是TechBridge 技術共筆部落格的分享。 React較精深的部分(官網的進階指引)目前我也還看不太懂，大略只知道它本身有提供一些能提高效能的作法。</description>
+    </item>
+    
+    <item>
+      <title>JS30-Day14 &amp; Day15 &amp; Day16</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day14day15day16/</link>
+      <pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day14day15day16/</guid>
+      <description>先說一個與JS30無關，但經常看到的東西，有時候會看到別人的資料夾結構，原以為是手打，今天才知道可以直接輸出。 在cmd裡打command line指令：
+ tree，印出純資料夾結構 tree/f，印出資料夾結構+檔案 前兩項後面加，&amp;gt;123.txt，就會在同一層增加一個123.txt檔，裡面有tree的內容  備註：只有命令提示字元預設有這個功能。
+Day 14 原始型別處理值，物件型別處理參考。
+JavaScript中的原始型別(Primitive Type)：
+ String mNumber Boolean Null Undefined  物件型別(Object Type)：
+ Object Function Array Set  參考： JS基礎：Primitive type v.s Object types
+Day 15 主要在講LocalStorage，不過之前已經學過、用過了，重新複習一下，增加了刪除功能，不然資料會一直保存在LocalStorage裡，跟Cookie、Session不一樣，不能設定max-age。
+const keyList = [{ name: &amp;#39;John&amp;#39;, secret: &amp;#39;1234&amp;#39; },{ name: &amp;#39;Tom&amp;#39;, secret: &amp;#39;6789&amp;#39; }]; // 存入localStorage的值必須是字串 let keys = JSON.stringify(keyList); // 放一個取為名&amp;#39;key&amp;#39;的localStorage，值則是後面的變數key localStorage.setItem(&amp;#39;keys&amp;#39;, keys); //從localStorage裡取出的值因為是字串也要處理一下 JSON.parse(localStorage.getItem(&amp;#39;keys&amp;#39;));  formObject.reset() 重置表單  Day 16 很炫的特效，不過下面這個觀念用法更是炫炮。</description>
+    </item>
+    
+    <item>
+      <title>JS30-Day11 &amp; Day12 &amp; Day13</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day11day12day13/</link>
+      <pubDate>Sun, 20 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day11day12day13/</guid>
+      <description>Day 11 總算知道明明都是html的video元素，為什麼每個影片網站的樣式都略有不同，很簡單，不要用現成的controls，自己用CSS搭一個樣式，再用JS去控制Video的撥放/暫停、播放時間、音量、撥放速度。 這個章節我只增加了一個全螢幕按鍵，參照MDN的文件，看起來有點複雜的一段if判斷式，主要是因為每種瀏覽器的video元素略有不同。 美中不足的是全螢幕之後，預設的controls又出現了。
+Day 12  array.splice(index,howmany,item1,&amp;hellip;..,itemX) index，插入的位置 howmany，刪除多少，沒輸入的話，從插入的位置開始刪到最後 後面還可以放想插入的值 splice 和 slice 不同的地方是splice會更動到原本的值  Day 13  Lodash  工具庫，提供很多方便的函式，這個章節用到的是debounce，功能是將想執行的function稍微延遲，這邊的應用是延遲滑入圖片，簡單、快速地實現了之前用的lazyloadxt套件。
+檢測圖片是否要進入的步驟:
+ 取得圖片一半高度的定位點，卷軸高度(window.scrollY) + 視窗高度(window.innerHeight) - 圖片的二分之一高 取得圖片底部定位點，圖片的offsetTop + height，offsetTop是瀏覽器左上角為基準到圖片最上方的距離 判斷是否超過圖片一半的位置， 第一步的運算結果 大於 圖片的offsetTop 判斷卷軸移動距離超過圖片底部了沒，卷軸高度 小於 第二步運算結果 在圖片高度已經出現一半 且 視窗裡看得到圖片的情況下滑入，反之在已經看不到圖片位置的情況下移出圖片  </description>
+    </item>
+    
+    <item>
+      <title>JS30-Day8 &amp; Day9 &amp; Day10</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day8day9day10/</link>
+      <pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day8day9day10/</guid>
+      <description>這篇主要講一下入門的2D canvas、console的應用、還有感覺很像UX的想法(?)
+Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個容器，內容必須用JS繪圖。 canvas 基礎 繪圖原點是(0,0)，X軸往右為正，Y軸往下為正，單位是px。  &amp;lt;canvas id=&amp;#34;mycanvas&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;script&amp;gt; const canvas = document.getElementById(&amp;#34;mycanvas&amp;#34;); const ctx = canvas.getContext(&amp;#34;2d&amp;#34;); // 設定畫布寬高 canvas.width = window.innerWidth; canvas.height = window.innerHeight; ctx.beginPath(); // 開始畫 ctx.arc(80,70,60,-0.5*Math.PI,1*Math.PI); // 以(80,70)為中心點畫從-90度到180度且半徑為60的圓 ctx.fillStyle = &amp;#34;#666&amp;#34;; // 類似background-color ctx.fill(); // 設定好顏色之後還要執行填滿 ctx.strokeStyle = &amp;#34;#fa0&amp;#34;; // 類似border-color ctx.stroke(); // 邊框同樣要執行  ctx.fillStyle = &amp;#34;red&amp;#34;; // 重新指定顏色 ctx.strokeStyle = &amp;#34;green&amp;#34;; ctx.strokeRect(10,10,25,25); //從(10,10)畫一個寬高都是25的正方形邊框 ctx.fillRect(40,30,50,50); //從(40,30)畫一個寬高都是50的正方形 ctx.clearRect(45,35,20,20); //從(45,35)清空一塊寬高都是20的正方形  ctx.</description>
+    </item>
+    
+    <item>
+      <title>JS30-Day5 &amp; Day6</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day5day6/</link>
+      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day5day6/</guid>
+      <description>介紹Flex-Box 與 JavaScript原生Fetch用法
+Day 5  Flex-Box 平常我會參考的兩個codepen連結 Flexbox Visual Playground Properties for the flex container   flex基本用法是在父層設定display: flex; 在子層設定flex: 1; 等同於flex: 1 1 0%; flex: flex-grow flex-shrink flex-basis; flex-grow，當子層寬度加總低於父層寬度時，依給予的數字做比例延伸 flex-shrink，當子層寬度加總高於父層寬度時，依給予的數字做比例縮減 flex-basis，基準值，若用auto，會以內容分配寬度
+Day 6  fetch() MDN 的 Fetch 說明 會以Promise做回應，基本用法如下：  fetch(url) .then(res =&amp;gt; res.json()) .then(res =&amp;gt; console.log(res)) .catch(error =&amp;gt; console.error(error)); fetch(url, { method: &amp;#39;POST&amp;#39;, // or &amp;#39;PUT&amp;#39;  body: JSON.stringify(data), // data can be `string` or {object}!  headers: new Headers({ &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json&amp;#39; }) }); 用then接收Promise傳出的resolve(成功)，用catch接收Promise傳出的reject(失敗) 要注意的是fetch回傳出的是ReadableStream物件，簡單來說就是還要再處理一下才會變成可讀的資料，方法如下：</description>
+    </item>
+    
+    <item>
+      <title>JS30-Day4 &amp; Day7</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day4day7/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day4day7/</guid>
+      <description>這兩個章節的內容主要在介紹Array在ES6裡的新語法，這篇文有點長，想更深入學習ES6可參考下方連結。 阮一峰 ECMAScript 6 入門
+目錄  目錄  forEach filter map reduce sort some every find findIndex set 其他    forEach array.forEach(function(currentValue, index, arr), thisValue) currentValue，必要，當前項目 index，索引值 arr，代表正在被遍歷的陣列 thisValue，傳值進forEach，預設是this
+const numbers = [1, 44, 12, 5, 26, 99]; numbers.forEach((item,index,arr) =&amp;gt; arr[index] = item * 3); console.log(numbers); // [3, 132, 36, 15, 78, 297] 不會回傳值，直接在遍歷時處理資料。
+filter array.filter(function(currentValue,index,arr), thisValue)
+const numbers = [1, 44, 12, 5, 26, 99]; const filterNumbers = numbers.</description>
+    </item>
+    
+    <item>
+      <title>JS30-Day1 &amp; Day2 &amp; Day3</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day1day2day3/</link>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day1day2day3/</guid>
+      <description>終於要認真把JS30看一遍、做一遍了，這個系列文我會把成果放在GitHub上，基本上不會完全照著影片做，會略作修改，有興趣可以去下載看看，文章只會紀錄我目前不熟的部分，非常推薦大家這個免費的線上課程，下方附上連結。 Javascript30
+Day 1   element.addEventListener(event, function, useCapture) event放事件字串 function放偵聽到事件發生時要做的事 useCapture放boolean值，預設是false，事件會從內到外觸發(event bubbling)，設定為true則是從外到內(event capturing)。 冒泡、捕獲範例 範例也是用addEventListener做的
+  element.classList 新增、刪除節點的class add(class1, class2, &amp;hellip;) remove(class1, class2, &amp;hellip;) 還有偵測是否存在這個class，存在則刪除、不存在則新增 toggle(class)
+  在Day1的實作裡是偵聽keydown事件，但是壓著按鍵就會多次觸發，我自己則是用keyup，在離開按鍵的時候才觸發的感覺有點像音樂遊戲的延遲。
+Day 2  setInterval(function, milliseconds) 每隔一段第二個參數設定的時間就會自動執行第一個參數傳入的方法，時間單位是毫秒(千分之一秒)。  CSS  transform-origin 通常在HTML裡的方向設定都是以左上角為基準點，這個CSS語法是配合transform使用，用來移動X、Y、Z軸的基準點，這個範例裡只設定一個100%讓X軸基準點移到最右邊。 transition-timing-function: cubic-bezier() 設定transition以貝茲曲線的方式轉場，可以在chrome的開發者工具直接拉線調整。  Day 3   dataset 讀取tag裡的data-*屬性
+  style.setProperty(propertyName, value, priority)
+  style.setProperty(&amp;#39;color&amp;#39;, &amp;#39;red&amp;#39;); // 等於 style.padding = &amp;#39;red&amp;#39;; </description>
+    </item>
+    
+    <item>
+      <title>Vue-筆記-2-模板</title>
+      <link>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-2-%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-2-%E6%A8%A1%E6%9D%BF/</guid>
+      <description>模板語言 Vue template (官網說法 指令 Directives)  v-text  &amp;lt;span v-text=&amp;#34;msg&amp;#34;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;{{msg}}&amp;lt;/span&amp;gt; 兩種寫法都可以。 v-html  &amp;lt;div v-html=&amp;#34;html&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如果想要動態插入內容，使用innerHTML是拿不到實例中的data的喔。 v-show  &amp;lt;h1 v-show=&amp;#34;show&amp;#34;&amp;gt;Hello!&amp;lt;/h1&amp;gt; 等於CSS裡的display。 v-if, v-else-if, v-else  &amp;lt;div v-if=&amp;#34;type === &amp;#39;A&amp;#39;&amp;#34;&amp;gt;A&amp;lt;/div&amp;gt; &amp;lt;div v-else-if=&amp;#34;type === &amp;#39;B&amp;#39;&amp;#34;&amp;gt;B&amp;lt;/div&amp;gt; &amp;lt;div v-else&amp;gt;Not A/B&amp;lt;/div&amp;gt; v-if 和 v-show 的差別是在條件不成立的情況下，v-if不會被渲染到網頁上，v-show則是單純看不到。 v-for &amp;lt;!-- Array --&amp;gt; &amp;lt;li v-for=&amp;#34;todo in todos&amp;#34; v-if=&amp;#34;todo.isComplete&amp;#34;&amp;gt; {{ todo }} &amp;lt;/li&amp;gt; &amp;lt;div v-for=&amp;#34;(todo, index) in todos&amp;#34;&amp;gt; {{ index }}: {{ todo }} &amp;lt;/div&amp;gt; &amp;lt;!-- Object --&amp;gt; &amp;lt;div v-for=&amp;#34;value in object&amp;#34;&amp;gt; {{ value }} &amp;lt;/div&amp;gt; &amp;lt;div v-for=&amp;#34;(value, key) in object&amp;#34;&amp;gt; {{ key }}: {{ value }} &amp;lt;/div&amp;gt; &amp;lt;div v-for=&amp;#34;(value, key, index) in object&amp;#34;&amp;gt; {{ index }}.</description>
+    </item>
+    
+    <item>
+      <title>Vue-筆記-1-Vue實例</title>
+      <link>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-1-vue%E5%AF%A6%E4%BE%8B/</link>
+      <pubDate>Tue, 24 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-1-vue%E5%AF%A6%E4%BE%8B/</guid>
+      <description>實例 new Vue({})   el
+ &amp;lsquo;#app&amp;rsquo; document.getElementById(&amp;lsquo;app&amp;rsquo;) 在實例外用 vm.$mount(&#39;#app&#39;)     data
+const vm = new Vue({ el: &amp;#39;#app&amp;#39;, data: { input: &amp;#39;&amp;#39;, todos: [ &amp;#39;刷牙洗臉&amp;#39;, &amp;#39;吃早餐&amp;#39;, &amp;#39;整理服裝儀容&amp;#39;, &amp;#39;確認今天該做的事&amp;#39; ] } }); 用this.todos取得data裡的todos陣列   computed
+&amp;lt;div id=&amp;#34;app&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;number&amp;#34; v-model=&amp;#34;a&amp;#34;/&amp;gt; + &amp;lt;input type=&amp;#34;number&amp;#34; v-model=&amp;#34;b&amp;#34;/&amp;gt; = &amp;lt;input type=&amp;#34;number&amp;#34; v-model=&amp;#34;sum&amp;#34;/&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; var vm = new Vue ({ el: &amp;#39;#app&amp;#39;, data: { a: 0, b: 0 }, computed: { sum() { return parseInt(this.</description>
+    </item>
+    
+  </channel>
+</rss>

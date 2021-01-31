@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Mix_Liten ">
+<meta name="description" content="本來第三篇要說關於Vue組件Global和Local的應用還有組件之間上下傳遞事件的方法，不過一想到就有點懶，暫時逃避一下，這篇先介紹一下最近在做作品用到的工具吧。
+Vue-CLI GitHub連結
+安裝 npm i vue-cli -g //安裝在global vue -V //看看版本 確定安裝好沒 提供六種起始樣板 vue list //檢視Available official templates vue init &amp;lt;樣板名稱&amp;gt; &amp;lt;專案名稱&amp;gt; //下載樣板 選好樣板初始化，基本上會先問一些問題，如：專案名、專案描述、專案作者、可選套件，可選套件看需求使用，等安裝好照著CMD給的提示執行開發伺服器，開發時沒有要改設定的話，基本上只會用到src資料夾，src裡還有assets、components資料夾，因為有內建vue-loader，可以直接使用副檔名是vue的單一組件(含template、script、style)放在components，assets則是靜態檔案，通常會放全域用的JS、CSS、圖片之類的，另外還有個很重要的router，繼續看下面吧。
+Vue-router 說明文件
+順便介紹同樣內建在裡面的vue-router，這東西的用途是可以把網頁做成單頁應用SPA(Single Page Application)，優點是頁面間切換很順暢，缺點是進網頁會讀久一點。
+ 挖空格放組件(router-view)  &amp;lt;template&amp;gt; &amp;lt;div&amp;gt; &amp;lt;Menu/&amp;gt; &amp;lt;div class=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;router-view/&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;Footer/&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;script&amp;gt; import Menu from &amp;#39;./Menu&amp;#39;; import Footer from &amp;#39;./Footer&amp;#39;; export default{ components: { Menu, Footer, } } &amp;lt;/script&amp;gt; router-view tag 會塞入子組件的內容，menu和footer則是直接引入組件到Vue實例裡直接使用。
+ 組件之間的連結(router-link)  &amp;lt;router-link to=&amp;#34;about&amp;#34;&amp;gt;About&amp;lt;/router-link&amp;gt; 這句會被自動編譯成a連結。" />
+<meta name="keywords" content=", Vue" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://mix-liten.github.io/posts/201805/vue-%E5%B7%A5%E5%85%B7-vuecli/" />
+
+
+    <title>
+        
+            Vue-工具-Vue CLI :: 墨非默 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mix-liten.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://mix-liten.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://mix-liten.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://mix-liten.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://mix-liten.github.io/safari-pinned-tab.svg" color="#1b1c1d">
+    <link rel="shortcut icon" href="https://mix-liten.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1b1c1d">
+    <meta name="theme-color" content="#1b1c1d">
+
+
+
+<meta itemprop="name" content="Vue-工具-Vue CLI">
+<meta itemprop="description" content="本來第三篇要說關於Vue組件Global和Local的應用還有組件之間上下傳遞事件的方法，不過一想到就有點懶，暫時逃避一下，這篇先介紹一下最近在做作品用到的工具吧。
+Vue-CLI GitHub連結
+安裝 npm i vue-cli -g //安裝在global vue -V //看看版本 確定安裝好沒 提供六種起始樣板 vue list //檢視Available official templates vue init &lt;樣板名稱&gt; &lt;專案名稱&gt; //下載樣板 選好樣板初始化，基本上會先問一些問題，如：專案名、專案描述、專案作者、可選套件，可選套件看需求使用，等安裝好照著CMD給的提示執行開發伺服器，開發時沒有要改設定的話，基本上只會用到src資料夾，src裡還有assets、components資料夾，因為有內建vue-loader，可以直接使用副檔名是vue的單一組件(含template、script、style)放在components，assets則是靜態檔案，通常會放全域用的JS、CSS、圖片之類的，另外還有個很重要的router，繼續看下面吧。
+Vue-router 說明文件
+順便介紹同樣內建在裡面的vue-router，這東西的用途是可以把網頁做成單頁應用SPA(Single Page Application)，優點是頁面間切換很順暢，缺點是進網頁會讀久一點。
+ 挖空格放組件(router-view)  &lt;template&gt; &lt;div&gt; &lt;Menu/&gt; &lt;div class=&#34;container&#34;&gt; &lt;router-view/&gt; &lt;/div&gt; &lt;Footer/&gt; &lt;/div&gt; &lt;/template&gt; &lt;script&gt; import Menu from &#39;./Menu&#39;; import Footer from &#39;./Footer&#39;; export default{ components: { Menu, Footer, } } &lt;/script&gt; router-view tag 會塞入子組件的內容，menu和footer則是直接引入組件到Vue實例裡直接使用。
+ 組件之間的連結(router-link)  &lt;router-link to=&#34;about&#34;&gt;About&lt;/router-link&gt; 這句會被自動編譯成a連結。">
+<meta itemprop="datePublished" content="2018-05-13T19:44:26+00:00" />
+<meta itemprop="dateModified" content="2018-05-13T19:44:26+00:00" />
+<meta itemprop="wordCount" content="149">
+<meta itemprop="image" content="https://mix-liten.github.io/"/>
+
+
+
+<meta itemprop="keywords" content="Vue," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://mix-liten.github.io/"/>
+
+<meta name="twitter:title" content="Vue-工具-Vue CLI"/>
+<meta name="twitter:description" content="本來第三篇要說關於Vue組件Global和Local的應用還有組件之間上下傳遞事件的方法，不過一想到就有點懶，暫時逃避一下，這篇先介紹一下最近在做作品用到的工具吧。
+Vue-CLI GitHub連結
+安裝 npm i vue-cli -g //安裝在global vue -V //看看版本 確定安裝好沒 提供六種起始樣板 vue list //檢視Available official templates vue init &lt;樣板名稱&gt; &lt;專案名稱&gt; //下載樣板 選好樣板初始化，基本上會先問一些問題，如：專案名、專案描述、專案作者、可選套件，可選套件看需求使用，等安裝好照著CMD給的提示執行開發伺服器，開發時沒有要改設定的話，基本上只會用到src資料夾，src裡還有assets、components資料夾，因為有內建vue-loader，可以直接使用副檔名是vue的單一組件(含template、script、style)放在components，assets則是靜態檔案，通常會放全域用的JS、CSS、圖片之類的，另外還有個很重要的router，繼續看下面吧。
+Vue-router 說明文件
+順便介紹同樣內建在裡面的vue-router，這東西的用途是可以把網頁做成單頁應用SPA(Single Page Application)，優點是頁面間切換很順暢，缺點是進網頁會讀久一點。
+ 挖空格放組件(router-view)  &lt;template&gt; &lt;div&gt; &lt;Menu/&gt; &lt;div class=&#34;container&#34;&gt; &lt;router-view/&gt; &lt;/div&gt; &lt;Footer/&gt; &lt;/div&gt; &lt;/template&gt; &lt;script&gt; import Menu from &#39;./Menu&#39;; import Footer from &#39;./Footer&#39;; export default{ components: { Menu, Footer, } } &lt;/script&gt; router-view tag 會塞入子組件的內容，menu和footer則是直接引入組件到Vue實例裡直接使用。
+ 組件之間的連結(router-link)  &lt;router-link to=&#34;about&#34;&gt;About&lt;/router-link&gt; 這句會被自動編譯成a連結。"/>
+
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2018-05-13 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://mix-liten.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://mix-liten.github.io/about/">About</a></li><li><a href="https://mix-liten.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        One minute
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://mix-liten.github.io/posts/201805/vue-%E5%B7%A5%E5%85%B7-vuecli/">Vue-工具-Vue CLI</a>
+      </h1>
+
+      
+
+      
+        <hr />
+        <aside id="toc">
+          <div class="toc-title">Table of Contents</div>
+          <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#安裝">安裝</a></li>
+        <li><a href="#提供六種起始樣板">提供六種起始樣板</a></li>
+        <li><a href="#延伸閱讀">延伸閱讀</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </aside>
+        <hr />
+
+      <div class="post-content">
+        <p>本來第三篇要說關於Vue組件Global和Local的應用還有組件之間上下傳遞事件的方法，不過一想到就有點懶，暫時逃避一下，這篇先介紹一下最近在做作品用到的工具吧。</p>
+<p><a href="https://github.com/vuejs/vue-cli">Vue-CLI GitHub連結</a></p>
+<h3 id="安裝">安裝</h3>
+<pre><code>npm i vue-cli -g //安裝在global
+
+vue -V //看看版本 確定安裝好沒
+</code></pre><h3 id="提供六種起始樣板">提供六種起始樣板</h3>
+<pre><code>vue list //檢視Available official templates
+
+vue init &lt;樣板名稱&gt; &lt;專案名稱&gt; //下載樣板
+</code></pre><p><img src="https://mix-liten.github.io/images/JS/Vue/vue-list.jpg" alt="六種樣板" title="Vue-list"></p>
+<p>選好樣板初始化，基本上會先問一些問題，如：專案名、專案描述、專案作者、可選套件，可選套件看需求使用，等安裝好照著CMD給的提示執行開發伺服器，開發時沒有要改設定的話，基本上只會用到src資料夾，src裡還有assets、components資料夾，因為有內建vue-loader，可以直接使用副檔名是vue的單一組件(含template、script、style)放在components，assets則是靜態檔案，通常會放全域用的JS、CSS、圖片之類的，另外還有個很重要的router，繼續看下面吧。</p>
+<p><a href="https://router.vuejs.org/zh-cn/">Vue-router 說明文件</a></p>
+<p>順便介紹同樣內建在裡面的vue-router，這東西的用途是可以把網頁做成單頁應用SPA(Single Page Application)，優點是頁面間切換很順暢，缺點是進網頁會讀久一點。</p>
+<ul>
+<li>挖空格放組件(router-view)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
+  &lt;<span style="color:#f92672">div</span>&gt;
+    &lt;<span style="color:#f92672">Menu</span>/&gt;
+    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
+      &lt;<span style="color:#f92672">router-view</span>/&gt;
+    &lt;/<span style="color:#f92672">div</span>&gt;
+    &lt;<span style="color:#f92672">Footer</span>/&gt;
+  &lt;/<span style="color:#f92672">div</span>&gt;
+&lt;/<span style="color:#f92672">template</span>&gt;
+
+&lt;<span style="color:#f92672">script</span>&gt;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Menu</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Menu&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Footer</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./Footer&#39;</span>;
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span>{
+  <span style="color:#a6e22e">components</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">Menu</span>,
+    <span style="color:#a6e22e">Footer</span>,
+  }
+}
+&lt;/<span style="color:#f92672">script</span>&gt;
+</code></pre></div><p>router-view tag 會塞入子組件的內容，menu和footer則是直接引入組件到Vue實例裡直接使用。</p>
+<ul>
+<li>組件之間的連結(router-link)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">router-link</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;about&#34;</span>&gt;About&lt;/<span style="color:#f92672">router-link</span>&gt;
+</code></pre></div><p>這句會被自動編譯成a連結。</p>
+<ul>
+<li>router設定</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// router.js
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vue</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">VueRouter</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue-router&#39;</span>;
+
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">App</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./App.vue&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">About</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./about.vue&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Grocery</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./grocery.vue&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">GroceryList</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./groceryList&#39;</span>;
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">GroceryDetail</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./groceryDetail&#39;</span>;
+
+<span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">VueRouter</span>);
+
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">VueRouter</span>({
+  <span style="color:#a6e22e">routes</span><span style="color:#f92672">:</span> [
+    {
+      <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/&#39;</span>,
+      <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">App</span>,
+      <span style="color:#a6e22e">children</span><span style="color:#f92672">:</span> [
+        { <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;about&#39;</span>, <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">About</span>},
+        {
+          <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;grocery&#39;</span>,
+          <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Grocery</span>,
+          <span style="color:#a6e22e">children</span><span style="color:#f92672">:</span> [
+            {<span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">GroceryList</span>},
+            {<span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;:id?&#39;</span>, <span style="color:#a6e22e">component</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">GroceryDetail</span>}, <span style="color:#75715e">// 用this.$route.params.id 對應
+</span><span style="color:#75715e"></span>          ],
+        },
+        { <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;*&#39;</span>, <span style="color:#a6e22e">redirect</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;grocery&#39;</span> },
+      ],
+    }
+  ],
+})
+</code></pre></div><p>上面的範例有首頁和首頁下的關於和商品頁，商品頁下有商品清單和商品詳細，另外預防使用者隨便打網址的情況下轉址到商品頁。
+另外path可以加上一些正規表達式，id後面的問號是表達0個或1個，意思是id可以有也可以沒有。</p>
+<h3 id="延伸閱讀">延伸閱讀</h3>
+<p><a href="https://blog.techbridge.cc/2017/09/16/frontend-backend-mvc/">前後端分離與 SPA</a></p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://mix-liten.github.io/tags/vue/">Vue</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        149 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2018-05-13 08:00
+        
+
+         
+          
+            
+              (Last updated: 2018-05-14 03:44)
+            
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://mix-liten.github.io/posts/201805/js30-day1day2day3/">
+                <span class="button__icon">←</span>
+                <span class="button__text">JS30-Day1 &amp; Day2 &amp; Day3</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-2-%E6%A8%A1%E6%9D%BF/">
+                <span class="button__text">Vue-筆記-2-模板</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
+            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+
+
+
+    </body>
+</html>

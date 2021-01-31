@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Mix_Liten ">
+<meta name="description" content="前言 系列文(?)的第二篇，本篇會以參考三的語法表為主軸，文中範例的環境是以 Vue CLI 以上來說明，可參考Vuex_Todo範例幫助理解。
+參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  語法(三步驟說明)  使用第一步，把 Vuex 加進 Vue 的實例裡  // main.js, CLI import Vue from &amp;#39;vue&amp;#39; import Vuex from &amp;#39;vuex&amp;#39; import store from &amp;#39;./store&amp;#39; // Vuex 實例  Vue.use(Vuex) // 等同於 Vue.prototype.$store = Vuex; 讓所有元件都可藉由 this.$store 使用 vuex  new Vue({ el: &amp;#39;#app&amp;#39;, store }) // with script src, 偶爾在 codepen 上寫寫 Demo 用 // 照順序引入 Vue, Vuex 的 CDN // 建立 Vuex 實例 var store = new Vuex." />
+<meta name="keywords" content=", Vue, Vuex" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part2/" />
+
+
+    <title>
+        
+            Vuex入門 Part2 :: 墨非默 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mix-liten.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://mix-liten.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://mix-liten.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://mix-liten.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://mix-liten.github.io/safari-pinned-tab.svg" color="#1b1c1d">
+    <link rel="shortcut icon" href="https://mix-liten.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1b1c1d">
+    <meta name="theme-color" content="#1b1c1d">
+
+
+
+<meta itemprop="name" content="Vuex入門 Part2">
+<meta itemprop="description" content="前言 系列文(?)的第二篇，本篇會以參考三的語法表為主軸，文中範例的環境是以 Vue CLI 以上來說明，可參考Vuex_Todo範例幫助理解。
+參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  語法(三步驟說明)  使用第一步，把 Vuex 加進 Vue 的實例裡  // main.js, CLI import Vue from &#39;vue&#39; import Vuex from &#39;vuex&#39; import store from &#39;./store&#39; // Vuex 實例  Vue.use(Vuex) // 等同於 Vue.prototype.$store = Vuex; 讓所有元件都可藉由 this.$store 使用 vuex  new Vue({ el: &#39;#app&#39;, store }) // with script src, 偶爾在 codepen 上寫寫 Demo 用 // 照順序引入 Vue, Vuex 的 CDN // 建立 Vuex 實例 var store = new Vuex.">
+<meta itemprop="datePublished" content="2019-07-26T21:56:40+00:00" />
+<meta itemprop="dateModified" content="2019-07-26T21:56:40+00:00" />
+<meta itemprop="wordCount" content="513">
+<meta itemprop="image" content="https://mix-liten.github.io/"/>
+
+
+
+<meta itemprop="keywords" content="Vue,Vuex," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://mix-liten.github.io/"/>
+
+<meta name="twitter:title" content="Vuex入門 Part2"/>
+<meta name="twitter:description" content="前言 系列文(?)的第二篇，本篇會以參考三的語法表為主軸，文中範例的環境是以 Vue CLI 以上來說明，可參考Vuex_Todo範例幫助理解。
+參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  語法(三步驟說明)  使用第一步，把 Vuex 加進 Vue 的實例裡  // main.js, CLI import Vue from &#39;vue&#39; import Vuex from &#39;vuex&#39; import store from &#39;./store&#39; // Vuex 實例  Vue.use(Vuex) // 等同於 Vue.prototype.$store = Vuex; 讓所有元件都可藉由 this.$store 使用 vuex  new Vue({ el: &#39;#app&#39;, store }) // with script src, 偶爾在 codepen 上寫寫 Demo 用 // 照順序引入 Vue, Vuex 的 CDN // 建立 Vuex 實例 var store = new Vuex."/>
+
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2019-07-26 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://mix-liten.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://mix-liten.github.io/about/">About</a></li><li><a href="https://mix-liten.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        3 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part2/">Vuex入門 Part2</a>
+      </h1>
+
+      
+
+      
+        <hr />
+        <aside id="toc">
+          <div class="toc-title">Table of Contents</div>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#參考">參考</a></li>
+    <li><a href="#語法三步驟說明">語法(三步驟說明)</a></li>
+    <li><a href="#其他">其他</a></li>
+    <li><a href="#結語">結語</a></li>
+  </ul>
+</nav>
+        </aside>
+        <hr />
+
+      <div class="post-content">
+        <h2 id="前言">前言</h2>
+<p>系列文(?)的第二篇，本篇會以<a href="#%E5%8F%83%E8%80%83">參考三</a>的語法表為主軸，文中範例的環境是以 Vue CLI 以上來說明，可參考<a href="https://github.com/Mix-Liten/vuex_todo">Vuex_Todo範例</a>幫助理解。</p>
+<h2 id="參考">參考</h2>
+<ol>
+<li><a href="https://segmentfault.com/a/1190000012142449">四張動圖解釋何時該用Redux</a></li>
+<li><a href="https://vuex.vuejs.org/zh/">Vuex官方文件</a></li>
+<li><a href="https://vuejs-tips.github.io/vuex-cheatsheet/">Vuex語法表</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/state-management.html">EventBus</a></li>
+</ol>
+<h2 id="語法三步驟說明">語法(三步驟說明)</h2>
+<ol>
+<li>使用第一步，把 Vuex 加進 Vue 的實例裡</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// main.js, CLI
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vue</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vuex</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vuex&#39;</span>
+<span style="color:#66d9ef">import</span> <span style="color:#a6e22e">store</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store&#39;</span> <span style="color:#75715e">// Vuex 實例
+</span><span style="color:#75715e"></span>
+<span style="color:#a6e22e">Vue</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">Vuex</span>) <span style="color:#75715e">// 等同於 Vue.prototype.$store = Vuex; 讓所有元件都可藉由 this.$store 使用 vuex
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+  <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#app&#39;</span>,
+  <span style="color:#a6e22e">store</span>
+})
+
+<span style="color:#75715e">// with script src, 偶爾在 codepen 上寫寫 Demo 用
+</span><span style="color:#75715e">// 照順序引入 Vue, Vuex 的 CDN
+</span><span style="color:#75715e">// 建立 Vuex 實例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">store</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
+  <span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">dataList</span><span style="color:#f92672">:</span> []
+  },
+  ...
+})
+
+<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vue</span>({
+  <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#app&#39;</span>,
+  <span style="color:#a6e22e">store</span>,
+  <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> ...,
+  <span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">dataList</span>() {
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">$store</span>.<span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">dataList</span>;
+    },
+    ...
+  },
+  ...
+})
+</code></pre></div><ol start="2">
+<li>使用第二步，建立 Vuex 實例</li>
+</ol>
+<ul>
+<li><a href="https://vuex.vuejs.org/guide/modules.html#namespacing">namespaced說明</a></li>
+<li><a href="https://blog.hinablue.me/vuejs-vuex-2-0-guan-yu-plugins-de-shi-qing/">plugins說明</a></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// store.js
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vuex</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vuex&#39;</span>
+
+<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
+<span style="color:#a6e22e">strict</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>, <span style="color:#75715e">// 嚴格限制只能通過 mutation 更改 state, 可在開發時確保資料流, 正式環境應關閉
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">namespaced</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#75715e">// 命名空間的啟用/停用, module 專用, 幫資料和方法取名總有靈感枯竭的狀況, 使用說明參考上方namespaced說明連結
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">modules</span><span style="color:#f92672">:</span> {}, <span style="color:#75715e">// 載入子層資料, 如 store.js 載入 user.js, user.js 再載入 post.js, 形成 store/user/post的關係
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> {}, <span style="color:#75715e">// 等同於 Vue 的 data, 放預設資料的地方
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">getters</span><span style="color:#f92672">:</span> {}, <span style="color:#75715e">// 等同於 Vue 的 computed, 回傳加工過的資料
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">mutations</span><span style="color:#f92672">:</span> {}, <span style="color:#75715e">// 類似於 Vue 的 methods, 負責更改 state, 只能使用同步操作
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">actions</span><span style="color:#f92672">:</span> {}, <span style="color:#75715e">// 類似於 Vue 的 methods, 異步(ex:發 API 取資料)會集中在這裡處理，發 commit 到 mutation 更改 state
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">plugins</span><span style="color:#f92672">:</span> [], <span style="color:#75715e">// 類似於 Vue 的 watch, 初始化時會在 created 後執行一遍, 使用說明參考上方plugins說明連結
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">devtools</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#75715e">// 使 Vue.js devtools 忽略這個 store
+</span><span style="color:#75715e"></span>})
+</code></pre></div><ul>
+<li><a href="https://vuex.vuejs.org/zh/api/#api-%E5%8F%82%E8%80%83">屬性細項說明</a></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// vuex 屬性下放的方法有設定一些參數
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
+  <span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">num</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+  },
+  <span style="color:#a6e22e">mutations</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">counter</span>(<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">payload</span>) {
+      <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">num</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">payload</span>; <span style="color:#75715e">// padload 為可選參數, 不限制型別, 傳遞更改 state 前需要的運算值
+</span><span style="color:#75715e"></span>    }
+  },
+  <span style="color:#a6e22e">actions</span><span style="color:#f92672">:</span> {
+    <span style="color:#75715e">/*
+</span><span style="color:#75715e">    context 物件解構後包含以下屬性
+</span><span style="color:#75715e">    {
+</span><span style="color:#75715e">      state,      // 等同於  store.state, 若在 module 中則為局部 state, 也就是只取得到自己及載入的 module 的資料
+</span><span style="color:#75715e">      rootState,  // 等同於 store.state, module 專用, 用來取得父層資料
+</span><span style="color:#75715e">      commit,     // 等同於 store.commit, 要求 mutation 更改資料
+</span><span style="color:#75715e">      dispatch,   // 等同於 store.dispatch, 觸發其他 action
+</span><span style="color:#75715e">      getters,    // 等同於 store.getters, 取得 getter 處理過的資料
+</span><span style="color:#75715e">      rootGetters // 等同於 store.getters, module 專用, 用來取得父層 getters
+</span><span style="color:#75715e">    }
+</span><span style="color:#75715e">    */</span>
+    <span style="color:#a6e22e">calculator</span>(<span style="color:#a6e22e">context</span>, <span style="color:#a6e22e">payload</span>) {
+      <span style="color:#75715e">// do something ...
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">commit</span>(<span style="color:#e6db74">&#39;counter&#39;</span>, <span style="color:#a6e22e">payload</span>); <span style="color:#75715e">// 要求 counter mutation 更改 state
+</span><span style="color:#75715e"></span>    }
+  },
+  <span style="color:#a6e22e">getters</span><span style="color:#f92672">:</span> {
+    <span style="color:#75715e">/*
+</span><span style="color:#75715e">    getter 在父層中可傳入兩個參數
+</span><span style="color:#75715e">    第一是 state, 取得當前 store 的 state
+</span><span style="color:#75715e">    第二是 getters, 取得其他 getter 輔助計算
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">    getter 在 module 中可傳入四個參數
+</span><span style="color:#75715e">    第一是 state, 取得當前 store 的 state
+</span><span style="color:#75715e">    第二是 getters, 取得其他 getter 輔助計算
+</span><span style="color:#75715e">    第三是 rootState, 取得父層 state
+</span><span style="color:#75715e">    第四是 rootGetters, 取得父層 getters 輔助計算
+</span><span style="color:#75715e">    */</span>
+    <span style="color:#a6e22e">getNum</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">state</span>, <span style="color:#a6e22e">getters</span>) =&gt; {
+      <span style="color:#75715e">// do something ...
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">num</span>;
+    }
+  }
+})
+</code></pre></div><ol start="3">
+<li>使用第三步，元件使用 Vuex
+方法有二：</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 第一，已使用過 Vue.use(Vuex)，可通過 this.$store 使用
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">getTodos</span>() {
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">$store</span>.<span style="color:#a6e22e">getters</span>.<span style="color:#a6e22e">doneTodosCount</span>;
+    }
+    <span style="color:#75715e">// 因應 Namespace 的使用狀況
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">getCounter</span>() {
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">$store</span>.<span style="color:#a6e22e">moduleName</span>.<span style="color:#a6e22e">getters</span>.<span style="color:#a6e22e">counterCount</span>;
+    }
+  }
+}
+<span style="color:#75715e">// 第二，使用 Vuex 提供的輔助方法，{ mapState, mapGetters, mapActions, mapMutations }
+</span><span style="color:#75715e">// mapActions, 把 this.incrementBy(amount) 映射為 this.$store.dispatch(&#39;incrementBy&#39;, amount)`
+</span><span style="color:#75715e">// mapMutations, 把 this.incrementBy(amount) 映射為 this.$store.commit(&#39;incrementBy&#39;, amount)`
+</span><span style="color:#75715e">// 因應 Namespace 的使用狀況, dispatch 與 commit 可帶第三個參數為 { root: true }, 用途等同於 root 開頭的那幾個, 於 module 中使用
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">mapGetters</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vuex&#39;</span>
+<span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
+  <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
+    ...<span style="color:#a6e22e">mapGetters</span>([ <span style="color:#75715e">// 把 this.firstGetter 映射為 this.$store.getters.firstGetter
+</span><span style="color:#75715e"></span>      <span style="color:#e6db74">&#39;firstGetter&#39;</span>, <span style="color:#75715e">// 等同於 firstGetter: &#39;firstGetter&#39;
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">anotherGetter</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;secondGetter&#39;</span>, <span style="color:#75715e">// 或是取個比較好懂的名稱
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    ]),
+    <span style="color:#75715e">// 因應 Namespace 的使用狀況
+</span><span style="color:#75715e"></span>    ...<span style="color:#a6e22e">mapGetters</span>([
+      <span style="color:#e6db74">&#39;paraentName/fourthGetter&#39;</span>
+    ]),
+    ...<span style="color:#a6e22e">mapGetters</span>(<span style="color:#e6db74">&#39;LevelOne/LevelTwo/LevelThree&#39;</span>, [
+      <span style="color:#e6db74">&#39;thirdGetter&#39;</span>
+    ]),
+  }
+}
+</code></pre></div><h2 id="其他">其他</h2>
+<p>Vuex 還有很多細節是兩篇文章講不完的，麻煩自己到官方文件看，這邊還要介紹一個好用的功能，註冊/卸載 module，用法類似 Vue 的 mixin，重點在於動態、重用，不過記得要在 beforeDestroy 時把 module 和監聽事件一起卸載掉。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 註冊
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">registerModule</span>(<span style="color:#e6db74">&#39;myModule&#39;</span>, {
+  <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>})
+<span style="color:#75715e">// with Namespace nested/myModule
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">registerModule</span>([<span style="color:#e6db74">&#39;nested&#39;</span>, <span style="color:#e6db74">&#39;myModule&#39;</span>], {
+  <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>})
+<span style="color:#75715e">// 卸載
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">unregisterModule</span>(<span style="color:#e6db74">&#39;myModule&#39;</span>)
+</code></pre></div><h2 id="結語">結語</h2>
+<p>雖然 Vuex 還在更新，但我不會再更新這篇文章，使用上的觀念不會變。
+如果你看到這邊覺得暫時用不到 Vuex，可看<a href="#%E5%8F%83%E8%80%83">參考四</a>的 EventBus，可以不用管這堆麻煩的使用方式，開新檔建立新的 Vue 實例，在需要共用資料的元件引入並共用這個實例的 data、methods&hellip;等等，也能暫時解決問題，但資料越多越難管理。</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://mix-liten.github.io/tags/vue/">Vue</a></span>
+        <span class="tag"><a href="https://mix-liten.github.io/tags/vuex/">Vuex</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        513 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2019-07-26 08:00
+        
+
+         
+          
+            
+              (Last updated: 2019-07-27 05:56)
+            
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://mix-liten.github.io/posts/201908/%E5%85%8D%E8%B2%BB%E7%B7%9A%E4%B8%8Amongodb/">
+                <span class="button__icon">←</span>
+                <span class="button__text">免費線上MongoDB</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part1/">
+                <span class="button__text">Vuex入門 Part1</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
+            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>css on 墨非默</title>
+    <link>https://mix-liten.github.io/tags/css/</link>
+    <description>Recent content in css on 墨非默</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Wed, 16 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://mix-liten.github.io/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JS30-Day5 &amp; Day6</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day5day6/</link>
+      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day5day6/</guid>
+      <description>介紹Flex-Box 與 JavaScript原生Fetch用法
+Day 5  Flex-Box 平常我會參考的兩個codepen連結 Flexbox Visual Playground Properties for the flex container   flex基本用法是在父層設定display: flex; 在子層設定flex: 1; 等同於flex: 1 1 0%; flex: flex-grow flex-shrink flex-basis; flex-grow，當子層寬度加總低於父層寬度時，依給予的數字做比例延伸 flex-shrink，當子層寬度加總高於父層寬度時，依給予的數字做比例縮減 flex-basis，基準值，若用auto，會以內容分配寬度
+Day 6  fetch() MDN 的 Fetch 說明 會以Promise做回應，基本用法如下：  fetch(url) .then(res =&amp;gt; res.json()) .then(res =&amp;gt; console.log(res)) .catch(error =&amp;gt; console.error(error)); fetch(url, { method: &amp;#39;POST&amp;#39;, // or &amp;#39;PUT&amp;#39;  body: JSON.stringify(data), // data can be `string` or {object}!  headers: new Headers({ &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json&amp;#39; }) }); 用then接收Promise傳出的resolve(成功)，用catch接收Promise傳出的reject(失敗) 要注意的是fetch回傳出的是ReadableStream物件，簡單來說就是還要再處理一下才會變成可讀的資料，方法如下：</description>
+    </item>
+    
+  </channel>
+</rss>

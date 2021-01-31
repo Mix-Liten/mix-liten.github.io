@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>墨非默</title>
+    <link>https://mix-liten.github.io/</link>
+    <description>Recent content on 墨非默</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mix-liten.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>為你自己學Git-讀書心得-part1</title>
+      <link>https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part1/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part1/</guid>
+      <description>前言 上班之餘，抽空翻完作者在 2020 年年初因慶祝某件事情，提供的免費電子書 為你自己學 Git，有件事情必須先說清楚，這本書大部分章節都有放在 宣傳頁 免費觀看，早在前幾年我就有翻這本書的想法，但每次翻了幾頁後又放棄，直到上班一段時間後才吃透這本書，原因是內容生澀難懂，難懂的部分是以前對於書中舉例要解決的狀況不了解，生澀的部分是連指令的用法都不懂，卻介紹指令的背後在做什麼，現在可以吃透自然是有一段時間的使用經驗，遇到過各種狀況，才能披荊斬棘看完。
+從我的狀況來評價這本書的幾項要點
+  舉例出符合業界常遇到的狀況，並以此為出發點講解如何解決
+  解釋指令背後，git 做了哪些事，git 如何做到
+總結起來就是，不推薦新手入門看這本書，因新手很大一部分需要的不是如何解決問題及了解原理，而是現在要做什麼
+早期我覺得最有幫助的是很常見的   內容概要 這裡並不是全部的 git 指令，只是作為閱讀記錄，說明什麼情況適合使用什麼指令
+安裝好之後，使用版本指令檢查
+$ git --version 設定本機全域的 git 作者，建議和 GitHub 同步一樣的名稱及信箱，不要亂打，之後都會看到
+$ git config --global user.name &amp;#34;username&amp;#34; $ git config --global user.email &amp;#34;username@email.com&amp;#34; 完成後可用指令檢視，這個指令會列出 /User 根目錄中的 .gitconfig 的內容，裡面不只有名稱及信箱，平常不要亂動，特殊情況才會需要手動來調設定
+$ git config --list 若有需要在個別專案中設定不同作者，在該專案中設定 local user，注意要先初始化 git init
+$ git config --local user.name &amp;#34;local username&amp;#34; $ git config --local user.</description>
+    </item>
+    
+    <item>
+      <title>為你自己學Git-讀書心得-part2</title>
+      <link>https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part2/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part2/</guid>
+      <description>前言 接續前一篇，直接進入紀錄的部分。
+分支相關指令 # 列出 local 分支 $ git branch # 列出 remote 分支 $ git branch -r # 等於 --remote # 列出 local + remote 分支 $ git branch -a # 開新分支 $ git branch branch_name # 在指定 commit 的位置開新分支 $ git branch branch_name 657fce7 # 更名分支 $ git branch -m old_name new_name # 刪除分支，若該分支內容未備份於其他分支會給予提示並且不可刪除，此時使用大寫 -D 以強制刪除 $ git branch -d branch_name # 切換分支 $ git checkout branch_name # 存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name # 在指定 commit 的位置，存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name 657fce7 # 切換到遠端分支時會發生 detached HEAD 狀態，使用追蹤參數在 local 建立追蹤分支，即可解決 $ git checkout -t origin/branch_name # 等於 --track # 回復分支，紀錄或找到被刪除分支最新 commit 的 SHA-1 值則可回復 $ git branch branch_name b174a5a # 列出所有節點紀錄，等同於 GUI 線圖 $ git show-branch -a # 強制遷移 master branch 到指定位置，HEAD 要先移到其他位置，忘開分支就 commit 時可能有用 $ git branch -f master e12d8ef 合併分支相關 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖相同，用線圖來看就是仍在一直線上，會啟用 快轉模式(Fast Forward)，效果看起來是只平移原分支 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖不相同，線圖類似 Y 形分岔，合併時會產生新的 commit，作為合併紀錄點，若發生 衝突(Conflict) 也會一併解決 # 使用以下指令可以總是產生分岔合併節點，即使刪除已合併過的分支，也可以在線圖上知道這裡曾經合併過 $ git merge branch_name --no-ff # 重設基礎合併，此方法會將當前分支的每個 commit 照順序嫁接到指定的分支上 $ git rebase branch_name # 此為危險操作，可用 Reflog 指令找到危險操作前最新 commit 的 SHA-1 值，並且執行 Reset 指令回復 # 或是使用危險操作皆有的額外紀錄點 ORIG_HEAD，執行 Reset 指令回復 $ git reset ORIG_HEAD --hard # rebase 指令進行時，若發生 衝突(Conflict)，處理方式和 merge 不同，此時看線圖會看到 HEAD 節點正卡出狀況的新移植節點上，此時將衝突解決，之後執行以下指令繼續 rebase $ git rebase --continue # 若衝突發生點不是文字檔而是圖片或其他二進位檔 $ git checkout --ours sample.</description>
+    </item>
+    
+    <item>
+      <title>在-macOS-上使用-Homebrew-安裝&amp;更新-git</title>
+      <link>https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E4%BD%BF%E7%94%A8-homebrew-%E5%AE%89%E8%A3%9D-%E6%9B%B4%E6%96%B0-git/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E4%BD%BF%E7%94%A8-homebrew-%E5%AE%89%E8%A3%9D-%E6%9B%B4%E6%96%B0-git/</guid>
+      <description>前言 作為寫程式必備的版控軟體，macOS上預設是有安裝的，那為什麼我還要多此一舉，用 Homebrew 再安裝一次呢？ 因為有時候作為開源軟體的 Git 會修正一些嚴重的漏洞或是有重要更新，這時候參考這篇文章就可以立刻跟上最新版本囉～
+指令 直接上指令表，視情況使用。
+# 安裝 brew install git # 更新 brew upgrade git # 切換 Git 指令使用 Homebrew 版本 brew link git # 切換 PATH 亦可切換為自行安裝的版本 export PATH=/usr/local/bin:$PATH # 查看 Git 版本指令 git version # 查看目前使用的 Git 的存放位置 which git 結語 老實說我目前不管是在開發 Side-Project 或是公司專案，在使用 Git 的部分都沒遇到什麼問題，更新都是求心安。</description>
+    </item>
+    
+    <item>
+      <title>在-macOS-上建立-Laradock-環境</title>
+      <link>https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E5%BB%BA%E7%AB%8B-laradock-%E7%92%B0%E5%A2%83/</link>
+      <pubDate>Sun, 22 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E5%BB%BA%E7%AB%8B-laradock-%E7%92%B0%E5%A2%83/</guid>
+      <description>前言 Laradock 是一款簡單食用的APP一種輕鬆簡便安裝 Laravel 環境的開源專案，相較於官網提供的 Homestead 虛擬機在更新版本的不便以及過多用不到的配置，Laradock 提供了更多的自由度且同時有 Docker 開箱即用的便利性。
+以下篇幅可能略長，但大多是在建置時可能會遇到的問題，沒遇到問題可直接略過該步驟，另外其實大多數步驟在 Windows 系統也可以比照辦理。
+步驟  安裝 Docker  下載前要先註冊會員，下載後打開應用登入運行就可以不管它了。
+安裝 Laradock  打開 CMD 或同等功用的 Command Line，依照下方範例逐行執行
+cd ~/Documents/Laravel git clone https://github.com/Laradock/laradock.git cd laradock cp env-example .env 第一行 cd 進入的位置 可任意更換為你想要放 Laradock 專案的位置 第四行 cp 即是 複製 env-example 並更名為 .env
+修改 .env 檔  APP_CODE_PATH_HOST=~/Documents/PHPProject 後方位置請設定為預備要映射進虛擬機裡的放置專案的資料夾
+MYSQL_VERSION=5.7 MySQL 預設的版本是 latest，但這會有個延伸問題，如果你真想要用最新版本的 MySQL，就再多做一個步驟 於 laradock/mysql/my.cnf 新增下面這一行並儲存
+default_authentication_plugin=mysql_native_password 建立 Laravel 專案  cd ~/Documents/PHPProject laravel new testProject 如果出現錯誤說無法識別 laravel 指令，請參考官方文件安裝 laravel/installer</description>
+    </item>
+    
+    <item>
+      <title>Vue with Storybook 概述</title>
+      <link>https://mix-liten.github.io/posts/201911/storybook_with_vue/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201911/storybook_with_vue/</guid>
+      <description>前言 現在前端流行的框架都可單獨開發多種元件，在元件切得很多的情況下，使用 Storybook 檢視各個元件，相信會在開發上給予相當程度的便利。
+目前 Storybook 可用於 React、Vue、Angular、Svelte、Ember、&amp;hellip;等等框架，本篇以 Vue 為例，版本是5.1。
+連結  Storybook vue-cli-plugin-storybook storybook-addon-vue-info storybook-addon-vue-info-demo  安裝 Storybook 官網裡安裝 Vue 版本的方法有兩種
+ Automatic setup 在 Vue 專案裡使用下方指令  npx -p @storybook/cli sb init --type vue Manual setup 這個比較麻煩，就是照著步驟做，為了避免篇幅過長，僅提供傳送門。
+  Vue CLI plugin 別人造好的輪子，使用方式是先開啟 Vue CLI 3 新增的圖形化介面，進入你要使用的專案，選擇目錄中的插件(Plugins)，點擊新增插件後安裝vue-cli-plugin-storybook
+  配置及插件(Addons) 安裝好後，使用 package.json 裡的相關指令把 Storybook 跑起來 此時你會發現，自己跑起來的 Storybook 與官網的影片相差甚遠，主要有兩部分，一是左邊的目錄很空，這是因為我們還沒配置要呈現的 story，二是右邊的元件控制項很少，這是另一項重點，插件(Addons)。
+首先配置的部分，這是一個很多工的步驟，以官方給的 Button 範例說明，程式部分僅供參考，實際使用要看 Storybook 的版本
+// Button.stories.js import { storiesOf } from &amp;#39;@storybook/vue&amp;#39; import { action } from &amp;#39;@storybook/addon-actions&amp;#39; import { withKnobs } from &amp;#34;@storybook/addon-knobs&amp;#34; const stories = storiesOf(&amp;#34;Button&amp;#34;, module) stories.</description>
+    </item>
+    
+    <item>
+      <title>遷移 VSCode 的設定與套件</title>
+      <link>https://mix-liten.github.io/posts/201908/%E9%81%B7%E7%A7%BBvscode%E7%9A%84%E8%A8%AD%E5%AE%9A%E8%88%87%E5%A5%97%E4%BB%B6/</link>
+      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201908/%E9%81%B7%E7%A7%BBvscode%E7%9A%84%E8%A8%AD%E5%AE%9A%E8%88%87%E5%A5%97%E4%BB%B6/</guid>
+      <description>前言 此為將開發環境轉移至 Ｍacbook Pro 的 macOS Mojave 10.14.6 版作業系統時使用的設定與套件文檔。
+使用方法 複製 setting，找到設定右上的小圖示開啟 JSON 格式的設定，貼上並儲存即可。 另存一個 extensions.json 檔，並存進 .vscode 名稱的資料夾，之後拉到 VSCode 左側的工作區，之後到擴充應用區挑要用到的套件。
+setting.json { /* 編輯器內建功能設定 */ &amp;#34;editor.multiCursorModifier&amp;#34;: &amp;#34;ctrlCmd&amp;#34;, // 按著Ctrl並點擊不同位置進行多選  &amp;#34;editor.snippetSuggestions&amp;#34;: &amp;#34;top&amp;#34;, // 輸入時，自動format，調整格式  &amp;#34;editor.formatOnPaste&amp;#34;: false, // 貼上時，自動format，調整格式  &amp;#34;editor.formatOnSave&amp;#34;: false, // 存檔時，自動format，調整格式  &amp;#34;editor.wordWrap&amp;#34;: &amp;#34;on&amp;#34;, // 單行過長時，換行顯示而不是顯示ScrollBar  &amp;#34;editor.fontFamily&amp;#34;: &amp;#34;Operator Mono, Menlo, Monaco, &amp;#39;Courier New&amp;#39;, monospace&amp;#34;, // 編輯器字體  &amp;#34;editor.fontSize&amp;#34;: 18, // 字體大小  &amp;#34;editor.tabSize&amp;#34;: 2, // 一個tab等於兩個space  &amp;#34;editor.</description>
+    </item>
+    
+    <item>
+      <title>免費線上MongoDB</title>
+      <link>https://mix-liten.github.io/posts/201908/%E5%85%8D%E8%B2%BB%E7%B7%9A%E4%B8%8Amongodb/</link>
+      <pubDate>Sun, 04 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201908/%E5%85%8D%E8%B2%BB%E7%B7%9A%E4%B8%8Amongodb/</guid>
+      <description>前言 覺得作品不錯，想放在網上公開，但又不想花錢，除了找免費的伺服器外，有時候還需要資料庫，這篇文章告訴你如何註冊、使用免費的線上MongoDB。
+連結  MongoDB Atlas MongoDB Atlas Docs  使用步驟   註冊帳號   建立 Cluster 每個 Project 可以免費建一個 0.5GB 的 Cluster，選好雲端平台、選擇有帶藍色標籤的伺服器，確認 Cluster Tier 選擇的是 M0 Sandbox，Cluster Name 填入名稱後，點擊 Create Cluster。   前置設定 此時會有新用戶教學，跟著提示框設定資料庫的使用者、可連線IP、載入範例資料   連線 資料存進資料庫就是要拿出來用的，回到 Cluster 列表頁，選擇要用的 Cluster，點擊 CONNECT，點擊 Connect Your Application，選擇你要使用的語言，複製連線路徑。
+  mongodb+srv://&amp;lt;user&amp;gt;:&amp;lt;password&amp;gt;@&amp;lt;cluster&amp;gt;.gcp.mongodb.net/&amp;lt;database&amp;gt;?retryWrites=true&amp;amp;w=majority // &amp;lt;user&amp;gt; 使用者名稱 // &amp;lt;password&amp;gt; 使用者密碼，需自行填入 // &amp;lt;database&amp;gt; 使用的資料庫，預設是test </description>
+    </item>
+    
+    <item>
+      <title>Vuex入門 Part2</title>
+      <link>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part2/</link>
+      <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part2/</guid>
+      <description>前言 系列文(?)的第二篇，本篇會以參考三的語法表為主軸，文中範例的環境是以 Vue CLI 以上來說明，可參考Vuex_Todo範例幫助理解。
+參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  語法(三步驟說明)  使用第一步，把 Vuex 加進 Vue 的實例裡  // main.js, CLI import Vue from &amp;#39;vue&amp;#39; import Vuex from &amp;#39;vuex&amp;#39; import store from &amp;#39;./store&amp;#39; // Vuex 實例  Vue.use(Vuex) // 等同於 Vue.prototype.$store = Vuex; 讓所有元件都可藉由 this.$store 使用 vuex  new Vue({ el: &amp;#39;#app&amp;#39;, store }) // with script src, 偶爾在 codepen 上寫寫 Demo 用 // 照順序引入 Vue, Vuex 的 CDN // 建立 Vuex 實例 var store = new Vuex.</description>
+    </item>
+    
+    <item>
+      <title>Vuex入門 Part1</title>
+      <link>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part1/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part1/</guid>
+      <description>前言 Vuex 是 Vue.js 的一種狀態管理模式(工具)，其他前端框架也有類似的管理工具，用來解決多個元件共用資料導致資料流混亂的問題，參考一的動圖解釋雖然是以 Redux 為例，但清楚的說明了狀態管理的使用情境。 參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  概述 下方以 Counter 舉例，大概看一下應該會發現跟原本的 Vue 差不多，也是有 data、methods、computed，只是在 Vuex 裡改叫 state、mutations、getters，還多了跟 emit 很像的 actions 屬性。
+// src/store/index.js const store = new Vuex.Store({ state: { count: 0, }, getters: { count: (state) =&amp;gt; state.count, }, mutations: { incrementMutation: (state) =&amp;gt; state.count++, decrementMutation: (state) =&amp;gt; state.count--, }, actions: { incrementAction: ({ commit }) =&amp;gt; commit(&amp;#39;incrementMutation&amp;#39;), decrementAction: ({ commit }) =&amp;gt; commit(&amp;#39;decrementMutation&amp;#39;), } }) // template const Counter = { template: ` &amp;lt;div id=&amp;#34;counter&amp;#34;&amp;gt; &amp;lt;p&amp;gt; {{ count }} &amp;lt;/p&amp;gt; &amp;lt;p&amp;gt; &amp;lt;button @click=&amp;#34;increment&amp;#34;&amp;gt;+&amp;lt;/button&amp;gt; &amp;lt;button @click=&amp;#34;decrement&amp;#34;&amp;gt;-&amp;lt;/button&amp;gt; &amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; `, computed: { count() { return this.</description>
+    </item>
+    
+    <item>
+      <title>Chrome擴充應用初探</title>
+      <link>https://mix-liten.github.io/posts/201907/chrome-extensions/</link>
+      <pubDate>Wed, 03 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201907/chrome-extensions/</guid>
+      <description>前言 起因是 Google Chrome 的某一次改版改了整體的介面，一開始極度不適應，在應用商店裡又找不到滿意的主題來遮醜，就萌生了自己做個主題來用的想法，畢竟很多 Chrome 的主題看起來只是放一張動漫圖在新分頁的背景，感覺不難呀～
+參考 官方文件 Google 官方文件一向很齊全，只是英文總是讓人卻步
+結論與過程 先說結論，因發佈套件需要5美元註冊，個人認為這次做出來的作品並沒有好到可以以這種形式公開，所以就只放在沒沒無聞的我的GitHub了。
+接下來是過程，看前面會知道，起初是想用現成的主題來著，當時不甚滿意的主題分別是Tabliss、Momentum、Live Start Page、Toby、Speed Dial(FVD)，大致上前三個是用免費的風景圖為基底，但功能比較被限制；Toby主打書籤功能；Speed Dial則是我相較滿意的主題，功能非常齊全。
+忘記講需求了，比起美美的主題，我更需要的是預設頁面右上角的Google會員功能，Gmail、雲端硬碟&amp;hellip;等等，另外還有新分頁的預設頁面會在上方顯示書籤列表(設定是關閉)，但是上面這些主題客製時，頁面都會整體更新，我需要的功能都要改成用類似書籤的方式實現。
+結果 幾番掙扎之後，做了個類似Dynamic Landing Page的畫面，也發現上架主題需要開通費之後，改做了個冬季飄雪特效，當作摸索擴充應用的小結，喜歡的話歡迎拿去使用或修改喔。
+後話 大概過了兩個月後我選擇用Colors主題，這個主題就是以一張圖片為背景而已，缺點是圖片的色彩集中在上方，會遮到Google會員功能，這也是我挑掉一堆圖片主題的原因，那為什麼還會使用 Colors 呢？因為它的圖片相較之下比較不突兀，那些動漫、風景圖的解析度在目前使用的32吋螢幕上實在是很模糊。</description>
+    </item>
+    
+    <item>
+      <title>雜記 - 近日談與體檢心得</title>
+      <link>https://mix-liten.github.io/posts/201904/diary-2/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201904/diary-2/</guid>
+      <description>久違的發文，前陣子爺爺奶奶那一輩相繼走到人生終點，幫家裡忙一些住院和後事之類的所以沒心情發文，還去醫院把鼻子上據說有點變大的痣挖掉，另外在下雨天的時候騎腳踏車打滑，兩腳膝蓋都中獎，事實告訴我們，騎YouBike要慎選，好啦，說這麼多廢話，總之由於包含但不只於以上原因，我安排今天去做體檢。
+彩虹合唱團：來自外公的一封信
+體檢項目：馬偕-平安喜樂套檢
+TL;DR  胖.jpeg
+ 流程及觀察 具體的流程是這樣的，首先是事前準備，第一步上網預訂時間並刷卡付四分之一訂金，大約在體檢前兩個禮拜收到掛號信，信裡有一張提醒和裝有便便採集器及使用說明的綠色小夾鏈袋，大致上就是早上八點檢查需要前一天晚上十點以後不能吃也不能喝，以及前三天要正常作息+少吃肉，然後便便要前一天採集之後冰到冷藏。
+到了體檢當天，進體檢中心先到櫃台用健保卡報到領取置物櫃鑰匙及號碼牌，注意，雖然說是早上八點報到，但是早到先報到可以比較早走，櫃台服務人員帶領前往男性休息室，裡面有置物櫃、換衣間、大小號廁所、梳妝台，服務人員會先問之前有沒有做過體檢之後才會說明當下要做什麼，這時的流程是換上他們提供的指定衣物(冷氣很冷，給的是厚長袖長褲)，從置物櫃中取得尿液管，注意事項是指定衣物可以帶走、內褲不用脫、尿液要取中後段、置物櫃記得鎖。
+離開休息室之後，在大廳的機動型服務人員會隨機找上你帶去量基本的身高、體重、視力、脈搏、腰圍、心電圖，之後帶到X光室前排隊，照完之後再到抽血區排隊，我這次體檢的項目大多都在抽血上，總共抽了六管，抽血的時候因為本人心理上很畏懼被抽血的感覺，臉色蒼白地一直深呼吸，隔壁抽血的護士看了一下就說男性一般捐血可以捐到500cc，我們的檢查項目加起來大概抽20cc不會怎樣啦，檢查項目參考上方體檢項目。
+到這邊檢查只剩腹部超音波，這項檢查和最後的問診都要排隊，這時候早到的重要性就出來了，所有人做完其他檢查之後會在大廳閒置，大廳有提供電視、雜誌、報紙和配套的沙發桌椅，邊休息滑手機邊等待超音波室的護士拉人，我是第三個報到的，翻了一本pchome出的雜誌等了15分鐘就輪到我了，超音波檢查檢查過程是先躺平之後護士在肚子上倒一坨潤滑液，接著醫生會拿一個有滾輪的掃描用道具照肝膽腸胃脾腎，邊照邊解說，上方有螢幕配合，螢幕畫面分左右，一邊是即時一邊是截圖做對照，超音波照完到旁邊的小隔間把潤滑液擦掉再離開。
+到這邊為止需要空腹的項目都檢查完了，向大廳櫃檯報到可領取套餐一份，套餐構成是主餐+湯+飲品+水，主餐居然是摩斯漢堡的花生雞肉吐司，湯是蘑菇奶油濃湯，飲品可自選咖啡(現磨，豆種喝不出來)、牛奶、果汁(波蜜果菜汁)，我選咖啡並加入奶精+半包糖，愉快的用餐並等待最後的問診。
+老樣子，因為號碼很前面所以很快就被叫去問診，過程非常的傳統，用聽診器聽了一下心跳+木棒壓舌發聲+問你有沒有毛病，這邊我不太懂，看心電圖和聽診好像有點重複，這邊醫生給了建議，體重要減到83kg以下才配套我的身高，總之問診結束後回到大廳把剩下的餐點吃完再滑一下手機後到休息室換回衣服，離開前繳回闖關表、滿意度問卷及確認不含六日的14天後寄送檢查結果的聯絡方法並結清剩下的費用。
+取得體檢報告前的總結是，胖，現在腰圍大於90，體重90up，輕微脂肪肝，主要問題出在作息和飲食，以及開始上班後回家懶得運動，這又牽扯另一個問題，下班後有太多事情想要做，除了運動以外的其他事情做完差不多就到凌晨一點了，這部分我打算之後先排個一週四天運動，其他事情以未來發展的重要性來排優先順序，希望三個月後能看到滿意的短期成果，加油。</description>
+    </item>
+    
+    <item>
+      <title>釐清JS的export／exports／require／import</title>
+      <link>https://mix-liten.github.io/posts/201811/%E9%87%90%E6%B8%85js%E7%9A%84export%E8%88%87exports/</link>
+      <pubDate>Wed, 14 Nov 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201811/%E9%87%90%E6%B8%85js%E7%9A%84export%E8%88%87exports/</guid>
+      <description>前言 使用套件和框架經常看到 require / import / export / exports，因為之前都抱著「能用就好」的想法，一直沒有詳細了解，最近因為學習 Vue、React 和 Webpack，覺得有必要把這種偏向基礎但很重要的部分看懂。
+首先先了解它們原本的界定範圍： require： Node.js、ES6 export ／ import ： ES6 module.exports ／ exports： Node.js
+可能有疑問為什麼要說Node.js的語法，因為現在前端幾乎都仰賴Node.js的npm在做事，框架也不例外，另外跟原生的語法也滿容易搞混，用法和用詞都是。
+Node.js的用法 //exports.js const test = 100; console.log(module.exports); // {} console.log(exports); // {}  exports.output = test; // 同步修改 module.exports 為 {output : 100} /* 千萬不要 exports = test; */ //require.js const a = require(&amp;#39;./exports&amp;#39;); console.log(a) // {output : 100} 理論上 exports = module.exports = {}，但是有一點要注意，直接指定 exports 是無效的，而且也不會匯出，因為 require 拿到的只會是 module.</description>
+    </item>
+    
+    <item>
+      <title>雜記 - 近日談</title>
+      <link>https://mix-liten.github.io/posts/201806/diary-1/</link>
+      <pubDate>Sun, 03 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201806/diary-1/</guid>
+      <description>這幾天已經把JS30看完了，課程檔案整理之後換上傳到GitHub，紀錄不久之後也會陸續放上來，最近會先以六角學院主辦的活動為優先。
+前面提到的活動是The F2E - 前端修練精神時光屋，因為是以每週為一期，應該也會分享一些想法、紀錄之類的。
+雖然是六角學院主辦的活動，但是任何人都可以報名參加喔，另外標榜設計方面的資源會以 CC0 授權方式提供，簡單的理解就是免費、隨便用、隨便分享啦，當然也可以不報名不被一週期限限制，之後再從裡面挑喜歡的主題做，不過可以和一千多人一起腦力激盪，在自己做過之後和他們互相分享各自做的作品，不覺得是個很好、也很難得的學習機會嗎?
+廢話不想看太多の懶人包  將會參與The F2E - 前端修練精神時光屋  JS30紀錄 和 Vue的component介紹 之後會補  </description>
+    </item>
+    
+    <item>
+      <title>React 入門</title>
+      <link>https://mix-liten.github.io/posts/201805/react%E5%85%A5%E9%96%80/</link>
+      <pubDate>Mon, 28 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/react%E5%85%A5%E9%96%80/</guid>
+      <description>這幾天因為JS30單個章節長達30分鐘，有點沒耐心，就去看了一下之前存下來準備之後有時間看的內容，分享一下近年來使用率極高的React的相關資源，僅止於入門。
+ React 官網 React 簡中官網 翻譯的版本稍微落後一點，右鍵翻譯成繁中即可，如果對大陸用語不習慣，最近剛好有人做轉換套件，效用是把數組-&amp;gt;陣列之類的。 ReactJS 101 標榜從零開始學 ReactJS，希望讓初學者一看就懂的，不過解釋和說明的部分，如果是幾個月前我還沒學Vue還真看不懂，延伸資源和Google會很有幫助。 激戰 ReactJS 30天 IT邦幫忙鐵人賽的文章，號稱連續30天不間斷發文分享挑戰，但通常第一天和最後一天會寫引言和感想。  專案的組件越來越多的情況下，裡面的state比較難管理，可用一些套件幫忙管理狀態，如Flux、Redux、MobX，影片教學在youtube很多，像是Redux的教學就有：
+ wes bos LearnCode.academy thenewboston  順便記錄一個之前用Vue就有的疑問，為什麼組件最外層都是div，先來看看官網最基礎的範例 如果同個組件，hello world後面還想放一個p段落，試著把下方兩種寫法貼到範例連結試試，原因其實是組件的解析只能有一層，不能並排。
+&amp;lt;script type=&amp;#34;text/babel&amp;#34;&amp;gt; // 錯誤 ReactDOM.render( &amp;lt;h1&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;content&amp;lt;/p&amp;gt;, document.getElementById(&amp;#39;example&amp;#39;) ); &amp;lt;/script&amp;gt; &amp;lt;script type=&amp;#34;text/babel&amp;#34;&amp;gt; /* 正確 */ ReactDOM.render( &amp;lt;div&amp;gt; &amp;lt;h1&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;content&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt;, document.getElementById(&amp;#39;example&amp;#39;) ); &amp;lt;/script&amp;gt; 總的來說，React的JSX其實只是讓你可以在js裡寫html，不過略有不同，詳細可以看官網介紹或是TechBridge 技術共筆部落格的分享。 React較精深的部分(官網的進階指引)目前我也還看不太懂，大略只知道它本身有提供一些能提高效能的作法。</description>
+    </item>
+    
+    <item>
+      <title>JS30-Day14 &amp; Day15 &amp; Day16</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day14day15day16/</link>
+      <pubDate>Tue, 22 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day14day15day16/</guid>
+      <description>先說一個與JS30無關，但經常看到的東西，有時候會看到別人的資料夾結構，原以為是手打，今天才知道可以直接輸出。 在cmd裡打command line指令：
+ tree，印出純資料夾結構 tree/f，印出資料夾結構+檔案 前兩項後面加，&amp;gt;123.txt，就會在同一層增加一個123.txt檔，裡面有tree的內容  備註：只有命令提示字元預設有這個功能。
+Day 14 原始型別處理值，物件型別處理參考。
+JavaScript中的原始型別(Primitive Type)：
+ String mNumber Boolean Null Undefined  物件型別(Object Type)：
+ Object Function Array Set  參考： JS基礎：Primitive type v.s Object types
+Day 15 主要在講LocalStorage，不過之前已經學過、用過了，重新複習一下，增加了刪除功能，不然資料會一直保存在LocalStorage裡，跟Cookie、Session不一樣，不能設定max-age。
+const keyList = [{ name: &amp;#39;John&amp;#39;, secret: &amp;#39;1234&amp;#39; },{ name: &amp;#39;Tom&amp;#39;, secret: &amp;#39;6789&amp;#39; }]; // 存入localStorage的值必須是字串 let keys = JSON.stringify(keyList); // 放一個取為名&amp;#39;key&amp;#39;的localStorage，值則是後面的變數key localStorage.setItem(&amp;#39;keys&amp;#39;, keys); //從localStorage裡取出的值因為是字串也要處理一下 JSON.parse(localStorage.getItem(&amp;#39;keys&amp;#39;));  formObject.reset() 重置表單  Day 16 很炫的特效，不過下面這個觀念用法更是炫炮。</description>
+    </item>
+    
+    <item>
+      <title>JS30-Day11 &amp; Day12 &amp; Day13</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day11day12day13/</link>
+      <pubDate>Sun, 20 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day11day12day13/</guid>
+      <description>Day 11 總算知道明明都是html的video元素，為什麼每個影片網站的樣式都略有不同，很簡單，不要用現成的controls，自己用CSS搭一個樣式，再用JS去控制Video的撥放/暫停、播放時間、音量、撥放速度。 這個章節我只增加了一個全螢幕按鍵，參照MDN的文件，看起來有點複雜的一段if判斷式，主要是因為每種瀏覽器的video元素略有不同。 美中不足的是全螢幕之後，預設的controls又出現了。
+Day 12  array.splice(index,howmany,item1,&amp;hellip;..,itemX) index，插入的位置 howmany，刪除多少，沒輸入的話，從插入的位置開始刪到最後 後面還可以放想插入的值 splice 和 slice 不同的地方是splice會更動到原本的值  Day 13  Lodash  工具庫，提供很多方便的函式，這個章節用到的是debounce，功能是將想執行的function稍微延遲，這邊的應用是延遲滑入圖片，簡單、快速地實現了之前用的lazyloadxt套件。
+檢測圖片是否要進入的步驟:
+ 取得圖片一半高度的定位點，卷軸高度(window.scrollY) + 視窗高度(window.innerHeight) - 圖片的二分之一高 取得圖片底部定位點，圖片的offsetTop + height，offsetTop是瀏覽器左上角為基準到圖片最上方的距離 判斷是否超過圖片一半的位置， 第一步的運算結果 大於 圖片的offsetTop 判斷卷軸移動距離超過圖片底部了沒，卷軸高度 小於 第二步運算結果 在圖片高度已經出現一半 且 視窗裡看得到圖片的情況下滑入，反之在已經看不到圖片位置的情況下移出圖片  </description>
+    </item>
+    
+    <item>
+      <title>CSS設計模式</title>
+      <link>https://mix-liten.github.io/posts/201805/css%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sat, 19 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/css%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F/</guid>
+      <description>OOCSS (Object-oriented CSS) Bootstrap的作法
+.mt-1 { margin-top: 1rem; } .mt-2 { margin-top: 1.5rem; } .text-blue { color: #00f; } .text-shadow { box-shadow: 2px 2px 5px black; } 規劃、做好OOCSS，達到不需要再碰CSS，參考設計者的文件添加class，就能做出有style的網頁。 顯而易見的缺點是會很呆板，所以即使使用Bootstrap、Semantic UI之類的工具，稍微寫點個性化CSS是個不錯的選擇。 當然如果只是想快速做個樣式，到他們的官網copy範例改一改就好。
+SMACSS (Scalable and Modular Architecture for CSS)  基本結構    Base 放 Reset CSS 和 一開始設計網頁時規定好的基礎樣式設定(字體設定、連結hover設定&amp;hellip;)
+  Layout 放出現頻率很高的區塊的CSS，如Header、Footer，還有一些常用區塊，如簡單呈現會員資料(頭像+名字+會員等級&amp;hellip;)
+  Module 寫好模組階層，建議用class，方便平行使用。
+  &amp;lt;div class=&amp;#34;fly&amp;#34;&amp;gt; &amp;lt;span class=&amp;#34;fly-name&amp;#34;&amp;gt;Name&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;#34;fly-age&amp;#34;&amp;gt;25 years old&amp;lt;/span&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;article class=&amp;#34;fly&amp;#34;&amp;gt; &amp;lt;p class=&amp;#34;fly-name&amp;#34;&amp;gt;Name&amp;lt;/p&amp;gt; &amp;lt;p class=&amp;#34;fly-age&amp;#34;&amp;gt;25 years old&amp;lt;/p&amp;gt; &amp;lt;/article&amp;gt; &amp;lt;style&amp;gt; .</description>
+    </item>
+    
+    <item>
+      <title>JS30-Day8 &amp; Day9 &amp; Day10</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day8day9day10/</link>
+      <pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day8day9day10/</guid>
+      <description>這篇主要講一下入門的2D canvas、console的應用、還有感覺很像UX的想法(?)
+Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個容器，內容必須用JS繪圖。 canvas 基礎 繪圖原點是(0,0)，X軸往右為正，Y軸往下為正，單位是px。  &amp;lt;canvas id=&amp;#34;mycanvas&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;script&amp;gt; const canvas = document.getElementById(&amp;#34;mycanvas&amp;#34;); const ctx = canvas.getContext(&amp;#34;2d&amp;#34;); // 設定畫布寬高 canvas.width = window.innerWidth; canvas.height = window.innerHeight; ctx.beginPath(); // 開始畫 ctx.arc(80,70,60,-0.5*Math.PI,1*Math.PI); // 以(80,70)為中心點畫從-90度到180度且半徑為60的圓 ctx.fillStyle = &amp;#34;#666&amp;#34;; // 類似background-color ctx.fill(); // 設定好顏色之後還要執行填滿 ctx.strokeStyle = &amp;#34;#fa0&amp;#34;; // 類似border-color ctx.stroke(); // 邊框同樣要執行  ctx.fillStyle = &amp;#34;red&amp;#34;; // 重新指定顏色 ctx.strokeStyle = &amp;#34;green&amp;#34;; ctx.strokeRect(10,10,25,25); //從(10,10)畫一個寬高都是25的正方形邊框 ctx.fillRect(40,30,50,50); //從(40,30)畫一個寬高都是50的正方形 ctx.clearRect(45,35,20,20); //從(45,35)清空一塊寬高都是20的正方形  ctx.</description>
+    </item>
+    
+    <item>
+      <title>JS30-Day5 &amp; Day6</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day5day6/</link>
+      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day5day6/</guid>
+      <description>介紹Flex-Box 與 JavaScript原生Fetch用法
+Day 5  Flex-Box 平常我會參考的兩個codepen連結 Flexbox Visual Playground Properties for the flex container   flex基本用法是在父層設定display: flex; 在子層設定flex: 1; 等同於flex: 1 1 0%; flex: flex-grow flex-shrink flex-basis; flex-grow，當子層寬度加總低於父層寬度時，依給予的數字做比例延伸 flex-shrink，當子層寬度加總高於父層寬度時，依給予的數字做比例縮減 flex-basis，基準值，若用auto，會以內容分配寬度
+Day 6  fetch() MDN 的 Fetch 說明 會以Promise做回應，基本用法如下：  fetch(url) .then(res =&amp;gt; res.json()) .then(res =&amp;gt; console.log(res)) .catch(error =&amp;gt; console.error(error)); fetch(url, { method: &amp;#39;POST&amp;#39;, // or &amp;#39;PUT&amp;#39;  body: JSON.stringify(data), // data can be `string` or {object}!  headers: new Headers({ &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json&amp;#39; }) }); 用then接收Promise傳出的resolve(成功)，用catch接收Promise傳出的reject(失敗) 要注意的是fetch回傳出的是ReadableStream物件，簡單來說就是還要再處理一下才會變成可讀的資料，方法如下：</description>
+    </item>
+    
+    <item>
+      <title>JS30-Day4 &amp; Day7</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day4day7/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day4day7/</guid>
+      <description>這兩個章節的內容主要在介紹Array在ES6裡的新語法，這篇文有點長，想更深入學習ES6可參考下方連結。 阮一峰 ECMAScript 6 入門
+目錄  目錄  forEach filter map reduce sort some every find findIndex set 其他    forEach array.forEach(function(currentValue, index, arr), thisValue) currentValue，必要，當前項目 index，索引值 arr，代表正在被遍歷的陣列 thisValue，傳值進forEach，預設是this
+const numbers = [1, 44, 12, 5, 26, 99]; numbers.forEach((item,index,arr) =&amp;gt; arr[index] = item * 3); console.log(numbers); // [3, 132, 36, 15, 78, 297] 不會回傳值，直接在遍歷時處理資料。
+filter array.filter(function(currentValue,index,arr), thisValue)
+const numbers = [1, 44, 12, 5, 26, 99]; const filterNumbers = numbers.</description>
+    </item>
+    
+    <item>
+      <title>JS30-Day1 &amp; Day2 &amp; Day3</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day1day2day3/</link>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day1day2day3/</guid>
+      <description>終於要認真把JS30看一遍、做一遍了，這個系列文我會把成果放在GitHub上，基本上不會完全照著影片做，會略作修改，有興趣可以去下載看看，文章只會紀錄我目前不熟的部分，非常推薦大家這個免費的線上課程，下方附上連結。 Javascript30
+Day 1   element.addEventListener(event, function, useCapture) event放事件字串 function放偵聽到事件發生時要做的事 useCapture放boolean值，預設是false，事件會從內到外觸發(event bubbling)，設定為true則是從外到內(event capturing)。 冒泡、捕獲範例 範例也是用addEventListener做的
+  element.classList 新增、刪除節點的class add(class1, class2, &amp;hellip;) remove(class1, class2, &amp;hellip;) 還有偵測是否存在這個class，存在則刪除、不存在則新增 toggle(class)
+  在Day1的實作裡是偵聽keydown事件，但是壓著按鍵就會多次觸發，我自己則是用keyup，在離開按鍵的時候才觸發的感覺有點像音樂遊戲的延遲。
+Day 2  setInterval(function, milliseconds) 每隔一段第二個參數設定的時間就會自動執行第一個參數傳入的方法，時間單位是毫秒(千分之一秒)。  CSS  transform-origin 通常在HTML裡的方向設定都是以左上角為基準點，這個CSS語法是配合transform使用，用來移動X、Y、Z軸的基準點，這個範例裡只設定一個100%讓X軸基準點移到最右邊。 transition-timing-function: cubic-bezier() 設定transition以貝茲曲線的方式轉場，可以在chrome的開發者工具直接拉線調整。  Day 3   dataset 讀取tag裡的data-*屬性
+  style.setProperty(propertyName, value, priority)
+  style.setProperty(&amp;#39;color&amp;#39;, &amp;#39;red&amp;#39;); // 等於 style.padding = &amp;#39;red&amp;#39;; </description>
+    </item>
+    
+    <item>
+      <title>Vue-工具-Vue CLI</title>
+      <link>https://mix-liten.github.io/posts/201805/vue-%E5%B7%A5%E5%85%B7-vuecli/</link>
+      <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/vue-%E5%B7%A5%E5%85%B7-vuecli/</guid>
+      <description>本來第三篇要說關於Vue組件Global和Local的應用還有組件之間上下傳遞事件的方法，不過一想到就有點懶，暫時逃避一下，這篇先介紹一下最近在做作品用到的工具吧。
+Vue-CLI GitHub連結
+安裝 npm i vue-cli -g //安裝在global vue -V //看看版本 確定安裝好沒 提供六種起始樣板 vue list //檢視Available official templates vue init &amp;lt;樣板名稱&amp;gt; &amp;lt;專案名稱&amp;gt; //下載樣板 選好樣板初始化，基本上會先問一些問題，如：專案名、專案描述、專案作者、可選套件，可選套件看需求使用，等安裝好照著CMD給的提示執行開發伺服器，開發時沒有要改設定的話，基本上只會用到src資料夾，src裡還有assets、components資料夾，因為有內建vue-loader，可以直接使用副檔名是vue的單一組件(含template、script、style)放在components，assets則是靜態檔案，通常會放全域用的JS、CSS、圖片之類的，另外還有個很重要的router，繼續看下面吧。
+Vue-router 說明文件
+順便介紹同樣內建在裡面的vue-router，這東西的用途是可以把網頁做成單頁應用SPA(Single Page Application)，優點是頁面間切換很順暢，缺點是進網頁會讀久一點。
+ 挖空格放組件(router-view)  &amp;lt;template&amp;gt; &amp;lt;div&amp;gt; &amp;lt;Menu/&amp;gt; &amp;lt;div class=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;router-view/&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;Footer/&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;script&amp;gt; import Menu from &amp;#39;./Menu&amp;#39;; import Footer from &amp;#39;./Footer&amp;#39;; export default{ components: { Menu, Footer, } } &amp;lt;/script&amp;gt; router-view tag 會塞入子組件的內容，menu和footer則是直接引入組件到Vue實例裡直接使用。
+ 組件之間的連結(router-link)  &amp;lt;router-link to=&amp;#34;about&amp;#34;&amp;gt;About&amp;lt;/router-link&amp;gt; 這句會被自動編譯成a連結。</description>
+    </item>
+    
+    <item>
+      <title>Vue-筆記-2-模板</title>
+      <link>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-2-%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-2-%E6%A8%A1%E6%9D%BF/</guid>
+      <description>模板語言 Vue template (官網說法 指令 Directives)  v-text  &amp;lt;span v-text=&amp;#34;msg&amp;#34;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;{{msg}}&amp;lt;/span&amp;gt; 兩種寫法都可以。 v-html  &amp;lt;div v-html=&amp;#34;html&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如果想要動態插入內容，使用innerHTML是拿不到實例中的data的喔。 v-show  &amp;lt;h1 v-show=&amp;#34;show&amp;#34;&amp;gt;Hello!&amp;lt;/h1&amp;gt; 等於CSS裡的display。 v-if, v-else-if, v-else  &amp;lt;div v-if=&amp;#34;type === &amp;#39;A&amp;#39;&amp;#34;&amp;gt;A&amp;lt;/div&amp;gt; &amp;lt;div v-else-if=&amp;#34;type === &amp;#39;B&amp;#39;&amp;#34;&amp;gt;B&amp;lt;/div&amp;gt; &amp;lt;div v-else&amp;gt;Not A/B&amp;lt;/div&amp;gt; v-if 和 v-show 的差別是在條件不成立的情況下，v-if不會被渲染到網頁上，v-show則是單純看不到。 v-for &amp;lt;!-- Array --&amp;gt; &amp;lt;li v-for=&amp;#34;todo in todos&amp;#34; v-if=&amp;#34;todo.isComplete&amp;#34;&amp;gt; {{ todo }} &amp;lt;/li&amp;gt; &amp;lt;div v-for=&amp;#34;(todo, index) in todos&amp;#34;&amp;gt; {{ index }}: {{ todo }} &amp;lt;/div&amp;gt; &amp;lt;!-- Object --&amp;gt; &amp;lt;div v-for=&amp;#34;value in object&amp;#34;&amp;gt; {{ value }} &amp;lt;/div&amp;gt; &amp;lt;div v-for=&amp;#34;(value, key) in object&amp;#34;&amp;gt; {{ key }}: {{ value }} &amp;lt;/div&amp;gt; &amp;lt;div v-for=&amp;#34;(value, key, index) in object&amp;#34;&amp;gt; {{ index }}.</description>
+    </item>
+    
+    <item>
+      <title>Vue-筆記-1-Vue實例</title>
+      <link>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-1-vue%E5%AF%A6%E4%BE%8B/</link>
+      <pubDate>Tue, 24 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-1-vue%E5%AF%A6%E4%BE%8B/</guid>
+      <description>實例 new Vue({})   el
+ &amp;lsquo;#app&amp;rsquo; document.getElementById(&amp;lsquo;app&amp;rsquo;) 在實例外用 vm.$mount(&#39;#app&#39;)     data
+const vm = new Vue({ el: &amp;#39;#app&amp;#39;, data: { input: &amp;#39;&amp;#39;, todos: [ &amp;#39;刷牙洗臉&amp;#39;, &amp;#39;吃早餐&amp;#39;, &amp;#39;整理服裝儀容&amp;#39;, &amp;#39;確認今天該做的事&amp;#39; ] } }); 用this.todos取得data裡的todos陣列   computed
+&amp;lt;div id=&amp;#34;app&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;number&amp;#34; v-model=&amp;#34;a&amp;#34;/&amp;gt; + &amp;lt;input type=&amp;#34;number&amp;#34; v-model=&amp;#34;b&amp;#34;/&amp;gt; = &amp;lt;input type=&amp;#34;number&amp;#34; v-model=&amp;#34;sum&amp;#34;/&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; var vm = new Vue ({ el: &amp;#39;#app&amp;#39;, data: { a: 0, b: 0 }, computed: { sum() { return parseInt(this.</description>
+    </item>
+    
+    <item>
+      <title>關於我-About Me &amp; This Blog</title>
+      <link>https://mix-liten.github.io/about/</link>
+      <pubDate>Wed, 18 Apr 2018 00:11:25 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/about/</guid>
+      <description>無止盡的好奇心，問不完的為什麼。 我是Ian，這裡是筆記簿落格，目前內容以前端技術、趨勢為主，敘述方式比較雜，目的是希望以後不要看不懂自己寫了什麼ww。</description>
+    </item>
+    
+    <item>
+      <title>CS-關於IP</title>
+      <link>https://mix-liten.github.io/posts/201804/cs-%E9%97%9C%E6%96%BCip/</link>
+      <pubDate>Tue, 17 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201804/cs-%E9%97%9C%E6%96%BCip/</guid>
+      <description>值得紀念的第一篇文章，想要紀錄一下剛學到的電腦科學(Computer Science)小知識。
+大家都知道網路(Network)有IP位置(Internet Protocol Address)用來區別每家網路位置，目前常見的是使用IPv4(Internet Protocol version 4)，這種協定可以提供2³²個位置(總共4,294,967,296)，實際上還會少一些等等再說，所以整個地球有多少人在使用網路，總有一天IPv4位置會不夠用，於是幾年前已經有IPv6，IPv6的設計目的是取代IPv4，簡單來說你根本不必去操心這些，IP位址多到你一天換一個都沒問題。
+簡單的解說一下上面這張圖，現在都已經2018年了，家裡沒網路的應該很少，首先你的電腦IP位址(169.174.141.10)，還有一個子網域遮罩(Subnet mask)(255.255.255.240)，但是你家網路不一定只有你一台電腦在用，其它電腦的IP則可能是169.174.141.5之類的，為什麼只差最後一個數字呢，因為子網域遮罩把你家網路分成16份，而為什麼是16份?
+先來說明為什麼IP有兩種表示方法，中間那堆0和1組成的8個數字為一組的，每一組都是一個 8-bit 的二進位數字，也可以叫&amp;quot;八位元組(octet)&amp;quot;，簡單來說就是[128,64,32,16,8,4,2,1]，如果數字是[1,0,1,0,1,0,0,1]，代到前面那邊會得到128+32+8+1=169。
+稍微瞭解一下8-bit之後，再來看子網域遮罩，它的用途就是切割網路，1代表遮住，0代表不遮，遮住的部分是你家真正的IP位置，也就是169.174.141.0，然後不遮的地方是你家能用的子網域，總共是最後四碼，也就是2⁴=16個，但是為什麼後面又說能用的只有14個?
+因為第一個，是網路位置(169.174.141.0)，它是你家網路實際上的位置，你用了別人就不能分了，然後最後一個，則是廣播位置(169.174.141.15)，它的功用可以想像成總控制室，簡單來說就是桌面的&amp;quot;網路芳鄰&amp;quot;,每一台電腦在連上網路後,會把自己的網路資訊用廣播位址傳給所有電腦,所以你才能在點開網路芳鄰後,看到家裡所有的電腦。
+大概就是這樣，我畢竟不熟硬體，只瞭解個大概，如果有錯誤，歡迎大大指正，以免別人也學到錯誤的觀念。</description>
+    </item>
+    
+  </channel>
+</rss>

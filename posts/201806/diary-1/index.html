@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Mix_Liten ">
+<meta name="description" content="這幾天已經把JS30看完了，課程檔案整理之後換上傳到GitHub，紀錄不久之後也會陸續放上來，最近會先以六角學院主辦的活動為優先。
+前面提到的活動是The F2E - 前端修練精神時光屋，因為是以每週為一期，應該也會分享一些想法、紀錄之類的。
+雖然是六角學院主辦的活動，但是任何人都可以報名參加喔，另外標榜設計方面的資源會以 CC0 授權方式提供，簡單的理解就是免費、隨便用、隨便分享啦，當然也可以不報名不被一週期限限制，之後再從裡面挑喜歡的主題做，不過可以和一千多人一起腦力激盪，在自己做過之後和他們互相分享各自做的作品，不覺得是個很好、也很難得的學習機會嗎?
+廢話不想看太多の懶人包  將會參與The F2E - 前端修練精神時光屋  JS30紀錄 和 Vue的component介紹 之後會補  " />
+<meta name="keywords" content=", 雜記" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://mix-liten.github.io/posts/201806/diary-1/" />
+
+
+    <title>
+        
+            雜記 - 近日談 :: 墨非默 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mix-liten.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://mix-liten.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://mix-liten.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://mix-liten.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://mix-liten.github.io/safari-pinned-tab.svg" color="#1b1c1d">
+    <link rel="shortcut icon" href="https://mix-liten.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1b1c1d">
+    <meta name="theme-color" content="#1b1c1d">
+
+
+
+<meta itemprop="name" content="雜記 - 近日談">
+<meta itemprop="description" content="這幾天已經把JS30看完了，課程檔案整理之後換上傳到GitHub，紀錄不久之後也會陸續放上來，最近會先以六角學院主辦的活動為優先。
+前面提到的活動是The F2E - 前端修練精神時光屋，因為是以每週為一期，應該也會分享一些想法、紀錄之類的。
+雖然是六角學院主辦的活動，但是任何人都可以報名參加喔，另外標榜設計方面的資源會以 CC0 授權方式提供，簡單的理解就是免費、隨便用、隨便分享啦，當然也可以不報名不被一週期限限制，之後再從裡面挑喜歡的主題做，不過可以和一千多人一起腦力激盪，在自己做過之後和他們互相分享各自做的作品，不覺得是個很好、也很難得的學習機會嗎?
+廢話不想看太多の懶人包  將會參與The F2E - 前端修練精神時光屋  JS30紀錄 和 Vue的component介紹 之後會補  ">
+<meta itemprop="datePublished" content="2018-06-03T19:43:01+00:00" />
+<meta itemprop="dateModified" content="2018-06-03T19:43:01+00:00" />
+<meta itemprop="wordCount" content="17">
+<meta itemprop="image" content="https://mix-liten.github.io/"/>
+
+
+
+<meta itemprop="keywords" content="雜記," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://mix-liten.github.io/"/>
+
+<meta name="twitter:title" content="雜記 - 近日談"/>
+<meta name="twitter:description" content="這幾天已經把JS30看完了，課程檔案整理之後換上傳到GitHub，紀錄不久之後也會陸續放上來，最近會先以六角學院主辦的活動為優先。
+前面提到的活動是The F2E - 前端修練精神時光屋，因為是以每週為一期，應該也會分享一些想法、紀錄之類的。
+雖然是六角學院主辦的活動，但是任何人都可以報名參加喔，另外標榜設計方面的資源會以 CC0 授權方式提供，簡單的理解就是免費、隨便用、隨便分享啦，當然也可以不報名不被一週期限限制，之後再從裡面挑喜歡的主題做，不過可以和一千多人一起腦力激盪，在自己做過之後和他們互相分享各自做的作品，不覺得是個很好、也很難得的學習機會嗎?
+廢話不想看太多の懶人包  將會參與The F2E - 前端修練精神時光屋  JS30紀錄 和 Vue的component介紹 之後會補  "/>
+
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2018-06-03 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://mix-liten.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://mix-liten.github.io/about/">About</a></li><li><a href="https://mix-liten.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        One minute
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://mix-liten.github.io/posts/201806/diary-1/">雜記 - 近日談</a>
+      </h1>
+
+      
+
+      
+
+      <div class="post-content">
+        <p>這幾天已經把JS30看完了，課程檔案整理之後換上傳到GitHub，紀錄不久之後也會陸續放上來，最近會先以六角學院主辦的活動為優先。</p>
+<p>前面提到的活動是<a href="https://github.com/hexschool/TheF2E">The F2E - 前端修練精神時光屋</a>，因為是以每週為一期，應該也會分享一些想法、紀錄之類的。</p>
+<p><img src="https://mix-liten.github.io/images/other/the_F2E.jpg" alt="The F2E" title="The F2E"></p>
+<p>雖然是六角學院主辦的活動，但是任何人都可以報名參加喔，另外標榜設計方面的資源會以 CC0 授權方式提供，簡單的理解就是免費、隨便用、隨便分享啦，當然也可以不報名不被一週期限限制，之後再從裡面挑喜歡的主題做，不過可以和一千多人一起腦力激盪，在自己做過之後和他們互相分享各自做的作品，不覺得是個很好、也很難得的學習機會嗎?</p>
+<h4 id="廢話不想看太多の懶人包">廢話不想看太多の懶人包</h4>
+<ul>
+<li>將會參與<a href="https://github.com/hexschool/TheF2E">The F2E - 前端修練精神時光屋</a>
+<!-- raw HTML omitted --></li>
+<li>JS30紀錄 和 Vue的component介紹 之後會補</li>
+</ul>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://mix-liten.github.io/tags/%E9%9B%9C%E8%A8%98/">雜記</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        17 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2018-06-03 08:00
+        
+
+         
+          
+            
+              (Last updated: 2018-06-04 03:43)
+            
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://mix-liten.github.io/posts/201811/%E9%87%90%E6%B8%85js%E7%9A%84export%E8%88%87exports/">
+                <span class="button__icon">←</span>
+                <span class="button__text">釐清JS的export／exports／require／import</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://mix-liten.github.io/posts/201805/react%E5%85%A5%E9%96%80/">
+                <span class="button__text">React 入門</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
+            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+
+
+
+    </body>
+</html>

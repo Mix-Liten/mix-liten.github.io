@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Mix_Liten ">
+<meta name="description" content="模板語言 Vue template (官網說法 指令 Directives)  v-text  &amp;lt;span v-text=&amp;#34;msg&amp;#34;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;{{msg}}&amp;lt;/span&amp;gt; 兩種寫法都可以。 v-html  &amp;lt;div v-html=&amp;#34;html&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如果想要動態插入內容，使用innerHTML是拿不到實例中的data的喔。 v-show  &amp;lt;h1 v-show=&amp;#34;show&amp;#34;&amp;gt;Hello!&amp;lt;/h1&amp;gt; 等於CSS裡的display。 v-if, v-else-if, v-else  &amp;lt;div v-if=&amp;#34;type === &amp;#39;A&amp;#39;&amp;#34;&amp;gt;A&amp;lt;/div&amp;gt; &amp;lt;div v-else-if=&amp;#34;type === &amp;#39;B&amp;#39;&amp;#34;&amp;gt;B&amp;lt;/div&amp;gt; &amp;lt;div v-else&amp;gt;Not A/B&amp;lt;/div&amp;gt; v-if 和 v-show 的差別是在條件不成立的情況下，v-if不會被渲染到網頁上，v-show則是單純看不到。 v-for &amp;lt;!-- Array --&amp;gt; &amp;lt;li v-for=&amp;#34;todo in todos&amp;#34; v-if=&amp;#34;todo.isComplete&amp;#34;&amp;gt; {{ todo }} &amp;lt;/li&amp;gt; &amp;lt;div v-for=&amp;#34;(todo, index) in todos&amp;#34;&amp;gt; {{ index }}: {{ todo }} &amp;lt;/div&amp;gt; &amp;lt;!-- Object --&amp;gt; &amp;lt;div v-for=&amp;#34;value in object&amp;#34;&amp;gt; {{ value }} &amp;lt;/div&amp;gt; &amp;lt;div v-for=&amp;#34;(value, key) in object&amp;#34;&amp;gt; {{ key }}: {{ value }} &amp;lt;/div&amp;gt; &amp;lt;div v-for=&amp;#34;(value, key, index) in object&amp;#34;&amp;gt; {{ index }}." />
+<meta name="keywords" content=", js, Vue" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-2-%E6%A8%A1%E6%9D%BF/" />
+
+
+    <title>
+        
+            Vue-筆記-2-模板 :: 墨非默 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mix-liten.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://mix-liten.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://mix-liten.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://mix-liten.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://mix-liten.github.io/safari-pinned-tab.svg" color="#1b1c1d">
+    <link rel="shortcut icon" href="https://mix-liten.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1b1c1d">
+    <meta name="theme-color" content="#1b1c1d">
+
+
+
+<meta itemprop="name" content="Vue-筆記-2-模板">
+<meta itemprop="description" content="模板語言 Vue template (官網說法 指令 Directives)  v-text  &lt;span v-text=&#34;msg&#34;&gt;&lt;/span&gt; &lt;span&gt;{{msg}}&lt;/span&gt; 兩種寫法都可以。 v-html  &lt;div v-html=&#34;html&#34;&gt;&lt;/div&gt; 如果想要動態插入內容，使用innerHTML是拿不到實例中的data的喔。 v-show  &lt;h1 v-show=&#34;show&#34;&gt;Hello!&lt;/h1&gt; 等於CSS裡的display。 v-if, v-else-if, v-else  &lt;div v-if=&#34;type === &#39;A&#39;&#34;&gt;A&lt;/div&gt; &lt;div v-else-if=&#34;type === &#39;B&#39;&#34;&gt;B&lt;/div&gt; &lt;div v-else&gt;Not A/B&lt;/div&gt; v-if 和 v-show 的差別是在條件不成立的情況下，v-if不會被渲染到網頁上，v-show則是單純看不到。 v-for &lt;!-- Array --&gt; &lt;li v-for=&#34;todo in todos&#34; v-if=&#34;todo.isComplete&#34;&gt; {{ todo }} &lt;/li&gt; &lt;div v-for=&#34;(todo, index) in todos&#34;&gt; {{ index }}: {{ todo }} &lt;/div&gt; &lt;!-- Object --&gt; &lt;div v-for=&#34;value in object&#34;&gt; {{ value }} &lt;/div&gt; &lt;div v-for=&#34;(value, key) in object&#34;&gt; {{ key }}: {{ value }} &lt;/div&gt; &lt;div v-for=&#34;(value, key, index) in object&#34;&gt; {{ index }}.">
+<meta itemprop="datePublished" content="2018-04-26T19:08:26+00:00" />
+<meta itemprop="dateModified" content="2018-04-26T19:08:26+00:00" />
+<meta itemprop="wordCount" content="302">
+<meta itemprop="image" content="https://mix-liten.github.io/"/>
+
+
+
+<meta itemprop="keywords" content="js,Vue," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://mix-liten.github.io/"/>
+
+<meta name="twitter:title" content="Vue-筆記-2-模板"/>
+<meta name="twitter:description" content="模板語言 Vue template (官網說法 指令 Directives)  v-text  &lt;span v-text=&#34;msg&#34;&gt;&lt;/span&gt; &lt;span&gt;{{msg}}&lt;/span&gt; 兩種寫法都可以。 v-html  &lt;div v-html=&#34;html&#34;&gt;&lt;/div&gt; 如果想要動態插入內容，使用innerHTML是拿不到實例中的data的喔。 v-show  &lt;h1 v-show=&#34;show&#34;&gt;Hello!&lt;/h1&gt; 等於CSS裡的display。 v-if, v-else-if, v-else  &lt;div v-if=&#34;type === &#39;A&#39;&#34;&gt;A&lt;/div&gt; &lt;div v-else-if=&#34;type === &#39;B&#39;&#34;&gt;B&lt;/div&gt; &lt;div v-else&gt;Not A/B&lt;/div&gt; v-if 和 v-show 的差別是在條件不成立的情況下，v-if不會被渲染到網頁上，v-show則是單純看不到。 v-for &lt;!-- Array --&gt; &lt;li v-for=&#34;todo in todos&#34; v-if=&#34;todo.isComplete&#34;&gt; {{ todo }} &lt;/li&gt; &lt;div v-for=&#34;(todo, index) in todos&#34;&gt; {{ index }}: {{ todo }} &lt;/div&gt; &lt;!-- Object --&gt; &lt;div v-for=&#34;value in object&#34;&gt; {{ value }} &lt;/div&gt; &lt;div v-for=&#34;(value, key) in object&#34;&gt; {{ key }}: {{ value }} &lt;/div&gt; &lt;div v-for=&#34;(value, key, index) in object&#34;&gt; {{ index }}."/>
+
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2018-04-26 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://mix-liten.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://mix-liten.github.io/about/">About</a></li><li><a href="https://mix-liten.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-2-%E6%A8%A1%E6%9D%BF/">Vue-筆記-2-模板</a>
+      </h1>
+
+      
+
+      
+
+      <div class="post-content">
+        <h2 id="模板語言-vue-template-官網說法-指令-directives">模板語言 Vue template (官網說法 指令 Directives)</h2>
+<ol>
+<li>v-text</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">v-text</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;msg&#34;</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;
+  &lt;<span style="color:#f92672">span</span>&gt;{{msg}}&lt;/<span style="color:#f92672">span</span>&gt;
+</code></pre></div><p>兩種寫法都可以。
+<!-- raw HTML omitted --></p>
+<ol start="2">
+<li>v-html</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-html</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;html&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</code></pre></div><p>如果想要動態插入內容，使用innerHTML是拿不到實例中的data的喔。
+<!-- raw HTML omitted --></p>
+<ol start="3">
+<li>v-show</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">v-show</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;show&#34;</span>&gt;Hello!&lt;/<span style="color:#f92672">h1</span>&gt;
+</code></pre></div><p>等於CSS裡的display。
+<!-- raw HTML omitted --></p>
+<ol start="4">
+<li>v-if, v-else-if, v-else</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;type === &#39;A&#39;&#34;</span>&gt;A&lt;/<span style="color:#f92672">div</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-else-if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;type === &#39;B&#39;&#34;</span>&gt;B&lt;/<span style="color:#f92672">div</span>&gt;
+  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-else</span>&gt;Not A/B&lt;/<span style="color:#f92672">div</span>&gt;
+</code></pre></div><p>v-if 和 v-show 的差別是在條件不成立的情況下，v-if不會被渲染到網頁上，v-show則是單純看不到。
+<!-- raw HTML omitted --></p>
+<ol start="5">
+<li>v-for
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Array --&gt;</span>
+&lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;todo in todos&#34;</span> <span style="color:#a6e22e">v-if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;todo.isComplete&#34;</span>&gt;
+  {{ todo }}
+&lt;/<span style="color:#f92672">li</span>&gt;
+
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(todo, index) in todos&#34;</span>&gt;
+  {{ index }}: {{ todo }}
+&lt;/<span style="color:#f92672">div</span>&gt;
+
+<span style="color:#75715e">&lt;!-- Object --&gt;</span>
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;value in object&#34;</span>&gt;
+  {{ value }}
+&lt;/<span style="color:#f92672">div</span>&gt;
+
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(value, key) in object&#34;</span>&gt;
+  {{ key }}: {{ value }}
+&lt;/<span style="color:#f92672">div</span>&gt;
+
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;(value, key, index) in object&#34;</span>&gt;
+  {{ index }}. {{ key }}: {{ value }}
+&lt;/<span style="color:#f92672">div</span>&gt;
+</code></pre></div></li>
+</ol>
+<pre><code>注意v-for的優先度比v-if高，所以放在同一層的話，可以有條件的印出內容。
+&lt;br/&gt;
+
+6. v-model 雙向綁定
+  -   限制 只能用在
+  1.  input
+  2.  select
+  3.  textarea
+  4.  components
+  -   修飾符
+  1.  .lazy 監聽事件用blur取代預設的change
+  2.  .trim 過濾頭尾空格
+  3.  .number 輸入字符串轉為數字型別
+&lt;br/&gt;
+
+7. v-bind(**：**)
+  {% raw %}
+  標籤的屬性不能使用{{class}}，應使用v-bind
+  {% endraw %}
+  ```html
+      &lt;a :href=&quot;url&quot; :title.prop=&quot;hint&quot;&gt;link&lt;/a&gt;
+      &lt;svg :view-box.camel=&quot;viewBox&quot;&gt;&lt;/svg&gt;
+  ```
+  -   修飾符
+  1.  .prop 從綁定HTML元素的屬性(attribute)改成DOM的屬性(property)
+  2.  .camel 將kebab-case命名法，轉換成camelCase命名法(駝峰式)，因vue-loader內建，就不用加這個修飾符
+  3.  .sync 對prop做雙向綁定，子組件改變時，會更新到父組件
+&lt;br/&gt;
+
+8. v-on(**@**)
+  ```html
+  &lt;input @keydown.enter=&quot;onEnter&quot;&gt;
+  &lt;input @keydown.13=&quot;onEnter&quot;&gt;
+  ```
+  -   修飾符
+  1.  .stop = event.stopPropagation()，阻止JS預設的事件傳遞方向**向上冒泡(event bubbling)**
+  2.  .prevent = event.preventDefault()，阻止HTML元素預設事件
+  3.  .{keyCode | keyAlias}，如範例，可用keyCode或按鍵名做事件觸發
+  4.  [.left, .middle, .right]，分別是滑鼠的左鍵、中鍵、右鍵觸發
+  5.  .once，只能觸發一次
+  6.  .self，只在有事件監聽的HTML元素本身觸發(不含子元素)
+  7.  .capture，將JS預設的事件傳遞方向**向上冒泡(event bubbling)**改為**向下捕獲(event capturing)**
+  8.  .passive，以{ passive : true }的模式增加事件監聽，意思是會無視preventDefault()，用來解決滾動和點擊事件的瞬間卡頓
+  9.  .native，監聽組件根元素的原生事件
+&lt;br/&gt;
+
+9. v-pre
+  ```html
+      &lt;span v-pre&gt;{{ this will not be compiled }}&lt;/span&gt;
+  ```
+  加上v-pre的部分，不會被編譯
+&lt;br/&gt;
+
+10. v-cloak
+  ```html
+      &lt;div v-cloak&gt;
+          {{ message }}
+      &lt;/div&gt;
+      &lt;style&gt;
+      [v-cloak] {
+          display: none;
+      }
+      &lt;/style&gt;
+  ```
+  讓等待渲染資料的地方不顯示{{data}}，直到渲染為止。
+&lt;br/&gt;
+
+11. v-once
+  ```html
+      &lt;span v-once&gt;This will never change: {{msg}}&lt;/span&gt;
+  ```
+  只渲染一次，用在父層會影響到子層。
+&lt;br/&gt;
+
+### 特例 
+圖片不能用v-model綁定，必須使用v-on:change綁定。
+```html
+&lt;div id=&quot;app&quot;&gt;
+&lt;input type=&quot;file&quot; @change='fileSelected'&gt;
+&lt;img v-if=&quot;image&quot; :src=&quot;image&quot; width=&quot;300&quot;&gt;
+&lt;/div&gt;
+&lt;script&gt;
+const vm = new Vue({
+  el: &quot;#app&quot;,
+  data: {
+      image: ''
+  },
+  methods: {
+      imageLoaded(e){
+          this.image = e.target.result;
+      },
+      fileSelected(e){
+          const file = e.target.files.item(0);
+          const reader = new FileReader();
+          reader.addEventListener('load', this.imageLoaded);
+          reader.readAsDataURL(file);
+      }
+  }
+})
+&lt;/script&gt;
+</code></pre><h3 id="實作">實作</h3>
+<p>簡單的做個 TodoList 吧！
+<a href="https://codepen.io/anon/pen/xjEjGr?editors=1010">CodePen連結</a></p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://mix-liten.github.io/tags/js/">js</a></span>
+        <span class="tag"><a href="https://mix-liten.github.io/tags/vue/">Vue</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        302 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2018-04-26 08:00
+        
+
+         
+          
+            
+              (Last updated: 2018-04-27 03:08)
+            
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://mix-liten.github.io/posts/201805/vue-%E5%B7%A5%E5%85%B7-vuecli/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Vue-工具-Vue CLI</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-1-vue%E5%AF%A6%E4%BE%8B/">
+                <span class="button__text">Vue-筆記-1-Vue實例</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
+            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+
+
+
+    </body>
+</html>

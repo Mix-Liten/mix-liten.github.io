@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Mix_Liten ">
+<meta name="description" content="終於要認真把JS30看一遍、做一遍了，這個系列文我會把成果放在GitHub上，基本上不會完全照著影片做，會略作修改，有興趣可以去下載看看，文章只會紀錄我目前不熟的部分，非常推薦大家這個免費的線上課程，下方附上連結。 Javascript30
+Day 1   element.addEventListener(event, function, useCapture) event放事件字串 function放偵聽到事件發生時要做的事 useCapture放boolean值，預設是false，事件會從內到外觸發(event bubbling)，設定為true則是從外到內(event capturing)。 冒泡、捕獲範例 範例也是用addEventListener做的
+  element.classList 新增、刪除節點的class add(class1, class2, &amp;hellip;) remove(class1, class2, &amp;hellip;) 還有偵測是否存在這個class，存在則刪除、不存在則新增 toggle(class)
+  在Day1的實作裡是偵聽keydown事件，但是壓著按鍵就會多次觸發，我自己則是用keyup，在離開按鍵的時候才觸發的感覺有點像音樂遊戲的延遲。
+Day 2  setInterval(function, milliseconds) 每隔一段第二個參數設定的時間就會自動執行第一個參數傳入的方法，時間單位是毫秒(千分之一秒)。  CSS  transform-origin 通常在HTML裡的方向設定都是以左上角為基準點，這個CSS語法是配合transform使用，用來移動X、Y、Z軸的基準點，這個範例裡只設定一個100%讓X軸基準點移到最右邊。 transition-timing-function: cubic-bezier() 設定transition以貝茲曲線的方式轉場，可以在chrome的開發者工具直接拉線調整。  Day 3   dataset 讀取tag裡的data-*屬性
+  style.setProperty(propertyName, value, priority)
+  style.setProperty(&amp;#39;color&amp;#39;, &amp;#39;red&amp;#39;); // 等於 style.padding = &amp;#39;red&amp;#39;; " />
+<meta name="keywords" content=", js" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://mix-liten.github.io/posts/201805/js30-day1day2day3/" />
+
+
+    <title>
+        
+            JS30-Day1 &amp; Day2 &amp; Day3 :: 墨非默 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mix-liten.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://mix-liten.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://mix-liten.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://mix-liten.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://mix-liten.github.io/safari-pinned-tab.svg" color="#1b1c1d">
+    <link rel="shortcut icon" href="https://mix-liten.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1b1c1d">
+    <meta name="theme-color" content="#1b1c1d">
+
+
+
+<meta itemprop="name" content="JS30-Day1 &amp; Day2 &amp; Day3">
+<meta itemprop="description" content="終於要認真把JS30看一遍、做一遍了，這個系列文我會把成果放在GitHub上，基本上不會完全照著影片做，會略作修改，有興趣可以去下載看看，文章只會紀錄我目前不熟的部分，非常推薦大家這個免費的線上課程，下方附上連結。 Javascript30
+Day 1   element.addEventListener(event, function, useCapture) event放事件字串 function放偵聽到事件發生時要做的事 useCapture放boolean值，預設是false，事件會從內到外觸發(event bubbling)，設定為true則是從外到內(event capturing)。 冒泡、捕獲範例 範例也是用addEventListener做的
+  element.classList 新增、刪除節點的class add(class1, class2, &hellip;) remove(class1, class2, &hellip;) 還有偵測是否存在這個class，存在則刪除、不存在則新增 toggle(class)
+  在Day1的實作裡是偵聽keydown事件，但是壓著按鍵就會多次觸發，我自己則是用keyup，在離開按鍵的時候才觸發的感覺有點像音樂遊戲的延遲。
+Day 2  setInterval(function, milliseconds) 每隔一段第二個參數設定的時間就會自動執行第一個參數傳入的方法，時間單位是毫秒(千分之一秒)。  CSS  transform-origin 通常在HTML裡的方向設定都是以左上角為基準點，這個CSS語法是配合transform使用，用來移動X、Y、Z軸的基準點，這個範例裡只設定一個100%讓X軸基準點移到最右邊。 transition-timing-function: cubic-bezier() 設定transition以貝茲曲線的方式轉場，可以在chrome的開發者工具直接拉線調整。  Day 3   dataset 讀取tag裡的data-*屬性
+  style.setProperty(propertyName, value, priority)
+  style.setProperty(&#39;color&#39;, &#39;red&#39;); // 等於 style.padding = &#39;red&#39;; ">
+<meta itemprop="datePublished" content="2018-05-14T00:18:59+00:00" />
+<meta itemprop="dateModified" content="2018-05-14T00:18:59+00:00" />
+<meta itemprop="wordCount" content="50">
+<meta itemprop="image" content="https://mix-liten.github.io/"/>
+
+
+
+<meta itemprop="keywords" content="js," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://mix-liten.github.io/"/>
+
+<meta name="twitter:title" content="JS30-Day1 &amp; Day2 &amp; Day3"/>
+<meta name="twitter:description" content="終於要認真把JS30看一遍、做一遍了，這個系列文我會把成果放在GitHub上，基本上不會完全照著影片做，會略作修改，有興趣可以去下載看看，文章只會紀錄我目前不熟的部分，非常推薦大家這個免費的線上課程，下方附上連結。 Javascript30
+Day 1   element.addEventListener(event, function, useCapture) event放事件字串 function放偵聽到事件發生時要做的事 useCapture放boolean值，預設是false，事件會從內到外觸發(event bubbling)，設定為true則是從外到內(event capturing)。 冒泡、捕獲範例 範例也是用addEventListener做的
+  element.classList 新增、刪除節點的class add(class1, class2, &hellip;) remove(class1, class2, &hellip;) 還有偵測是否存在這個class，存在則刪除、不存在則新增 toggle(class)
+  在Day1的實作裡是偵聽keydown事件，但是壓著按鍵就會多次觸發，我自己則是用keyup，在離開按鍵的時候才觸發的感覺有點像音樂遊戲的延遲。
+Day 2  setInterval(function, milliseconds) 每隔一段第二個參數設定的時間就會自動執行第一個參數傳入的方法，時間單位是毫秒(千分之一秒)。  CSS  transform-origin 通常在HTML裡的方向設定都是以左上角為基準點，這個CSS語法是配合transform使用，用來移動X、Y、Z軸的基準點，這個範例裡只設定一個100%讓X軸基準點移到最右邊。 transition-timing-function: cubic-bezier() 設定transition以貝茲曲線的方式轉場，可以在chrome的開發者工具直接拉線調整。  Day 3   dataset 讀取tag裡的data-*屬性
+  style.setProperty(propertyName, value, priority)
+  style.setProperty(&#39;color&#39;, &#39;red&#39;); // 等於 style.padding = &#39;red&#39;; "/>
+
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2018-05-14 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://mix-liten.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://mix-liten.github.io/about/">About</a></li><li><a href="https://mix-liten.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        One minute
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://mix-liten.github.io/posts/201805/js30-day1day2day3/">JS30-Day1 &amp; Day2 &amp; Day3</a>
+      </h1>
+
+      
+
+      
+
+      <div class="post-content">
+        <p>終於要認真把JS30看一遍、做一遍了，這個系列文我會把成果放在GitHub上，基本上不會完全照著影片做，會略作修改，有興趣可以去下載看看，文章只會紀錄我目前不熟的部分，非常推薦大家這個免費的線上課程，下方附上連結。
+<a href="https://javascript30.com/">Javascript30</a></p>
+<h2 id="day-1">Day 1</h2>
+<ul>
+<li>
+<p>element.addEventListener(event, function, useCapture)
+event放事件字串
+function放偵聽到事件發生時要做的事
+useCapture放boolean值，預設是false，事件會從內到外觸發(event bubbling)，設定為true則是從外到內(event capturing)。
+<a href="https://codepen.io/anon/pen/ELRoNq">冒泡、捕獲範例</a>
+範例也是用addEventListener做的</p>
+</li>
+<li>
+<p>element.classList
+新增、刪除節點的class
+add(class1, class2, &hellip;)
+remove(class1, class2, &hellip;)
+還有偵測是否存在這個class，存在則刪除、不存在則新增
+toggle(class)</p>
+</li>
+</ul>
+<p>在Day1的實作裡是偵聽keydown事件，但是壓著按鍵就會多次觸發，我自己則是用keyup，在離開按鍵的時候才觸發的感覺有點像音樂遊戲的延遲。</p>
+<h2 id="day-2">Day 2</h2>
+<ul>
+<li>setInterval(function, milliseconds)
+每隔一段第二個參數設定的時間就會自動執行第一個參數傳入的方法，時間單位是毫秒(千分之一秒)。</li>
+</ul>
+<h4 id="css">CSS</h4>
+<ul>
+<li>transform-origin
+通常在HTML裡的方向設定都是以左上角為基準點，這個CSS語法是配合transform使用，用來移動X、Y、Z軸的基準點，這個範例裡只設定一個100%讓X軸基準點移到最右邊。</li>
+<li>transition-timing-function: cubic-bezier()
+設定transition以貝茲曲線的方式轉場，可以在chrome的開發者工具直接拉線調整。</li>
+</ul>
+<h2 id="day-3">Day 3</h2>
+<ul>
+<li>
+<p>dataset
+讀取tag裡的data-*屬性</p>
+</li>
+<li>
+<p>style.setProperty(propertyName, value, priority)</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">setProperty</span>(<span style="color:#e6db74">&#39;color&#39;</span>, <span style="color:#e6db74">&#39;red&#39;</span>);
+<span style="color:#75715e">// 等於 
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">padding</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;red&#39;</span>;
+</code></pre></div>
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://mix-liten.github.io/tags/js/">js</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        50 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2018-05-14 08:00
+        
+
+         
+          
+            
+              (Last updated: 2018-05-14 08:18)
+            
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://mix-liten.github.io/posts/201805/js30-day4day7/">
+                <span class="button__icon">←</span>
+                <span class="button__text">JS30-Day4 &amp; Day7</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://mix-liten.github.io/posts/201805/vue-%E5%B7%A5%E5%85%B7-vuecli/">
+                <span class="button__text">Vue-工具-Vue CLI</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
+            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+
+
+
+    </body>
+</html>

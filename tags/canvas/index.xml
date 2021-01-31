@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>canvas on 墨非默</title>
+    <link>https://mix-liten.github.io/tags/canvas/</link>
+    <description>Recent content in canvas on 墨非默</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Thu, 17 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://mix-liten.github.io/tags/canvas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JS30-Day8 &amp; Day9 &amp; Day10</title>
+      <link>https://mix-liten.github.io/posts/201805/js30-day8day9day10/</link>
+      <pubDate>Thu, 17 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/js30-day8day9day10/</guid>
+      <description>這篇主要講一下入門的2D canvas、console的應用、還有感覺很像UX的想法(?)
+Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個容器，內容必須用JS繪圖。 canvas 基礎 繪圖原點是(0,0)，X軸往右為正，Y軸往下為正，單位是px。  &amp;lt;canvas id=&amp;#34;mycanvas&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;script&amp;gt; const canvas = document.getElementById(&amp;#34;mycanvas&amp;#34;); const ctx = canvas.getContext(&amp;#34;2d&amp;#34;); // 設定畫布寬高 canvas.width = window.innerWidth; canvas.height = window.innerHeight; ctx.beginPath(); // 開始畫 ctx.arc(80,70,60,-0.5*Math.PI,1*Math.PI); // 以(80,70)為中心點畫從-90度到180度且半徑為60的圓 ctx.fillStyle = &amp;#34;#666&amp;#34;; // 類似background-color ctx.fill(); // 設定好顏色之後還要執行填滿 ctx.strokeStyle = &amp;#34;#fa0&amp;#34;; // 類似border-color ctx.stroke(); // 邊框同樣要執行  ctx.fillStyle = &amp;#34;red&amp;#34;; // 重新指定顏色 ctx.strokeStyle = &amp;#34;green&amp;#34;; ctx.strokeRect(10,10,25,25); //從(10,10)畫一個寬高都是25的正方形邊框 ctx.fillRect(40,30,50,50); //從(40,30)畫一個寬高都是50的正方形 ctx.clearRect(45,35,20,20); //從(45,35)清空一塊寬高都是20的正方形  ctx.</description>
+    </item>
+    
+  </channel>
+</rss>

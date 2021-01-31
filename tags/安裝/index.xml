@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>安裝 on 墨非默</title>
+    <link>https://mix-liten.github.io/tags/%E5%AE%89%E8%A3%9D/</link>
+    <description>Recent content in 安裝 on 墨非默</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Wed, 25 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://mix-liten.github.io/tags/%E5%AE%89%E8%A3%9D/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在-macOS-上使用-Homebrew-安裝&amp;更新-git</title>
+      <link>https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E4%BD%BF%E7%94%A8-homebrew-%E5%AE%89%E8%A3%9D-%E6%9B%B4%E6%96%B0-git/</link>
+      <pubDate>Wed, 25 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E4%BD%BF%E7%94%A8-homebrew-%E5%AE%89%E8%A3%9D-%E6%9B%B4%E6%96%B0-git/</guid>
+      <description>前言 作為寫程式必備的版控軟體，macOS上預設是有安裝的，那為什麼我還要多此一舉，用 Homebrew 再安裝一次呢？ 因為有時候作為開源軟體的 Git 會修正一些嚴重的漏洞或是有重要更新，這時候參考這篇文章就可以立刻跟上最新版本囉～
+指令 直接上指令表，視情況使用。
+# 安裝 brew install git # 更新 brew upgrade git # 切換 Git 指令使用 Homebrew 版本 brew link git # 切換 PATH 亦可切換為自行安裝的版本 export PATH=/usr/local/bin:$PATH # 查看 Git 版本指令 git version # 查看目前使用的 Git 的存放位置 which git 結語 老實說我目前不管是在開發 Side-Project 或是公司專案，在使用 Git 的部分都沒遇到什麼問題，更新都是求心安。</description>
+    </item>
+    
+  </channel>
+</rss>

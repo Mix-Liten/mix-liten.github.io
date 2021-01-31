@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Mix_Liten ">
+<meta name="description" content="前言 接續前一篇，直接進入紀錄的部分。
+分支相關指令 # 列出 local 分支 $ git branch # 列出 remote 分支 $ git branch -r # 等於 --remote # 列出 local &#43; remote 分支 $ git branch -a # 開新分支 $ git branch branch_name # 在指定 commit 的位置開新分支 $ git branch branch_name 657fce7 # 更名分支 $ git branch -m old_name new_name # 刪除分支，若該分支內容未備份於其他分支會給予提示並且不可刪除，此時使用大寫 -D 以強制刪除 $ git branch -d branch_name # 切換分支 $ git checkout branch_name # 存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name # 在指定 commit 的位置，存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name 657fce7 # 切換到遠端分支時會發生 detached HEAD 狀態，使用追蹤參數在 local 建立追蹤分支，即可解決 $ git checkout -t origin/branch_name # 等於 --track # 回復分支，紀錄或找到被刪除分支最新 commit 的 SHA-1 值則可回復 $ git branch branch_name b174a5a # 列出所有節點紀錄，等同於 GUI 線圖 $ git show-branch -a # 強制遷移 master branch 到指定位置，HEAD 要先移到其他位置，忘開分支就 commit 時可能有用 $ git branch -f master e12d8ef 合併分支相關 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖相同，用線圖來看就是仍在一直線上，會啟用 快轉模式(Fast Forward)，效果看起來是只平移原分支 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖不相同，線圖類似 Y 形分岔，合併時會產生新的 commit，作為合併紀錄點，若發生 衝突(Conflict) 也會一併解決 # 使用以下指令可以總是產生分岔合併節點，即使刪除已合併過的分支，也可以在線圖上知道這裡曾經合併過 $ git merge branch_name --no-ff # 重設基礎合併，此方法會將當前分支的每個 commit 照順序嫁接到指定的分支上 $ git rebase branch_name # 此為危險操作，可用 Reflog 指令找到危險操作前最新 commit 的 SHA-1 值，並且執行 Reset 指令回復 # 或是使用危險操作皆有的額外紀錄點 ORIG_HEAD，執行 Reset 指令回復 $ git reset ORIG_HEAD --hard # rebase 指令進行時，若發生 衝突(Conflict)，處理方式和 merge 不同，此時看線圖會看到 HEAD 節點正卡出狀況的新移植節點上，此時將衝突解決，之後執行以下指令繼續 rebase $ git rebase --continue # 若衝突發生點不是文字檔而是圖片或其他二進位檔 $ git checkout --ours sample." />
+<meta name="keywords" content=", Git, 心得" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part2/" />
+
+
+    <title>
+        
+            為你自己學Git-讀書心得-part2 :: 墨非默 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mix-liten.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://mix-liten.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://mix-liten.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://mix-liten.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://mix-liten.github.io/safari-pinned-tab.svg" color="#1b1c1d">
+    <link rel="shortcut icon" href="https://mix-liten.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1b1c1d">
+    <meta name="theme-color" content="#1b1c1d">
+
+
+
+<meta itemprop="name" content="為你自己學Git-讀書心得-part2">
+<meta itemprop="description" content="前言 接續前一篇，直接進入紀錄的部分。
+分支相關指令 # 列出 local 分支 $ git branch # 列出 remote 分支 $ git branch -r # 等於 --remote # 列出 local &#43; remote 分支 $ git branch -a # 開新分支 $ git branch branch_name # 在指定 commit 的位置開新分支 $ git branch branch_name 657fce7 # 更名分支 $ git branch -m old_name new_name # 刪除分支，若該分支內容未備份於其他分支會給予提示並且不可刪除，此時使用大寫 -D 以強制刪除 $ git branch -d branch_name # 切換分支 $ git checkout branch_name # 存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name # 在指定 commit 的位置，存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name 657fce7 # 切換到遠端分支時會發生 detached HEAD 狀態，使用追蹤參數在 local 建立追蹤分支，即可解決 $ git checkout -t origin/branch_name # 等於 --track # 回復分支，紀錄或找到被刪除分支最新 commit 的 SHA-1 值則可回復 $ git branch branch_name b174a5a # 列出所有節點紀錄，等同於 GUI 線圖 $ git show-branch -a # 強制遷移 master branch 到指定位置，HEAD 要先移到其他位置，忘開分支就 commit 時可能有用 $ git branch -f master e12d8ef 合併分支相關 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖相同，用線圖來看就是仍在一直線上，會啟用 快轉模式(Fast Forward)，效果看起來是只平移原分支 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖不相同，線圖類似 Y 形分岔，合併時會產生新的 commit，作為合併紀錄點，若發生 衝突(Conflict) 也會一併解決 # 使用以下指令可以總是產生分岔合併節點，即使刪除已合併過的分支，也可以在線圖上知道這裡曾經合併過 $ git merge branch_name --no-ff # 重設基礎合併，此方法會將當前分支的每個 commit 照順序嫁接到指定的分支上 $ git rebase branch_name # 此為危險操作，可用 Reflog 指令找到危險操作前最新 commit 的 SHA-1 值，並且執行 Reset 指令回復 # 或是使用危險操作皆有的額外紀錄點 ORIG_HEAD，執行 Reset 指令回復 $ git reset ORIG_HEAD --hard # rebase 指令進行時，若發生 衝突(Conflict)，處理方式和 merge 不同，此時看線圖會看到 HEAD 節點正卡出狀況的新移植節點上，此時將衝突解決，之後執行以下指令繼續 rebase $ git rebase --continue # 若衝突發生點不是文字檔而是圖片或其他二進位檔 $ git checkout --ours sample.">
+<meta itemprop="datePublished" content="2021-01-30T23:01:10+00:00" />
+<meta itemprop="dateModified" content="2021-01-30T23:01:10+00:00" />
+<meta itemprop="wordCount" content="824">
+<meta itemprop="image" content="https://mix-liten.github.io/"/>
+
+
+
+<meta itemprop="keywords" content="Git,心得," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://mix-liten.github.io/"/>
+
+<meta name="twitter:title" content="為你自己學Git-讀書心得-part2"/>
+<meta name="twitter:description" content="前言 接續前一篇，直接進入紀錄的部分。
+分支相關指令 # 列出 local 分支 $ git branch # 列出 remote 分支 $ git branch -r # 等於 --remote # 列出 local &#43; remote 分支 $ git branch -a # 開新分支 $ git branch branch_name # 在指定 commit 的位置開新分支 $ git branch branch_name 657fce7 # 更名分支 $ git branch -m old_name new_name # 刪除分支，若該分支內容未備份於其他分支會給予提示並且不可刪除，此時使用大寫 -D 以強制刪除 $ git branch -d branch_name # 切換分支 $ git checkout branch_name # 存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name # 在指定 commit 的位置，存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name 657fce7 # 切換到遠端分支時會發生 detached HEAD 狀態，使用追蹤參數在 local 建立追蹤分支，即可解決 $ git checkout -t origin/branch_name # 等於 --track # 回復分支，紀錄或找到被刪除分支最新 commit 的 SHA-1 值則可回復 $ git branch branch_name b174a5a # 列出所有節點紀錄，等同於 GUI 線圖 $ git show-branch -a # 強制遷移 master branch 到指定位置，HEAD 要先移到其他位置，忘開分支就 commit 時可能有用 $ git branch -f master e12d8ef 合併分支相關 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖相同，用線圖來看就是仍在一直線上，會啟用 快轉模式(Fast Forward)，效果看起來是只平移原分支 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖不相同，線圖類似 Y 形分岔，合併時會產生新的 commit，作為合併紀錄點，若發生 衝突(Conflict) 也會一併解決 # 使用以下指令可以總是產生分岔合併節點，即使刪除已合併過的分支，也可以在線圖上知道這裡曾經合併過 $ git merge branch_name --no-ff # 重設基礎合併，此方法會將當前分支的每個 commit 照順序嫁接到指定的分支上 $ git rebase branch_name # 此為危險操作，可用 Reflog 指令找到危險操作前最新 commit 的 SHA-1 值，並且執行 Reset 指令回復 # 或是使用危險操作皆有的額外紀錄點 ORIG_HEAD，執行 Reset 指令回復 $ git reset ORIG_HEAD --hard # rebase 指令進行時，若發生 衝突(Conflict)，處理方式和 merge 不同，此時看線圖會看到 HEAD 節點正卡出狀況的新移植節點上，此時將衝突解決，之後執行以下指令繼續 rebase $ git rebase --continue # 若衝突發生點不是文字檔而是圖片或其他二進位檔 $ git checkout --ours sample."/>
+
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-01-30 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://mix-liten.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://mix-liten.github.io/about/">About</a></li><li><a href="https://mix-liten.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        4 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part2/">為你自己學Git-讀書心得-part2</a>
+      </h1>
+
+      
+
+      
+        <hr />
+        <aside id="toc">
+          <div class="toc-title">Table of Contents</div>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a>
+      <ul>
+        <li><a href="#分支相關指令">分支相關指令</a></li>
+        <li><a href="#重要資料進版控移除方法">重要資料進版控，移除方法</a></li>
+        <li><a href="#remote-相關">remote 相關</a></li>
+        <li><a href="#fork">fork</a></li>
+        <li><a href="#更新檔-相關">更新檔 相關</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </aside>
+        <hr />
+
+      <div class="post-content">
+        <h2 id="前言">前言</h2>
+<p>接續前一篇，直接進入紀錄的部分。</p>
+<h3 id="分支相關指令">分支相關指令</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 列出 local 分支</span>
+$ git branch
+<span style="color:#75715e"># 列出 remote 分支</span>
+$ git branch -r <span style="color:#75715e"># 等於 --remote</span>
+<span style="color:#75715e"># 列出 local + remote 分支</span>
+$ git branch -a
+<span style="color:#75715e"># 開新分支</span>
+$ git branch branch_name
+<span style="color:#75715e"># 在指定 commit 的位置開新分支</span>
+$ git branch branch_name 657fce7
+<span style="color:#75715e"># 更名分支</span>
+$ git branch -m old_name new_name
+<span style="color:#75715e"># 刪除分支，若該分支內容未備份於其他分支會給予提示並且不可刪除，此時使用大寫 -D 以強制刪除</span>
+$ git branch -d branch_name
+<span style="color:#75715e"># 切換分支</span>
+$ git checkout branch_name
+<span style="color:#75715e"># 存在分支則切換分支，不存在分支則新建分支並切換分支</span>
+$ git checkout -b branch_name
+<span style="color:#75715e"># 在指定 commit 的位置，存在分支則切換分支，不存在分支則新建分支並切換分支</span>
+$ git checkout -b branch_name 657fce7
+<span style="color:#75715e"># 切換到遠端分支時會發生 detached HEAD 狀態，使用追蹤參數在 local 建立追蹤分支，即可解決</span>
+$ git checkout -t origin/branch_name <span style="color:#75715e"># 等於 --track</span>
+<span style="color:#75715e"># 回復分支，紀錄或找到被刪除分支最新 commit 的 SHA-1 值則可回復</span>
+$ git branch branch_name b174a5a
+<span style="color:#75715e"># 列出所有節點紀錄，等同於 GUI 線圖</span>
+$ git show-branch -a
+<span style="color:#75715e"># 強制遷移 master branch 到指定位置，HEAD 要先移到其他位置，忘開分支就 commit 時可能有用</span>
+$ git branch -f master e12d8ef
+</code></pre></div><h4 id="合併分支相關">合併分支相關</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 合併分支時，如果原分支比對要被合進來的分支，發現根莖相同，用線圖來看就是仍在一直線上，會啟用 快轉模式(Fast Forward)，效果看起來是只平移原分支</span>
+<span style="color:#75715e"># 合併分支時，如果原分支比對要被合進來的分支，發現根莖不相同，線圖類似 Y 形分岔，合併時會產生新的 commit，作為合併紀錄點，若發生 衝突(Conflict) 也會一併解決</span>
+<span style="color:#75715e"># 使用以下指令可以總是產生分岔合併節點，即使刪除已合併過的分支，也可以在線圖上知道這裡曾經合併過</span>
+$ git merge branch_name --no-ff
+<span style="color:#75715e"># 重設基礎合併，此方法會將當前分支的每個 commit 照順序嫁接到指定的分支上</span>
+$ git rebase branch_name
+<span style="color:#75715e"># 此為危險操作，可用 Reflog 指令找到危險操作前最新 commit 的 SHA-1 值，並且執行 Reset 指令回復</span>
+<span style="color:#75715e"># 或是使用危險操作皆有的額外紀錄點 ORIG_HEAD，執行 Reset 指令回復</span>
+$ git reset ORIG_HEAD --hard
+<span style="color:#75715e"># rebase 指令進行時，若發生 衝突(Conflict)，處理方式和 merge 不同，此時看線圖會看到 HEAD 節點正卡出狀況的新移植節點上，此時將衝突解決，之後執行以下指令繼續 rebase</span>
+$ git rebase --continue
+<span style="color:#75715e"># 若衝突發生點不是文字檔而是圖片或其他二進位檔</span>
+$ git checkout --ours sample.jpg <span style="color:#75715e"># 保留原分支檔</span>
+$ git checkout --theirs sample.jpg <span style="color:#75715e"># 保留被合分支檔</span>
+<span style="color:#75715e"># rebase 互動模式(interactively)，開啟編輯器，編輯每筆 commit 前的動作，關閉後再逐筆修改需要再編輯的 commit</span>
+<span style="color:#75715e"># 動作分別有，p(pick，預設，表使用該 commit)、r(reword，修改 commit message)、e(edit，停在該節點進 amend 流程)、s(squash，粉碎 commit，合到前一個 commit)、f(fixup，效果同 s，但不保留 commit message)、d(drop，移除 commit)</span>
+<span style="color:#75715e"># 編輯動作時可直接調整順序，若整行刪除等同於 d 動作</span>
+<span style="color:#75715e"># 常用狀況舉例，使用 s 動作處理多合一，使用 e 動作處理一分多(reset 之後，增加多筆 commit)</span>
+$ git rebase -i 657fce7
+</code></pre></div><h4 id="標籤相關">標籤相關</h4>
+<p>分兩種類型，輕量標籤(lightweight tag)，適用於個人標記；有附註標籤(annotated tag)，適用於版本發布</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 新增輕量標籤在當前 commit</span>
+$ git tag tag_name
+<span style="color:#75715e"># 新增輕量標籤在指定 commit</span>
+$ git tag tag_name 51d54ff
+<span style="color:#75715e"># 新增有附註標籤在指定 commit，-a 表要附註解，-m 效果同 commit 時</span>
+$ git tag tag_name 51d54ff -a -m <span style="color:#e6db74">&#34;Big Cats are comming&#34;</span>
+<span style="color:#75715e"># 刪除標籤</span>
+$ git tag -d tag_name
+<span style="color:#75715e"># 顯示 commit 紀錄，any_point 可代入 標籤名 / SHA-1 值</span>
+$ git show any_point
+</code></pre></div><h4 id="暫存相關">暫存相關</h4>
+<p>可先 commit，之後再 reset 拆掉繼續做，或是使用 stash 指令放入暫存</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 新增暫存</span>
+$ git stash
+<span style="color:#75715e"># 新增暫存，連同 Untracked 的檔案</span>
+$ git stash -u
+<span style="color:#75715e"># 列出所有暫存，暫存訊息有預設格式，在哪個 branch + 當時在哪個 commit</span>
+$ git stash list
+stash@<span style="color:#f92672">{</span>0<span style="color:#f92672">}</span>: WIP on branch_a: 053fb21 branch_a_latest_commit_message
+stash@<span style="color:#f92672">{</span>1<span style="color:#f92672">}</span>: WIP on branch_b: b174a5a branch_b_latest_commit_message
+<span style="color:#75715e"># 取出暫存，不指定第幾個暫存則預設取編號最小</span>
+$ git stash apply stash@<span style="color:#f92672">{</span>1<span style="color:#f92672">}</span>
+<span style="color:#75715e"># 刪除暫存</span>
+$ git stash drop stash@<span style="color:#f92672">{</span>1<span style="color:#f92672">}</span>
+<span style="color:#75715e"># 取出並刪除暫存，等同於 apply + drop</span>
+$ git stash pop stash@<span style="color:#f92672">{</span>1<span style="color:#f92672">}</span>
+</code></pre></div><h4 id="撿其他-branch-的-commit">撿其他 branch 的 commit</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 合併進當前位置</span>
+$ git cherry-pick 6a498ec
+<span style="color:#75715e"># 合併進當前位置，可一次撿多個，依順序</span>
+$ git cherry-pick fd23e1c 6a498ec f4f4442
+<span style="color:#75715e"># 撿過來但先不合併</span>
+$ git cherry-pick 6a498ec --no-commit
+</code></pre></div><h3 id="重要資料進版控移除方法">重要資料進版控，移除方法</h3>
+<ol>
+<li>軟刪除，還是有辦法復原</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 讓所有 commit 執行指定命令，刪除重要資料</span>
+$ git filter-branch --tree-filter <span style="color:#e6db74">&#34;rm -f config/database.yml&#34;</span>
+<span style="color:#75715e"># 復原</span>
+$ git reset refs/original/refs/heads/master --hard
+</code></pre></div><ol start="2">
+<li>徹底刪除</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 讓所有 commit 執行指定命令，刪除重要資料</span>
+$ git filter-branch -f --tree-filter <span style="color:#e6db74">&#34;rm -f config/database.yml&#34;</span>
+<span style="color:#75715e"># 刪除執行 filter-branch 產生的還原點</span>
+$ rm .git/refs/original/refs/heads/master
+<span style="color:#75715e"># 清除 Reflog 流程，強制讓紀錄過期，之後手動執行回收機制</span>
+$ git reflog expire --all --expire<span style="color:#f92672">=</span>now
+<span style="color:#75715e"># 前一行已讓紀錄過期，檢視過期的未追蹤檔</span>
+<span style="color:#75715e"># 不加 --unreachable 則檢視所有待過期項目，包含 commit、tree、blob 物件等等</span>
+<span style="color:#75715e"># 加 --no-reflogs 則額外檢視目前只存在於 Reflog 中的待過期項目</span>
+<span style="color:#75715e"># 待過期項目有兩種狀態，Unreachable、Dangling，大部分會是 Unreachable，此狀態表示該項目在當前保留節點的周圍；Dangling 則表示完全與當前節點無關項目</span>
+<span style="color:#75715e"># 舉例來說，A -&gt; B -&gt; C -&gt; D，reset 後兩個節點，剩下 A -&gt; B，此時 C 的狀態是 Unreachable，D 則是 Dangling</span>
+$ git fsck --unreachable
+<span style="color:#75715e"># 執行回收機制</span>
+$ git gc --prune<span style="color:#f92672">=</span>now <span style="color:#75715e"># 等同於 git gc &amp; git prune --expire=now</span>
+<span style="color:#75715e"># 若已推到 remote 則強制覆蓋</span>
+$ git push -f
+</code></pre></div><h3 id="remote-相關">remote 相關</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 增加 remote，origin 是慣例用詞，代表遠端，可任意命名，最後一長串是遠端伺服器的連線位置</span>
+$ git remote add origin git@github.com:GitHub_id/repository_name.git
+<span style="color:#75715e"># 從 local 推到 remote，此時是將 local 的 master branch 推到 remote 的 master branch</span>
+<span style="color:#75715e"># 參數 -u(--set-upstream)，設定 local 端分支的上游，會 追蹤(track) 並默認為推送目標，設定一次之後，下次推送只要 git push，每個分支只有一個上游</span>
+$ git push -u origin master
+<span style="color:#75715e"># 上面的推送指令拿掉參數等同於下面的指令</span>
+$ git push origin master:master <span style="color:#75715e"># 最後的分支名對應 local branch:remote branch，可以讓 remote 用不同名字</span>
+<span style="color:#75715e"># 強制推送，少用</span>
+$ git push -f
+<span style="color:#75715e"># 取得遠端更新內容</span>
+$ git fetch
+<span style="color:#75715e"># 偽更新 local</span>
+$ git pull <span style="color:#75715e"># 實際等同於 git fetch &amp; git merge</span>
+<span style="color:#75715e"># 偽更新 local，改用 rebase</span>
+$ git pull --rebase
+<span style="color:#75715e"># 檢視所有 remote 資訊</span>
+$ git remote -v
+<span style="color:#75715e"># 刪除遠端分支</span>
+$ git push origin :branch_name <span style="color:#75715e"># 概念大概是推一個空的分支到遠端</span>
+<span style="color:#75715e"># 複製 remote 專案</span>
+$ git clone git@github.com:sample_user/project_name.git
+<span style="color:#75715e"># 複製 remote 專案，並在 local 用不同的資料夾名</span>
+$ git clone git@github.com:sample_user/project_name.git new_project_name
+</code></pre></div><h3 id="fork">fork</h3>
+<p>fork 其他人的專案時，為同步原專案最新進度，進行以下流程</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 增加 remote，upstream 名為慣例用詞</span>
+$ git remote add upstream git@github.com:GitHub_id/repository_name.git
+<span style="color:#75715e"># 取得遠端更新內容</span>
+$ git fetch upstream
+<span style="color:#75715e"># 合併遠端分支</span>
+$ git merge upstream/master
+<span style="color:#75715e"># 更新 fork 過來的專案</span>
+$ git push origin master
+</code></pre></div><h3 id="更新檔-相關">更新檔 相關</h3>
+<p>產生 patch 檔案，從來沒用過</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 範例 git log</span>
+$ git log --oneline
+6e6ed76 <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> add product page
+6aba968 update info.html
+fd7cd38 <span style="color:#f92672">(</span>origin/master, origin/HEAD<span style="color:#f92672">)</span> Update about.html
+2eb8fea add readme
+953cbd9 update info page
+<span style="color:#75715e"># 產生更新檔，指定範圍，有點像 slice</span>
+$ git format-patch fd7cd38..6e6ed76
+0001-update-info.html.patch
+0002-add-product-page.patch
+<span style="color:#75715e"># 產生更新檔，指定區間，-2 代表最新兩筆 commit</span>
+$ git format-patch -2
+0001-update-info.html.patch
+0002-add-product-page.patch
+<span style="color:#75715e"># 產生更新檔，-o 參數指定輸出位置</span>
+$ git format-patch -2 -o /tmp/patches
+/tmp/patches/0001-update-info.html.patch
+/tmp/patches/0002-add-product-page.patch
+<span style="color:#75715e"># 使用更新檔</span>
+$ git am /tmp/patches/*
+</code></pre></div><h4 id="git-flowhttpsnviecompostsa-successful-git-branching-model-原文最早於-2010-年提出"><a href="https://nvie.com/posts/a-successful-git-branching-model/" title="原文最早於 2010 年提出">Git Flow</a></h4>
+<ol>
+<li>master
+穩定、可上線的版本，更新只能從別的分支合併過來，通常會加版本標籤</li>
+<li>develop
+開發主幹，新增功能時從這裡切 feature branch 出去，完成後再合回來</li>
+<li>hotfix
+線上版本緊急修復，從 master 切出去，完成後合到 master、develop</li>
+<li>release
+上線前的測試分支，從 develop 切出或合併，測完後合到 master、develop，要合到 develop 是因為有些狀況要到 production 環境才會遇到，修復後合回開發分支避免之後再遇到</li>
+<li>feature
+新功能分支，從 develop 切出，完成後合回 develop</li>
+</ol>
+<h4 id="二分法除錯">二分法除錯</h4>
+<p>適用在大範圍 commit，不確定何時開始出錯的狀況</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 開始執行二分法，執行這行後，HEAD 會跳到兩點正中間的 commit</span>
+$ git bisect start 起始點 結束點
+$ git bisect start HEAD f6b72af
+<span style="color:#75715e"># 確認該 commit 是否已出問題</span>
+$ git bisect good <span style="color:#75715e"># 沒問題，執行這行，再跳到 HEAD 和 第一個中間點中間</span>
+$ git bisect bad <span style="color:#75715e"># 有問題，執行這行，再跳到 f6b72af 和 第一個中間點中間，若找到出問題的 commit 就結束流程</span>
+<span style="color:#75715e"># 中途放棄流程</span>
+$ git bisect reset
+</code></pre></div><p>建立新目錄的分支，此方法適用於正在跑 CI/CD 流程時，仍想處理其他需求的狀況，Git v2.6.0 以上才有</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git worktree add -b cat ../copycat
+<span style="color:#75715e"># 此方法會再與專案同一層的位置建立目錄，最後一樣可以合併回來，處理完後，新的目錄即可刪除</span>
+</code></pre></div>
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://mix-liten.github.io/tags/git/">Git</a></span>
+        <span class="tag"><a href="https://mix-liten.github.io/tags/%E5%BF%83%E5%BE%97/">心得</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        824 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-01-30 08:00
+        
+
+         
+          
+            
+              (Last updated: 2021-01-31 07:01)
+            
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part1/">
+                <span class="button__icon">←</span>
+                <span class="button__text">為你自己學Git-讀書心得-part1</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E4%BD%BF%E7%94%A8-homebrew-%E5%AE%89%E8%A3%9D-%E6%9B%B4%E6%96%B0-git/">
+                <span class="button__text">在-macOS-上使用-Homebrew-安裝&amp;更新-git</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
+            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+
+
+
+    </body>
+</html>

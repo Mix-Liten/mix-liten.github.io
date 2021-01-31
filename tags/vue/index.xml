@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vue on 墨非默</title>
+    <link>https://mix-liten.github.io/tags/vue/</link>
+    <description>Recent content in Vue on 墨非默</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://mix-liten.github.io/tags/vue/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vue with Storybook 概述</title>
+      <link>https://mix-liten.github.io/posts/201911/storybook_with_vue/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201911/storybook_with_vue/</guid>
+      <description>前言 現在前端流行的框架都可單獨開發多種元件，在元件切得很多的情況下，使用 Storybook 檢視各個元件，相信會在開發上給予相當程度的便利。
+目前 Storybook 可用於 React、Vue、Angular、Svelte、Ember、&amp;hellip;等等框架，本篇以 Vue 為例，版本是5.1。
+連結  Storybook vue-cli-plugin-storybook storybook-addon-vue-info storybook-addon-vue-info-demo  安裝 Storybook 官網裡安裝 Vue 版本的方法有兩種
+ Automatic setup 在 Vue 專案裡使用下方指令  npx -p @storybook/cli sb init --type vue Manual setup 這個比較麻煩，就是照著步驟做，為了避免篇幅過長，僅提供傳送門。
+  Vue CLI plugin 別人造好的輪子，使用方式是先開啟 Vue CLI 3 新增的圖形化介面，進入你要使用的專案，選擇目錄中的插件(Plugins)，點擊新增插件後安裝vue-cli-plugin-storybook
+  配置及插件(Addons) 安裝好後，使用 package.json 裡的相關指令把 Storybook 跑起來 此時你會發現，自己跑起來的 Storybook 與官網的影片相差甚遠，主要有兩部分，一是左邊的目錄很空，這是因為我們還沒配置要呈現的 story，二是右邊的元件控制項很少，這是另一項重點，插件(Addons)。
+首先配置的部分，這是一個很多工的步驟，以官方給的 Button 範例說明，程式部分僅供參考，實際使用要看 Storybook 的版本
+// Button.stories.js import { storiesOf } from &amp;#39;@storybook/vue&amp;#39; import { action } from &amp;#39;@storybook/addon-actions&amp;#39; import { withKnobs } from &amp;#34;@storybook/addon-knobs&amp;#34; const stories = storiesOf(&amp;#34;Button&amp;#34;, module) stories.</description>
+    </item>
+    
+    <item>
+      <title>Vuex入門 Part2</title>
+      <link>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part2/</link>
+      <pubDate>Fri, 26 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part2/</guid>
+      <description>前言 系列文(?)的第二篇，本篇會以參考三的語法表為主軸，文中範例的環境是以 Vue CLI 以上來說明，可參考Vuex_Todo範例幫助理解。
+參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  語法(三步驟說明)  使用第一步，把 Vuex 加進 Vue 的實例裡  // main.js, CLI import Vue from &amp;#39;vue&amp;#39; import Vuex from &amp;#39;vuex&amp;#39; import store from &amp;#39;./store&amp;#39; // Vuex 實例  Vue.use(Vuex) // 等同於 Vue.prototype.$store = Vuex; 讓所有元件都可藉由 this.$store 使用 vuex  new Vue({ el: &amp;#39;#app&amp;#39;, store }) // with script src, 偶爾在 codepen 上寫寫 Demo 用 // 照順序引入 Vue, Vuex 的 CDN // 建立 Vuex 實例 var store = new Vuex.</description>
+    </item>
+    
+    <item>
+      <title>Vuex入門 Part1</title>
+      <link>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part1/</link>
+      <pubDate>Thu, 25 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part1/</guid>
+      <description>前言 Vuex 是 Vue.js 的一種狀態管理模式(工具)，其他前端框架也有類似的管理工具，用來解決多個元件共用資料導致資料流混亂的問題，參考一的動圖解釋雖然是以 Redux 為例，但清楚的說明了狀態管理的使用情境。 參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  概述 下方以 Counter 舉例，大概看一下應該會發現跟原本的 Vue 差不多，也是有 data、methods、computed，只是在 Vuex 裡改叫 state、mutations、getters，還多了跟 emit 很像的 actions 屬性。
+// src/store/index.js const store = new Vuex.Store({ state: { count: 0, }, getters: { count: (state) =&amp;gt; state.count, }, mutations: { incrementMutation: (state) =&amp;gt; state.count++, decrementMutation: (state) =&amp;gt; state.count--, }, actions: { incrementAction: ({ commit }) =&amp;gt; commit(&amp;#39;incrementMutation&amp;#39;), decrementAction: ({ commit }) =&amp;gt; commit(&amp;#39;decrementMutation&amp;#39;), } }) // template const Counter = { template: ` &amp;lt;div id=&amp;#34;counter&amp;#34;&amp;gt; &amp;lt;p&amp;gt; {{ count }} &amp;lt;/p&amp;gt; &amp;lt;p&amp;gt; &amp;lt;button @click=&amp;#34;increment&amp;#34;&amp;gt;+&amp;lt;/button&amp;gt; &amp;lt;button @click=&amp;#34;decrement&amp;#34;&amp;gt;-&amp;lt;/button&amp;gt; &amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; `, computed: { count() { return this.</description>
+    </item>
+    
+    <item>
+      <title>Vue-工具-Vue CLI</title>
+      <link>https://mix-liten.github.io/posts/201805/vue-%E5%B7%A5%E5%85%B7-vuecli/</link>
+      <pubDate>Sun, 13 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201805/vue-%E5%B7%A5%E5%85%B7-vuecli/</guid>
+      <description>本來第三篇要說關於Vue組件Global和Local的應用還有組件之間上下傳遞事件的方法，不過一想到就有點懶，暫時逃避一下，這篇先介紹一下最近在做作品用到的工具吧。
+Vue-CLI GitHub連結
+安裝 npm i vue-cli -g //安裝在global vue -V //看看版本 確定安裝好沒 提供六種起始樣板 vue list //檢視Available official templates vue init &amp;lt;樣板名稱&amp;gt; &amp;lt;專案名稱&amp;gt; //下載樣板 選好樣板初始化，基本上會先問一些問題，如：專案名、專案描述、專案作者、可選套件，可選套件看需求使用，等安裝好照著CMD給的提示執行開發伺服器，開發時沒有要改設定的話，基本上只會用到src資料夾，src裡還有assets、components資料夾，因為有內建vue-loader，可以直接使用副檔名是vue的單一組件(含template、script、style)放在components，assets則是靜態檔案，通常會放全域用的JS、CSS、圖片之類的，另外還有個很重要的router，繼續看下面吧。
+Vue-router 說明文件
+順便介紹同樣內建在裡面的vue-router，這東西的用途是可以把網頁做成單頁應用SPA(Single Page Application)，優點是頁面間切換很順暢，缺點是進網頁會讀久一點。
+ 挖空格放組件(router-view)  &amp;lt;template&amp;gt; &amp;lt;div&amp;gt; &amp;lt;Menu/&amp;gt; &amp;lt;div class=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;router-view/&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;Footer/&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;script&amp;gt; import Menu from &amp;#39;./Menu&amp;#39;; import Footer from &amp;#39;./Footer&amp;#39;; export default{ components: { Menu, Footer, } } &amp;lt;/script&amp;gt; router-view tag 會塞入子組件的內容，menu和footer則是直接引入組件到Vue實例裡直接使用。
+ 組件之間的連結(router-link)  &amp;lt;router-link to=&amp;#34;about&amp;#34;&amp;gt;About&amp;lt;/router-link&amp;gt; 這句會被自動編譯成a連結。</description>
+    </item>
+    
+    <item>
+      <title>Vue-筆記-2-模板</title>
+      <link>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-2-%E6%A8%A1%E6%9D%BF/</link>
+      <pubDate>Thu, 26 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-2-%E6%A8%A1%E6%9D%BF/</guid>
+      <description>模板語言 Vue template (官網說法 指令 Directives)  v-text  &amp;lt;span v-text=&amp;#34;msg&amp;#34;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;{{msg}}&amp;lt;/span&amp;gt; 兩種寫法都可以。 v-html  &amp;lt;div v-html=&amp;#34;html&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如果想要動態插入內容，使用innerHTML是拿不到實例中的data的喔。 v-show  &amp;lt;h1 v-show=&amp;#34;show&amp;#34;&amp;gt;Hello!&amp;lt;/h1&amp;gt; 等於CSS裡的display。 v-if, v-else-if, v-else  &amp;lt;div v-if=&amp;#34;type === &amp;#39;A&amp;#39;&amp;#34;&amp;gt;A&amp;lt;/div&amp;gt; &amp;lt;div v-else-if=&amp;#34;type === &amp;#39;B&amp;#39;&amp;#34;&amp;gt;B&amp;lt;/div&amp;gt; &amp;lt;div v-else&amp;gt;Not A/B&amp;lt;/div&amp;gt; v-if 和 v-show 的差別是在條件不成立的情況下，v-if不會被渲染到網頁上，v-show則是單純看不到。 v-for &amp;lt;!-- Array --&amp;gt; &amp;lt;li v-for=&amp;#34;todo in todos&amp;#34; v-if=&amp;#34;todo.isComplete&amp;#34;&amp;gt; {{ todo }} &amp;lt;/li&amp;gt; &amp;lt;div v-for=&amp;#34;(todo, index) in todos&amp;#34;&amp;gt; {{ index }}: {{ todo }} &amp;lt;/div&amp;gt; &amp;lt;!-- Object --&amp;gt; &amp;lt;div v-for=&amp;#34;value in object&amp;#34;&amp;gt; {{ value }} &amp;lt;/div&amp;gt; &amp;lt;div v-for=&amp;#34;(value, key) in object&amp;#34;&amp;gt; {{ key }}: {{ value }} &amp;lt;/div&amp;gt; &amp;lt;div v-for=&amp;#34;(value, key, index) in object&amp;#34;&amp;gt; {{ index }}.</description>
+    </item>
+    
+    <item>
+      <title>Vue-筆記-1-Vue實例</title>
+      <link>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-1-vue%E5%AF%A6%E4%BE%8B/</link>
+      <pubDate>Tue, 24 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-1-vue%E5%AF%A6%E4%BE%8B/</guid>
+      <description>實例 new Vue({})   el
+ &amp;lsquo;#app&amp;rsquo; document.getElementById(&amp;lsquo;app&amp;rsquo;) 在實例外用 vm.$mount(&#39;#app&#39;)     data
+const vm = new Vue({ el: &amp;#39;#app&amp;#39;, data: { input: &amp;#39;&amp;#39;, todos: [ &amp;#39;刷牙洗臉&amp;#39;, &amp;#39;吃早餐&amp;#39;, &amp;#39;整理服裝儀容&amp;#39;, &amp;#39;確認今天該做的事&amp;#39; ] } }); 用this.todos取得data裡的todos陣列   computed
+&amp;lt;div id=&amp;#34;app&amp;#34;&amp;gt; &amp;lt;input type=&amp;#34;number&amp;#34; v-model=&amp;#34;a&amp;#34;/&amp;gt; + &amp;lt;input type=&amp;#34;number&amp;#34; v-model=&amp;#34;b&amp;#34;/&amp;gt; = &amp;lt;input type=&amp;#34;number&amp;#34; v-model=&amp;#34;sum&amp;#34;/&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; var vm = new Vue ({ el: &amp;#39;#app&amp;#39;, data: { a: 0, b: 0 }, computed: { sum() { return parseInt(this.</description>
+    </item>
+    
+  </channel>
+</rss>

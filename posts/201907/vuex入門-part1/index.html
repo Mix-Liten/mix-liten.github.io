@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Mix_Liten ">
+<meta name="description" content="前言 Vuex 是 Vue.js 的一種狀態管理模式(工具)，其他前端框架也有類似的管理工具，用來解決多個元件共用資料導致資料流混亂的問題，參考一的動圖解釋雖然是以 Redux 為例，但清楚的說明了狀態管理的使用情境。 參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  概述 下方以 Counter 舉例，大概看一下應該會發現跟原本的 Vue 差不多，也是有 data、methods、computed，只是在 Vuex 裡改叫 state、mutations、getters，還多了跟 emit 很像的 actions 屬性。
+// src/store/index.js const store = new Vuex.Store({ state: { count: 0, }, getters: { count: (state) =&amp;gt; state.count, }, mutations: { incrementMutation: (state) =&amp;gt; state.count&#43;&#43;, decrementMutation: (state) =&amp;gt; state.count--, }, actions: { incrementAction: ({ commit }) =&amp;gt; commit(&amp;#39;incrementMutation&amp;#39;), decrementAction: ({ commit }) =&amp;gt; commit(&amp;#39;decrementMutation&amp;#39;), } }) // template const Counter = { template: ` &amp;lt;div id=&amp;#34;counter&amp;#34;&amp;gt; &amp;lt;p&amp;gt; {{ count }} &amp;lt;/p&amp;gt; &amp;lt;p&amp;gt; &amp;lt;button @click=&amp;#34;increment&amp;#34;&amp;gt;&#43;&amp;lt;/button&amp;gt; &amp;lt;button @click=&amp;#34;decrement&amp;#34;&amp;gt;-&amp;lt;/button&amp;gt; &amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; `, computed: { count() { return this." />
+<meta name="keywords" content=", Vue, Vuex" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part1/" />
+
+
+    <title>
+        
+            Vuex入門 Part1 :: 墨非默 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mix-liten.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://mix-liten.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://mix-liten.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://mix-liten.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://mix-liten.github.io/safari-pinned-tab.svg" color="#1b1c1d">
+    <link rel="shortcut icon" href="https://mix-liten.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1b1c1d">
+    <meta name="theme-color" content="#1b1c1d">
+
+
+
+<meta itemprop="name" content="Vuex入門 Part1">
+<meta itemprop="description" content="前言 Vuex 是 Vue.js 的一種狀態管理模式(工具)，其他前端框架也有類似的管理工具，用來解決多個元件共用資料導致資料流混亂的問題，參考一的動圖解釋雖然是以 Redux 為例，但清楚的說明了狀態管理的使用情境。 參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  概述 下方以 Counter 舉例，大概看一下應該會發現跟原本的 Vue 差不多，也是有 data、methods、computed，只是在 Vuex 裡改叫 state、mutations、getters，還多了跟 emit 很像的 actions 屬性。
+// src/store/index.js const store = new Vuex.Store({ state: { count: 0, }, getters: { count: (state) =&gt; state.count, }, mutations: { incrementMutation: (state) =&gt; state.count&#43;&#43;, decrementMutation: (state) =&gt; state.count--, }, actions: { incrementAction: ({ commit }) =&gt; commit(&#39;incrementMutation&#39;), decrementAction: ({ commit }) =&gt; commit(&#39;decrementMutation&#39;), } }) // template const Counter = { template: ` &lt;div id=&#34;counter&#34;&gt; &lt;p&gt; {{ count }} &lt;/p&gt; &lt;p&gt; &lt;button @click=&#34;increment&#34;&gt;&#43;&lt;/button&gt; &lt;button @click=&#34;decrement&#34;&gt;-&lt;/button&gt; &lt;/p&gt; &lt;/div&gt; `, computed: { count() { return this.">
+<meta itemprop="datePublished" content="2019-07-25T21:56:40+00:00" />
+<meta itemprop="dateModified" content="2019-07-25T21:56:40+00:00" />
+<meta itemprop="wordCount" content="186">
+<meta itemprop="image" content="https://mix-liten.github.io/"/>
+
+
+
+<meta itemprop="keywords" content="Vue,Vuex," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://mix-liten.github.io/"/>
+
+<meta name="twitter:title" content="Vuex入門 Part1"/>
+<meta name="twitter:description" content="前言 Vuex 是 Vue.js 的一種狀態管理模式(工具)，其他前端框架也有類似的管理工具，用來解決多個元件共用資料導致資料流混亂的問題，參考一的動圖解釋雖然是以 Redux 為例，但清楚的說明了狀態管理的使用情境。 參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  概述 下方以 Counter 舉例，大概看一下應該會發現跟原本的 Vue 差不多，也是有 data、methods、computed，只是在 Vuex 裡改叫 state、mutations、getters，還多了跟 emit 很像的 actions 屬性。
+// src/store/index.js const store = new Vuex.Store({ state: { count: 0, }, getters: { count: (state) =&gt; state.count, }, mutations: { incrementMutation: (state) =&gt; state.count&#43;&#43;, decrementMutation: (state) =&gt; state.count--, }, actions: { incrementAction: ({ commit }) =&gt; commit(&#39;incrementMutation&#39;), decrementAction: ({ commit }) =&gt; commit(&#39;decrementMutation&#39;), } }) // template const Counter = { template: ` &lt;div id=&#34;counter&#34;&gt; &lt;p&gt; {{ count }} &lt;/p&gt; &lt;p&gt; &lt;button @click=&#34;increment&#34;&gt;&#43;&lt;/button&gt; &lt;button @click=&#34;decrement&#34;&gt;-&lt;/button&gt; &lt;/p&gt; &lt;/div&gt; `, computed: { count() { return this."/>
+
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2019-07-25 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://mix-liten.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://mix-liten.github.io/about/">About</a></li><li><a href="https://mix-liten.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        One minute
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part1/">Vuex入門 Part1</a>
+      </h1>
+
+      
+
+      
+        <hr />
+        <aside id="toc">
+          <div class="toc-title">Table of Contents</div>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#參考">參考</a></li>
+    <li><a href="#概述">概述</a></li>
+  </ul>
+</nav>
+        </aside>
+        <hr />
+
+      <div class="post-content">
+        <h2 id="前言">前言</h2>
+<p>Vuex 是 Vue.js 的一種狀態管理模式(工具)，其他前端框架也有類似的管理工具，用來解決多個元件共用資料導致資料流混亂的問題，<a href="#%E5%8F%83%E8%80%83">參考一</a>的動圖解釋雖然是以 Redux 為例，但清楚的說明了狀態管理的使用情境。
+<img src="https://mix-liten.github.io/images/JS/Vue/dataFlow.png" alt="資料流" title="資料流"></p>
+<h2 id="參考">參考</h2>
+<ol>
+<li><a href="https://segmentfault.com/a/1190000012142449">四張動圖解釋何時該用Redux</a></li>
+<li><a href="https://vuex.vuejs.org/zh/">Vuex官方文件</a></li>
+<li><a href="https://vuejs-tips.github.io/vuex-cheatsheet/">Vuex語法表</a></li>
+<li><a href="https://cn.vuejs.org/v2/guide/state-management.html">EventBus</a></li>
+</ol>
+<h2 id="概述">概述</h2>
+<p><img src="https://mix-liten.github.io/images/JS/Vue/vuexFlow.png" alt="Vuex流程圖" title="Vuex流程圖">
+下方以 Counter 舉例，大概看一下應該會發現跟原本的 Vue 差不多，也是有 data、methods、computed，只是在 Vuex 裡改叫 state、mutations、getters，還多了跟 emit 很像的 actions 屬性。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// src/store/index.js
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">store</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
+  <span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+  },
+  <span style="color:#a6e22e">getters</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">state</span>) =&gt; <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">count</span>,
+  },
+  <span style="color:#a6e22e">mutations</span><span style="color:#f92672">:</span> {
+  	<span style="color:#a6e22e">incrementMutation</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">state</span>) =&gt; <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>,
+    <span style="color:#a6e22e">decrementMutation</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">state</span>) =&gt; <span style="color:#a6e22e">state</span>.<span style="color:#a6e22e">count</span><span style="color:#f92672">--</span>,
+  },
+  <span style="color:#a6e22e">actions</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">incrementAction</span><span style="color:#f92672">:</span> ({ <span style="color:#a6e22e">commit</span> }) =&gt; <span style="color:#a6e22e">commit</span>(<span style="color:#e6db74">&#39;incrementMutation&#39;</span>),
+    <span style="color:#a6e22e">decrementAction</span><span style="color:#f92672">:</span> ({ <span style="color:#a6e22e">commit</span> }) =&gt; <span style="color:#a6e22e">commit</span>(<span style="color:#e6db74">&#39;decrementMutation&#39;</span>),
+  }
+})
+
+<span style="color:#75715e">// template
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Counter</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">template</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`
+</span><span style="color:#e6db74">    &lt;div id=&#34;counter&#34;&gt;
+</span><span style="color:#e6db74">      &lt;p&gt;
+</span><span style="color:#e6db74">        {{ count }}
+</span><span style="color:#e6db74">      &lt;/p&gt;
+</span><span style="color:#e6db74">      &lt;p&gt;
+</span><span style="color:#e6db74">        &lt;button @click=&#34;increment&#34;&gt;+&lt;/button&gt;
+</span><span style="color:#e6db74">        &lt;button @click=&#34;decrement&#34;&gt;-&lt;/button&gt;
+</span><span style="color:#e6db74">      &lt;/p&gt;
+</span><span style="color:#e6db74">    &lt;/div&gt;
+</span><span style="color:#e6db74">  `</span>,
+  <span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">count</span>() {
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">$store</span>.<span style="color:#a6e22e">getters</span>.<span style="color:#a6e22e">count</span>;
+    },
+  },
+  <span style="color:#a6e22e">methods</span><span style="color:#f92672">:</span> {
+    <span style="color:#a6e22e">increment</span>() {
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">$store</span>.<span style="color:#a6e22e">dispatch</span>(<span style="color:#e6db74">&#39;incrementAction&#39;</span>);
+    },
+    <span style="color:#a6e22e">decrement</span>() {
+      <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">$store</span>.<span style="color:#a6e22e">dispatch</span>(<span style="color:#e6db74">&#39;decrementAction&#39;</span>);
+    },
+  }
+}
+</code></pre></div><p><a href="https://codepen.io/anon/pen/LwNzYz?editors=1010">Codepen範例</a>
+Vuex 的狀態管理模式定義了資料流(Data Flow)</p>
+<ol>
+<li>從圖片左邊的 View 開始，點擊加號按鍵觸發 methods.increment，發出 dispatch 的請求</li>
+<li>dispatch 的請求進到 Vuex 裡的 actions.incrementAction 再發出 commit 的請求</li>
+<li>commit 的請求進到 mutations，此時 incrementMutation 才會實際去做更新 state 的動作</li>
+<li>接著 getters.count 監聽到 state.count 的改變，template 裡的 computed.count 監聽到 getter.count 的改變，之後 view 顯示的計數才完成 +1 的動作。</li>
+</ol>
+<p>流程圖中還有兩個灰色的格子，其中一個是在 actions 上延伸的 Backend API，在 Counter 範例中沒講到單純是範例過於簡單，之後的範例會用到，簡單說明為何發 API 必須寫在 actions，因為 Vuex 其實在流程上很寬鬆，它只是一個模式，像是 Counter 範例可以再簡單一點，觸發 methods.increment 時，傳到 mutations.incrementMutation 或是直接改 state.count，程式都可以執行，實際要怎麼用，都看自己。</p>
+<p>雖然 Vuex 流程寬鬆，但最低至少要遵守以下三點</p>
+<ol>
+<li>應用層級的狀態應集中到單個 store</li>
+<li>只能藉由 mutation 更改 state，且必須同步(不能包含異步操作)</li>
+<li>異步操作都在 action 處理</li>
+</ol>
+<p>其他下一篇再說，理論上會是輕鬆的語法篇。</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://mix-liten.github.io/tags/vue/">Vue</a></span>
+        <span class="tag"><a href="https://mix-liten.github.io/tags/vuex/">Vuex</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        186 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2019-07-25 08:00
+        
+
+         
+          
+            
+              (Last updated: 2019-07-26 05:56)
+            
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part2/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Vuex入門 Part2</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://mix-liten.github.io/posts/201907/chrome-extensions/">
+                <span class="button__text">Chrome擴充應用初探</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
+            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+
+
+
+    </body>
+</html>

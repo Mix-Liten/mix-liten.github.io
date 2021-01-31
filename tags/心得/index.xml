@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>心得 on 墨非默</title>
+    <link>https://mix-liten.github.io/tags/%E5%BF%83%E5%BE%97/</link>
+    <description>Recent content in 心得 on 墨非默</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Sat, 30 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://mix-liten.github.io/tags/%E5%BF%83%E5%BE%97/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>為你自己學Git-讀書心得-part1</title>
+      <link>https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part1/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part1/</guid>
+      <description>前言 上班之餘，抽空翻完作者在 2020 年年初因慶祝某件事情，提供的免費電子書 為你自己學 Git，有件事情必須先說清楚，這本書大部分章節都有放在 宣傳頁 免費觀看，早在前幾年我就有翻這本書的想法，但每次翻了幾頁後又放棄，直到上班一段時間後才吃透這本書，原因是內容生澀難懂，難懂的部分是以前對於書中舉例要解決的狀況不了解，生澀的部分是連指令的用法都不懂，卻介紹指令的背後在做什麼，現在可以吃透自然是有一段時間的使用經驗，遇到過各種狀況，才能披荊斬棘看完。
+從我的狀況來評價這本書的幾項要點
+  舉例出符合業界常遇到的狀況，並以此為出發點講解如何解決
+  解釋指令背後，git 做了哪些事，git 如何做到
+總結起來就是，不推薦新手入門看這本書，因新手很大一部分需要的不是如何解決問題及了解原理，而是現在要做什麼
+早期我覺得最有幫助的是很常見的   內容概要 這裡並不是全部的 git 指令，只是作為閱讀記錄，說明什麼情況適合使用什麼指令
+安裝好之後，使用版本指令檢查
+$ git --version 設定本機全域的 git 作者，建議和 GitHub 同步一樣的名稱及信箱，不要亂打，之後都會看到
+$ git config --global user.name &amp;#34;username&amp;#34; $ git config --global user.email &amp;#34;username@email.com&amp;#34; 完成後可用指令檢視，這個指令會列出 /User 根目錄中的 .gitconfig 的內容，裡面不只有名稱及信箱，平常不要亂動，特殊情況才會需要手動來調設定
+$ git config --list 若有需要在個別專案中設定不同作者，在該專案中設定 local user，注意要先初始化 git init
+$ git config --local user.name &amp;#34;local username&amp;#34; $ git config --local user.</description>
+    </item>
+    
+    <item>
+      <title>為你自己學Git-讀書心得-part2</title>
+      <link>https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part2/</link>
+      <pubDate>Sat, 30 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part2/</guid>
+      <description>前言 接續前一篇，直接進入紀錄的部分。
+分支相關指令 # 列出 local 分支 $ git branch # 列出 remote 分支 $ git branch -r # 等於 --remote # 列出 local + remote 分支 $ git branch -a # 開新分支 $ git branch branch_name # 在指定 commit 的位置開新分支 $ git branch branch_name 657fce7 # 更名分支 $ git branch -m old_name new_name # 刪除分支，若該分支內容未備份於其他分支會給予提示並且不可刪除，此時使用大寫 -D 以強制刪除 $ git branch -d branch_name # 切換分支 $ git checkout branch_name # 存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name # 在指定 commit 的位置，存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name 657fce7 # 切換到遠端分支時會發生 detached HEAD 狀態，使用追蹤參數在 local 建立追蹤分支，即可解決 $ git checkout -t origin/branch_name # 等於 --track # 回復分支，紀錄或找到被刪除分支最新 commit 的 SHA-1 值則可回復 $ git branch branch_name b174a5a # 列出所有節點紀錄，等同於 GUI 線圖 $ git show-branch -a # 強制遷移 master branch 到指定位置，HEAD 要先移到其他位置，忘開分支就 commit 時可能有用 $ git branch -f master e12d8ef 合併分支相關 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖相同，用線圖來看就是仍在一直線上，會啟用 快轉模式(Fast Forward)，效果看起來是只平移原分支 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖不相同，線圖類似 Y 形分岔，合併時會產生新的 commit，作為合併紀錄點，若發生 衝突(Conflict) 也會一併解決 # 使用以下指令可以總是產生分岔合併節點，即使刪除已合併過的分支，也可以在線圖上知道這裡曾經合併過 $ git merge branch_name --no-ff # 重設基礎合併，此方法會將當前分支的每個 commit 照順序嫁接到指定的分支上 $ git rebase branch_name # 此為危險操作，可用 Reflog 指令找到危險操作前最新 commit 的 SHA-1 值，並且執行 Reset 指令回復 # 或是使用危險操作皆有的額外紀錄點 ORIG_HEAD，執行 Reset 指令回復 $ git reset ORIG_HEAD --hard # rebase 指令進行時，若發生 衝突(Conflict)，處理方式和 merge 不同，此時看線圖會看到 HEAD 節點正卡出狀況的新移植節點上，此時將衝突解決，之後執行以下指令繼續 rebase $ git rebase --continue # 若衝突發生點不是文字檔而是圖片或其他二進位檔 $ git checkout --ours sample.</description>
+    </item>
+    
+  </channel>
+</rss>

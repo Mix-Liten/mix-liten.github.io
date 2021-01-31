@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on 墨非默</title>
+    <link>https://mix-liten.github.io/tags/docker/</link>
+    <description>Recent content in docker on 墨非默</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-TW</language>
+    <lastBuildDate>Sun, 22 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://mix-liten.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在-macOS-上建立-Laradock-環境</title>
+      <link>https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E5%BB%BA%E7%AB%8B-laradock-%E7%92%B0%E5%A2%83/</link>
+      <pubDate>Sun, 22 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E5%BB%BA%E7%AB%8B-laradock-%E7%92%B0%E5%A2%83/</guid>
+      <description>前言 Laradock 是一款簡單食用的APP一種輕鬆簡便安裝 Laravel 環境的開源專案，相較於官網提供的 Homestead 虛擬機在更新版本的不便以及過多用不到的配置，Laradock 提供了更多的自由度且同時有 Docker 開箱即用的便利性。
+以下篇幅可能略長，但大多是在建置時可能會遇到的問題，沒遇到問題可直接略過該步驟，另外其實大多數步驟在 Windows 系統也可以比照辦理。
+步驟  安裝 Docker  下載前要先註冊會員，下載後打開應用登入運行就可以不管它了。
+安裝 Laradock  打開 CMD 或同等功用的 Command Line，依照下方範例逐行執行
+cd ~/Documents/Laravel git clone https://github.com/Laradock/laradock.git cd laradock cp env-example .env 第一行 cd 進入的位置 可任意更換為你想要放 Laradock 專案的位置 第四行 cp 即是 複製 env-example 並更名為 .env
+修改 .env 檔  APP_CODE_PATH_HOST=~/Documents/PHPProject 後方位置請設定為預備要映射進虛擬機裡的放置專案的資料夾
+MYSQL_VERSION=5.7 MySQL 預設的版本是 latest，但這會有個延伸問題，如果你真想要用最新版本的 MySQL，就再多做一個步驟 於 laradock/mysql/my.cnf 新增下面這一行並儲存
+default_authentication_plugin=mysql_native_password 建立 Laravel 專案  cd ~/Documents/PHPProject laravel new testProject 如果出現錯誤說無法識別 laravel 指令，請參考官方文件安裝 laravel/installer</description>
+    </item>
+    
+  </channel>
+</rss>
