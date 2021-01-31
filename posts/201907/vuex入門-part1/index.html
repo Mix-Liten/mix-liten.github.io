@@ -7,7 +7,7 @@
 <meta name="author" content="Mix_Liten ">
 <meta name="description" content="前言 Vuex 是 Vue.js 的一種狀態管理模式(工具)，其他前端框架也有類似的管理工具，用來解決多個元件共用資料導致資料流混亂的問題，參考一的動圖解釋雖然是以 Redux 為例，但清楚的說明了狀態管理的使用情境。 參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  概述 下方以 Counter 舉例，大概看一下應該會發現跟原本的 Vue 差不多，也是有 data、methods、computed，只是在 Vuex 裡改叫 state、mutations、getters，還多了跟 emit 很像的 actions 屬性。
 // src/store/index.js const store = new Vuex.Store({ state: { count: 0, }, getters: { count: (state) =&amp;gt; state.count, }, mutations: { incrementMutation: (state) =&amp;gt; state.count&#43;&#43;, decrementMutation: (state) =&amp;gt; state.count--, }, actions: { incrementAction: ({ commit }) =&amp;gt; commit(&amp;#39;incrementMutation&amp;#39;), decrementAction: ({ commit }) =&amp;gt; commit(&amp;#39;decrementMutation&amp;#39;), } }) // template const Counter = { template: ` &amp;lt;div id=&amp;#34;counter&amp;#34;&amp;gt; &amp;lt;p&amp;gt; {{ count }} &amp;lt;/p&amp;gt; &amp;lt;p&amp;gt; &amp;lt;button @click=&amp;#34;increment&amp;#34;&amp;gt;&#43;&amp;lt;/button&amp;gt; &amp;lt;button @click=&amp;#34;decrement&amp;#34;&amp;gt;-&amp;lt;/button&amp;gt; &amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; `, computed: { count() { return this." />
-<meta name="keywords" content=", Vue, Vuex" />
+<meta name="keywords" content="frontend,f2e,網頁,Javascript,vue,git,docker,laradock, Vue, Vuex" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part1/" />
@@ -138,7 +138,8 @@
 
     <article>
       <h1 class="post-title">
-        <a href="https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part1/">Vuex入門 Part1</a>
+        
+        <p>Vuex入門 Part1</p>
       </h1>
 
       
@@ -326,7 +327,7 @@ Vuex 的狀態管理模式定義了資料流(Data Flow)</p>
         <div class="footer__content">
             <span>&copy; 2021</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
-            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
         </div>
     </div>
     <div class="footer__inner">

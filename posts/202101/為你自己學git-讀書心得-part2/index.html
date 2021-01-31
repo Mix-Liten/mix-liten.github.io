@@ -7,7 +7,7 @@
 <meta name="author" content="Mix_Liten ">
 <meta name="description" content="前言 接續前一篇，直接進入紀錄的部分。
 分支相關指令 # 列出 local 分支 $ git branch # 列出 remote 分支 $ git branch -r # 等於 --remote # 列出 local &#43; remote 分支 $ git branch -a # 開新分支 $ git branch branch_name # 在指定 commit 的位置開新分支 $ git branch branch_name 657fce7 # 更名分支 $ git branch -m old_name new_name # 刪除分支，若該分支內容未備份於其他分支會給予提示並且不可刪除，此時使用大寫 -D 以強制刪除 $ git branch -d branch_name # 切換分支 $ git checkout branch_name # 存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name # 在指定 commit 的位置，存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name 657fce7 # 切換到遠端分支時會發生 detached HEAD 狀態，使用追蹤參數在 local 建立追蹤分支，即可解決 $ git checkout -t origin/branch_name # 等於 --track # 回復分支，紀錄或找到被刪除分支最新 commit 的 SHA-1 值則可回復 $ git branch branch_name b174a5a # 列出所有節點紀錄，等同於 GUI 線圖 $ git show-branch -a # 強制遷移 master branch 到指定位置，HEAD 要先移到其他位置，忘開分支就 commit 時可能有用 $ git branch -f master e12d8ef 合併分支相關 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖相同，用線圖來看就是仍在一直線上，會啟用 快轉模式(Fast Forward)，效果看起來是只平移原分支 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖不相同，線圖類似 Y 形分岔，合併時會產生新的 commit，作為合併紀錄點，若發生 衝突(Conflict) 也會一併解決 # 使用以下指令可以總是產生分岔合併節點，即使刪除已合併過的分支，也可以在線圖上知道這裡曾經合併過 $ git merge branch_name --no-ff # 重設基礎合併，此方法會將當前分支的每個 commit 照順序嫁接到指定的分支上 $ git rebase branch_name # 此為危險操作，可用 Reflog 指令找到危險操作前最新 commit 的 SHA-1 值，並且執行 Reset 指令回復 # 或是使用危險操作皆有的額外紀錄點 ORIG_HEAD，執行 Reset 指令回復 $ git reset ORIG_HEAD --hard # rebase 指令進行時，若發生 衝突(Conflict)，處理方式和 merge 不同，此時看線圖會看到 HEAD 節點正卡出狀況的新移植節點上，此時將衝突解決，之後執行以下指令繼續 rebase $ git rebase --continue # 若衝突發生點不是文字檔而是圖片或其他二進位檔 $ git checkout --ours sample." />
-<meta name="keywords" content=", Git, 心得" />
+<meta name="keywords" content="frontend,f2e,網頁,Javascript,vue,git,docker,laradock, Git, 心得" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part2/" />
@@ -138,7 +138,8 @@
 
     <article>
       <h1 class="post-title">
-        <a href="https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part2/">為你自己學Git-讀書心得-part2</a>
+        
+        <p>為你自己學Git-讀書心得-part2</p>
       </h1>
 
       
@@ -454,7 +455,7 @@ $ git bisect reset
         <div class="footer__content">
             <span>&copy; 2021</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
-            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
         </div>
     </div>
     <div class="footer__inner">

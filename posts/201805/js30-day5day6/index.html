@@ -8,7 +8,7 @@
 <meta name="description" content="介紹Flex-Box 與 JavaScript原生Fetch用法
 Day 5  Flex-Box 平常我會參考的兩個codepen連結 Flexbox Visual Playground Properties for the flex container   flex基本用法是在父層設定display: flex; 在子層設定flex: 1; 等同於flex: 1 1 0%; flex: flex-grow flex-shrink flex-basis; flex-grow，當子層寬度加總低於父層寬度時，依給予的數字做比例延伸 flex-shrink，當子層寬度加總高於父層寬度時，依給予的數字做比例縮減 flex-basis，基準值，若用auto，會以內容分配寬度
 Day 6  fetch() MDN 的 Fetch 說明 會以Promise做回應，基本用法如下：  fetch(url) .then(res =&amp;gt; res.json()) .then(res =&amp;gt; console.log(res)) .catch(error =&amp;gt; console.error(error)); fetch(url, { method: &amp;#39;POST&amp;#39;, // or &amp;#39;PUT&amp;#39;  body: JSON.stringify(data), // data can be `string` or {object}!  headers: new Headers({ &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json&amp;#39; }) }); 用then接收Promise傳出的resolve(成功)，用catch接收Promise傳出的reject(失敗) 要注意的是fetch回傳出的是ReadableStream物件，簡單來說就是還要再處理一下才會變成可讀的資料，方法如下：" />
-<meta name="keywords" content=", js, css" />
+<meta name="keywords" content="frontend,f2e,網頁,Javascript,vue,git,docker,laradock, js, css" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://mix-liten.github.io/posts/201805/js30-day5day6/" />
@@ -141,7 +141,8 @@ Day 6  fetch() MDN 的 Fetch 說明 會以Promise做回應，基本用法如下�
 
     <article>
       <h1 class="post-title">
-        <a href="https://mix-liten.github.io/posts/201805/js30-day5day6/">JS30-Day5 &amp; Day6</a>
+        
+        <p>JS30-Day5 &amp; Day6</p>
       </h1>
 
       
@@ -313,7 +314,7 @@ split()，分割成陣列，必須設定separator，howmany則是可選參數</p
         <div class="footer__content">
             <span>&copy; 2021</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
-            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
         </div>
     </div>
     <div class="footer__inner">

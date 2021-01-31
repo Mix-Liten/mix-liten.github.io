@@ -12,7 +12,7 @@ Vue-router 說明文件
 順便介紹同樣內建在裡面的vue-router，這東西的用途是可以把網頁做成單頁應用SPA(Single Page Application)，優點是頁面間切換很順暢，缺點是進網頁會讀久一點。
  挖空格放組件(router-view)  &amp;lt;template&amp;gt; &amp;lt;div&amp;gt; &amp;lt;Menu/&amp;gt; &amp;lt;div class=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;router-view/&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;Footer/&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;script&amp;gt; import Menu from &amp;#39;./Menu&amp;#39;; import Footer from &amp;#39;./Footer&amp;#39;; export default{ components: { Menu, Footer, } } &amp;lt;/script&amp;gt; router-view tag 會塞入子組件的內容，menu和footer則是直接引入組件到Vue實例裡直接使用。
  組件之間的連結(router-link)  &amp;lt;router-link to=&amp;#34;about&amp;#34;&amp;gt;About&amp;lt;/router-link&amp;gt; 這句會被自動編譯成a連結。" />
-<meta name="keywords" content=", Vue" />
+<meta name="keywords" content="frontend,f2e,網頁,Javascript,vue,git,docker,laradock, Vue" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://mix-liten.github.io/posts/201805/vue-%E5%B7%A5%E5%85%B7-vuecli/" />
@@ -153,7 +153,8 @@ Vue-router 說明文件
 
     <article>
       <h1 class="post-title">
-        <a href="https://mix-liten.github.io/posts/201805/vue-%E5%B7%A5%E5%85%B7-vuecli/">Vue-工具-Vue CLI</a>
+        
+        <p>Vue-工具-Vue CLI</p>
       </h1>
 
       
@@ -353,7 +354,7 @@ vue init &lt;樣板名稱&gt; &lt;專案名稱&gt; //下載樣板
         <div class="footer__content">
             <span>&copy; 2021</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
-            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
         </div>
     </div>
     <div class="footer__inner">

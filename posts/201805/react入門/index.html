@@ -9,7 +9,7 @@
  React 官網 React 簡中官網 翻譯的版本稍微落後一點，右鍵翻譯成繁中即可，如果對大陸用語不習慣，最近剛好有人做轉換套件，效用是把數組-&amp;gt;陣列之類的。 ReactJS 101 標榜從零開始學 ReactJS，希望讓初學者一看就懂的，不過解釋和說明的部分，如果是幾個月前我還沒學Vue還真看不懂，延伸資源和Google會很有幫助。 激戰 ReactJS 30天 IT邦幫忙鐵人賽的文章，號稱連續30天不間斷發文分享挑戰，但通常第一天和最後一天會寫引言和感想。  專案的組件越來越多的情況下，裡面的state比較難管理，可用一些套件幫忙管理狀態，如Flux、Redux、MobX，影片教學在youtube很多，像是Redux的教學就有：
  wes bos LearnCode.academy thenewboston  順便記錄一個之前用Vue就有的疑問，為什麼組件最外層都是div，先來看看官網最基礎的範例 如果同個組件，hello world後面還想放一個p段落，試著把下方兩種寫法貼到範例連結試試，原因其實是組件的解析只能有一層，不能並排。
 &amp;lt;script type=&amp;#34;text/babel&amp;#34;&amp;gt; // 錯誤 ReactDOM.render( &amp;lt;h1&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;content&amp;lt;/p&amp;gt;, document.getElementById(&amp;#39;example&amp;#39;) ); &amp;lt;/script&amp;gt; &amp;lt;script type=&amp;#34;text/babel&amp;#34;&amp;gt; /* 正確 */ ReactDOM.render( &amp;lt;div&amp;gt; &amp;lt;h1&amp;gt;Hello, world!&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;content&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt;, document.getElementById(&amp;#39;example&amp;#39;) ); &amp;lt;/script&amp;gt; 總的來說，React的JSX其實只是讓你可以在js裡寫html，不過略有不同，詳細可以看官網介紹或是TechBridge 技術共筆部落格的分享。 React較精深的部分(官網的進階指引)目前我也還看不太懂，大略只知道它本身有提供一些能提高效能的作法。" />
-<meta name="keywords" content=", js, React" />
+<meta name="keywords" content="frontend,f2e,網頁,Javascript,vue,git,docker,laradock, js, React" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://mix-liten.github.io/posts/201805/react%E5%85%A5%E9%96%80/" />
@@ -144,7 +144,8 @@
 
     <article>
       <h1 class="post-title">
-        <a href="https://mix-liten.github.io/posts/201805/react%E5%85%A5%E9%96%80/">React 入門</a>
+        
+        <p>React 入門</p>
       </h1>
 
       
@@ -284,7 +285,7 @@ React較精深的部分(官網的進階指引)目前我也還看不太懂，大�
         <div class="footer__content">
             <span>&copy; 2021</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
-            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
         </div>
     </div>
     <div class="footer__inner">

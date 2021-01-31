@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Mix_Liten ">
 <meta name="description" content="模板語言 Vue template (官網說法 指令 Directives)  v-text  &amp;lt;span v-text=&amp;#34;msg&amp;#34;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span&amp;gt;{{msg}}&amp;lt;/span&amp;gt; 兩種寫法都可以。 v-html  &amp;lt;div v-html=&amp;#34;html&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; 如果想要動態插入內容，使用innerHTML是拿不到實例中的data的喔。 v-show  &amp;lt;h1 v-show=&amp;#34;show&amp;#34;&amp;gt;Hello!&amp;lt;/h1&amp;gt; 等於CSS裡的display。 v-if, v-else-if, v-else  &amp;lt;div v-if=&amp;#34;type === &amp;#39;A&amp;#39;&amp;#34;&amp;gt;A&amp;lt;/div&amp;gt; &amp;lt;div v-else-if=&amp;#34;type === &amp;#39;B&amp;#39;&amp;#34;&amp;gt;B&amp;lt;/div&amp;gt; &amp;lt;div v-else&amp;gt;Not A/B&amp;lt;/div&amp;gt; v-if 和 v-show 的差別是在條件不成立的情況下，v-if不會被渲染到網頁上，v-show則是單純看不到。 v-for &amp;lt;!-- Array --&amp;gt; &amp;lt;li v-for=&amp;#34;todo in todos&amp;#34; v-if=&amp;#34;todo.isComplete&amp;#34;&amp;gt; {{ todo }} &amp;lt;/li&amp;gt; &amp;lt;div v-for=&amp;#34;(todo, index) in todos&amp;#34;&amp;gt; {{ index }}: {{ todo }} &amp;lt;/div&amp;gt; &amp;lt;!-- Object --&amp;gt; &amp;lt;div v-for=&amp;#34;value in object&amp;#34;&amp;gt; {{ value }} &amp;lt;/div&amp;gt; &amp;lt;div v-for=&amp;#34;(value, key) in object&amp;#34;&amp;gt; {{ key }}: {{ value }} &amp;lt;/div&amp;gt; &amp;lt;div v-for=&amp;#34;(value, key, index) in object&amp;#34;&amp;gt; {{ index }}." />
-<meta name="keywords" content=", js, Vue" />
+<meta name="keywords" content="frontend,f2e,網頁,Javascript,vue,git,docker,laradock, js, Vue" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
 <link rel="canonical" href="https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-2-%E6%A8%A1%E6%9D%BF/" />
@@ -135,7 +135,8 @@
 
     <article>
       <h1 class="post-title">
-        <a href="https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-2-%E6%A8%A1%E6%9D%BF/">Vue-筆記-2-模板</a>
+        
+        <p>Vue-筆記-2-模板</p>
       </h1>
 
       
@@ -393,7 +394,7 @@ const vm = new Vue({
         <div class="footer__content">
             <span>&copy; 2021</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
-            <span><a href="https://mix-liten.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
         </div>
     </div>
     <div class="footer__inner">
