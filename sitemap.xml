@@ -3,22 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://mix-liten.github.io/tags/git/</loc>
-    <lastmod>2021-01-30T23:01:10+00:00</lastmod>
+    <loc>https://mix-liten.github.io/categories/</loc>
+    <lastmod>2021-02-01T21:47:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mix-liten.github.io/posts/202102/hexo%E5%88%B0hugo-%E9%81%B7%E7%A7%BB%E9%81%8E%E7%A8%8B%E7%B4%80%E9%8C%84/</loc>
+    <lastmod>2021-02-01T21:47:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mix-liten.github.io/tags/hugo/</loc>
+    <lastmod>2021-02-01T21:47:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mix-liten.github.io/tags/other/</loc>
+    <lastmod>2021-02-01T21:47:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mix-liten.github.io/categories/other/</loc>
+    <lastmod>2021-02-01T21:47:21+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://mix-liten.github.io/posts/</loc>
-    <lastmod>2021-01-30T23:01:10+00:00</lastmod>
+    <lastmod>2021-02-01T21:47:21+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://mix-liten.github.io/tags/</loc>
-    <lastmod>2021-01-30T23:01:10+00:00</lastmod>
+    <lastmod>2021-02-01T21:47:21+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://mix-liten.github.io/</loc>
+    <lastmod>2021-02-01T21:47:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://mix-liten.github.io/tags/git/</loc>
     <lastmod>2021-01-30T23:01:10+00:00</lastmod>
   </url>
   
@@ -65,11 +90,6 @@
   <url>
     <loc>https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E5%BB%BA%E7%AB%8B-laradock-%E7%92%B0%E5%A2%83/</loc>
     <lastmod>2019-12-22T21:08:39+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mix-liten.github.io/tags/other/</loc>
-    <lastmod>2019-11-01T17:36:29+00:00</lastmod>
   </url>
   
   <url>
@@ -250,10 +270,6 @@
   <url>
     <loc>https://mix-liten.github.io/posts/201804/cs-%E9%97%9C%E6%96%BCip/</loc>
     <lastmod>2018-04-17T03:52:19+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mix-liten.github.io/categories/</loc>
   </url>
   
 </urlset>

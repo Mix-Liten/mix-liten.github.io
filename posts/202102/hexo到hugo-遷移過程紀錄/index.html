@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Mix_Liten ">
+<meta name="description" content="前言 這篇說是搬遷紀錄，如果真的只寫紀錄的話，可以借鑑的部分一定很少，所以會順便介紹 Hugo，即使之前沒有寫過部落格的，也可以參考這篇建置。
+搬遷動機 其實主要原因只是衝動，但多少是一些使用過程中遇到的問題導致，不是說這個生態系不好用，我還是比較推薦 Hexo 作為新手入門使用，畢竟它本身是 JS 寫的，官方文件看不懂，還可以直接去找原始碼看懂，(శωశ)。
+以下列出兩個面向，一是 Hexo 本身，二是我使用的這套 hexo-theme-hueman 主題。
+  很難保證使用者可以無腦升級環境和套件版本
+Hexo 是用 JS 寫的，不免俗的是使用 Node.js/npm 組合包，而我在開發環境升到 Node.js ^14 後，最低限度的建置和發佈功能就壞掉了，查詢其他人回報同樣問題的解決方式，居然都是要環境降版，官方也回答不要用最新的環境，其實這種問題也不一定是 Hexo 自身的問題，有可能是相依套件的鍋，不過我就甩到它身上。
+  主題為了使用外部參數，必須使用樣板語言，但又很難用
+乍看之下好像沒什麼，主題其實很方便，載好放到指定目錄即可，但我有客製的需求，主題不是用 EJS ，就是 Pug，改起來滿有難度的，而且一改就很難拉主題的最新更新。
+  建置步驟   安裝
+windows 去 Hugo GitHub 的 Releases 找安裝檔
+macOS 用 Homebrew 裝，$ brew install hugo
+  建立站點
+$ hugo new site &amp;lt;site_name&amp;gt; 建好後，裡面的目錄結構長這樣 . ├── archetypes # 新文章樣板，後面建文章的部分解釋 ├── config." />
+<meta name="keywords" content="frontend,f2e,網頁,Javascript,vue,git,docker,laradock, Other, Hugo" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://mix-liten.github.io/posts/202102/hexo%E5%88%B0hugo-%E9%81%B7%E7%A7%BB%E9%81%8E%E7%A8%8B%E7%B4%80%E9%8C%84/" />
+
+
+    <title>
+        
+            Hexo到Hugo 遷移過程紀錄 :: 墨非默 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://mix-liten.github.io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://mix-liten.github.io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://mix-liten.github.io/favicon-16x16.png">
+    <link rel="manifest" href="https://mix-liten.github.io/site.webmanifest">
+    <link rel="mask-icon" href="https://mix-liten.github.io/safari-pinned-tab.svg" color="#1b1c1d">
+    <link rel="shortcut icon" href="https://mix-liten.github.io/favicon.ico">
+    <meta name="msapplication-TileColor" content="#1b1c1d">
+    <meta name="theme-color" content="#1b1c1d">
+
+
+
+<meta itemprop="name" content="Hexo到Hugo 遷移過程紀錄">
+<meta itemprop="description" content="前言 這篇說是搬遷紀錄，如果真的只寫紀錄的話，可以借鑑的部分一定很少，所以會順便介紹 Hugo，即使之前沒有寫過部落格的，也可以參考這篇建置。
+搬遷動機 其實主要原因只是衝動，但多少是一些使用過程中遇到的問題導致，不是說這個生態系不好用，我還是比較推薦 Hexo 作為新手入門使用，畢竟它本身是 JS 寫的，官方文件看不懂，還可以直接去找原始碼看懂，(శωశ)。
+以下列出兩個面向，一是 Hexo 本身，二是我使用的這套 hexo-theme-hueman 主題。
+  很難保證使用者可以無腦升級環境和套件版本
+Hexo 是用 JS 寫的，不免俗的是使用 Node.js/npm 組合包，而我在開發環境升到 Node.js ^14 後，最低限度的建置和發佈功能就壞掉了，查詢其他人回報同樣問題的解決方式，居然都是要環境降版，官方也回答不要用最新的環境，其實這種問題也不一定是 Hexo 自身的問題，有可能是相依套件的鍋，不過我就甩到它身上。
+  主題為了使用外部參數，必須使用樣板語言，但又很難用
+乍看之下好像沒什麼，主題其實很方便，載好放到指定目錄即可，但我有客製的需求，主題不是用 EJS ，就是 Pug，改起來滿有難度的，而且一改就很難拉主題的最新更新。
+  建置步驟   安裝
+windows 去 Hugo GitHub 的 Releases 找安裝檔
+macOS 用 Homebrew 裝，$ brew install hugo
+  建立站點
+$ hugo new site &lt;site_name&gt; 建好後，裡面的目錄結構長這樣 . ├── archetypes # 新文章樣板，後面建文章的部分解釋 ├── config.">
+<meta itemprop="datePublished" content="2021-02-01T21:47:21+08:00" />
+<meta itemprop="dateModified" content="2021-02-01T21:47:21+08:00" />
+<meta itemprop="wordCount" content="362">
+<meta itemprop="image" content="https://mix-liten.github.io/"/>
+
+
+
+<meta itemprop="keywords" content="Other,Hugo," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://mix-liten.github.io/"/>
+
+<meta name="twitter:title" content="Hexo到Hugo 遷移過程紀錄"/>
+<meta name="twitter:description" content="前言 這篇說是搬遷紀錄，如果真的只寫紀錄的話，可以借鑑的部分一定很少，所以會順便介紹 Hugo，即使之前沒有寫過部落格的，也可以參考這篇建置。
+搬遷動機 其實主要原因只是衝動，但多少是一些使用過程中遇到的問題導致，不是說這個生態系不好用，我還是比較推薦 Hexo 作為新手入門使用，畢竟它本身是 JS 寫的，官方文件看不懂，還可以直接去找原始碼看懂，(శωశ)。
+以下列出兩個面向，一是 Hexo 本身，二是我使用的這套 hexo-theme-hueman 主題。
+  很難保證使用者可以無腦升級環境和套件版本
+Hexo 是用 JS 寫的，不免俗的是使用 Node.js/npm 組合包，而我在開發環境升到 Node.js ^14 後，最低限度的建置和發佈功能就壞掉了，查詢其他人回報同樣問題的解決方式，居然都是要環境降版，官方也回答不要用最新的環境，其實這種問題也不一定是 Hexo 自身的問題，有可能是相依套件的鍋，不過我就甩到它身上。
+  主題為了使用外部參數，必須使用樣板語言，但又很難用
+乍看之下好像沒什麼，主題其實很方便，載好放到指定目錄即可，但我有客製的需求，主題不是用 EJS ，就是 Pug，改起來滿有難度的，而且一改就很難拉主題的最新更新。
+  建置步驟   安裝
+windows 去 Hugo GitHub 的 Releases 找安裝檔
+macOS 用 Homebrew 裝，$ brew install hugo
+  建立站點
+$ hugo new site &lt;site_name&gt; 建好後，裡面的目錄結構長這樣 . ├── archetypes # 新文章樣板，後面建文章的部分解釋 ├── config."/>
+
+
+
+
+
+
+    <meta property="article:section" content="Other" />
+
+
+
+    <meta property="article:published_time" content="2021-02-01 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://mix-liten.github.io/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">&gt;</span>
+            <span class="logo__text">$ cd /home/</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://mix-liten.github.io/about/">About</a></li><li><a href="https://mix-liten.github.io/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        
+        <p>Hexo到Hugo 遷移過程紀錄</p>
+      </h1>
+
+      
+
+      
+        <hr />
+        <aside id="toc">
+          <div class="toc-title">Table of Contents</div>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#搬遷動機">搬遷動機</a></li>
+    <li><a href="#建置步驟">建置步驟</a></li>
+    <li><a href="#發佈">發佈</a></li>
+    <li><a href="#補充">補充</a></li>
+    <li><a href="#結語">結語</a></li>
+  </ul>
+</nav>
+        </aside>
+        <hr />
+
+      <div class="post-content">
+        <h2 id="前言">前言</h2>
+<p>這篇說是搬遷紀錄，如果真的只寫紀錄的話，可以借鑑的部分一定很少，所以會順便介紹 <a href="https://gohugo.io/" title="Hugo 官網"><code>Hugo</code></a>，即使之前沒有寫過部落格的，也可以參考這篇建置。</p>
+<h2 id="搬遷動機">搬遷動機</h2>
+<p>其實主要原因只是衝動，但多少是一些使用過程中遇到的問題導致，不是說這個生態系不好用，我還是比較推薦 Hexo 作為新手入門使用，畢竟它本身是 JS 寫的，官方文件看不懂，還可以直接去找原始碼看懂，(శωశ)。</p>
+<p>以下列出兩個面向，一是 <a href="https://hexo.io/zh-tw/" title="Hexo 官網"><code>Hexo</code></a> 本身，二是我使用的這套 <a href="https://github.com/ppoffice/hexo-theme-hueman" title="hexo-theme-hueman"><code>hexo-theme-hueman</code></a> 主題。</p>
+<ul>
+<li>
+<p>很難保證使用者可以無腦升級環境和套件版本</p>
+<p>Hexo 是用 JS 寫的，不免俗的是使用 Node.js/npm 組合包，而我在開發環境升到 <code>Node.js ^14</code> 後，最低限度的建置和發佈功能就壞掉了，查詢其他人回報同樣問題的解決方式，居然都是要環境降版，官方也回答不要用最新的環境，其實這種問題也不一定是 Hexo 自身的問題，有可能是相依套件的鍋，不過我就甩到它身上。</p>
+</li>
+<li>
+<p>主題為了使用外部參數，必須使用樣板語言，但又很難用</p>
+<p>乍看之下好像沒什麼，主題其實很方便，載好放到指定目錄即可，但我有客製的需求，主題不是用 EJS ，就是 Pug，改起來滿有難度的，而且一改就很難拉主題的最新更新。</p>
+</li>
+</ul>
+<h2 id="建置步驟">建置步驟</h2>
+<ol>
+<li>
+<p>安裝</p>
+<p>windows 去 <a href="https://github.com/gohugoio/hugo">Hugo GitHub</a> 的 Releases 找安裝檔</p>
+<p>macOS 用 <a href="https://brew.sh/index_zh-tw"><code>Homebrew</code></a> 裝，<code>$ brew install hugo</code></p>
+</li>
+<li>
+<p>建立站點</p>
+<p><code>$ hugo new site &lt;site_name&gt;</code> <!-- raw HTML omitted -->
+建好後，裡面的目錄結構長這樣 <!-- raw HTML omitted --></p>
+<pre><code class="language-log" data-lang="log">.
+├── archetypes  # 新文章樣板，後面建文章的部分解釋
+├── config.toml # 設定檔，非常重要，預設格式為 toml，可改為 yaml / json
+├── content     # 放文章，結構後面說
+├── data        # 沒用到，官方說明是用來放置靜態資料，再用官方樣板語言讀取
+├── layouts     # 沒用到，因為已套用主題的 layouts，官方有規定結構，自製要注意
+├── static      # 靜態檔放置處，放 images、css、js
+└── themes      # 主題放置處，下個步驟解釋
+</code></pre></li>
+<li>
+<p>下載主題</p>
+</li>
+</ol>
+<ul>
+<li>到 <a href="https://themes.gohugo.io/">Hugo Themes</a> 挑選，挑好後想辦法把它抓下來，塞到<code>/themes</code>資料夾裡，官方建議使用的<code>git submodule</code>非常不方便，如果完全不想改主題再使用，不然直接下載或是<code>git clone</code>會比較方便客製</li>
+<li>之後到設定檔<code>config.toml</code>，增加這行，<code>theme = &quot;&lt;theme_name&gt;&quot;</code>，<code>theme_name</code>自行替換為<code>/themes</code>裡的主題資料夾名</li>
+<li>主題所在的 GitHub Repo，找找 README，找到主題的擴充設定，通常也會是<code>config.toml</code>，全部複製貼上到自己的設定檔，後面邊預覽邊調整細項</li>
+</ul>
+<ol start="4">
+<li>
+<p>建立新文章</p>
+<p>執行這行指令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo new posts/my-first-post.md
+</code></pre></div><p>這個步驟有幾個細節</p>
+<ul>
+<li>指令中的<code>posts</code>，會使用<code>/archetypes</code>內的<code>posts.md</code>作為樣板生成後面的檔案，若樣板不存在則使用<code>default.md</code>，注意這裡會優先使用<code>/themes/&lt;theme_name&gt;/archetypes</code></li>
+<li>建出來的檔案位置是，<code>/content/posts/my-first-post.md</code></li>
+<li>此時若開啟預覽，文章網址預設在，<code>/posts/my-first-post</code></li>
+<li>預設的<code>default.md</code>樣板的<a href="https://gohugo.io/content-management/front-matter/"><code>Front Matter</code></a>會取得檔名，並經過<code>&quot;{{ replace .Name &quot;-&quot; &quot; &quot; | title }}&quot;</code>，轉換為<code>my first post</code>
+<pre><code class="language-log" data-lang="log"># default.md
+---
+title: &quot;{{ replace .Name &quot;-&quot; &quot; &quot; | title }}&quot;
+date: {{ .Date }}
+draft: false
+---
+
+# my-first-post.md
+---
+title: &quot;my first post&quot;
+date: 2021-02-01T14:15:59-06:00
+draft: false
+---
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p>開發預覽</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo server -D
+<span style="color:#75715e"># -D，連同草稿( draft: true )一起編譯</span>
+</code></pre></div><p>此時注意，不管是設定檔修改，還是新增文章並修改，都可以即時預覽，不用重開</p>
+</li>
+</ol>
+<h2 id="發佈">發佈</h2>
+<p>因發佈是我自己的流程，和前面的步驟段落分開，新手可參考，或是找其他人的方法</p>
+<ol>
+<li>到 GitHub 建立新 Repo，Repo 名隨意，用來放置除發佈資料夾以外的開發檔案，記得在<code>.gitignore</code> 忽略<code>public/</code>、<code>resources/</code>，之後包含主題全部推上遠端，後續要自己不定時推上遠端</li>
+<li>到 GitHub 建立新 Repo，Repo 名使用每個帳號唯一一個主網域，<code>&lt;GitHub_Id&gt;.github.io</code>，修改設定檔內的<code>baseURL</code>等於 Repo 名，執行建置指令<code>$ hugo</code>，進入<code>/public</code>，建立 git，所有內容推上遠端，後續更新只要執行建置→進入<code>/public</code>→推遠端即可</li>
+</ol>
+<h2 id="補充">補充</h2>
+<ul>
+<li>
+<p>文章結構 &amp; 建檔腳本</p>
+<p>因朋友啟發，若文章數量變多易導致管理不易，我的<code>/content</code>資料夾結構如下</p>
+<pre><code class="language-log" data-lang="log">/content
+  └──posts
+      ├───2020
+      |     ├───01
+      |     ├───02
+      |     ├───03
+      |     ...
+      |     ├───11
+      |     └───12
+      └───2021
+            ├───01
+            ├───02
+            |    └───2020-02-01-my-first-post.md # 檔案依照年月放置，並且檔名自帶日期
+            └───03
+</code></pre><p>別忘了上面有說，檔案放的位置和名稱會影響網址，但我不可能讓文章網址是<code>/posts/2021/02/2020-02-01-my-first-post</code></p>
+<p>這時候參考官網的<a href="https://gohugo.io/content-management/urls/"><code>URL Management</code></a>，在設定檔中增加 <code>[permalinks] posts = &quot;/posts/:year:month/:slug&quot;</code>，設定之後的網址是<code>/posts/202102/myfirstpost</code></p>
+<p>網址搞定之後，覺得如果每次建立新文章，要手動調整檔案到指定格式，或是打一長串指令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo new posts/2021/02/2020-02-02-my-second-post.md
+</code></pre></div><p>太麻煩了，所以寫了一個腳本，可以自動生成檔案，並且避免檔案內的標題抓到日期</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># newPost.sh</span>
+
+<span style="color:#66d9ef">if</span> ! command -v hugo &amp;&gt; /dev/null
+<span style="color:#66d9ef">then</span>
+    echo <span style="color:#e6db74">&#34;hugo command could not be found&#34;</span>
+    exit
+<span style="color:#66d9ef">fi</span>
+
+read -p <span style="color:#e6db74">&#34;Input New Post Name: &#34;</span> POSTNAME
+
+TODAY<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>date <span style="color:#e6db74">&#39;+%Y-%m-%d&#39;</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+YYYY<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date <span style="color:#e6db74">&#39;+%Y&#39;</span><span style="color:#66d9ef">)</span>
+MM<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date <span style="color:#e6db74">&#39;+%m&#39;</span><span style="color:#66d9ef">)</span>
+BASIC<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;posts/</span><span style="color:#e6db74">${</span>YYYY<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>MM<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>POSTNAME<span style="color:#e6db74">}</span><span style="color:#e6db74">.md&#34;</span>
+FULL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;posts/</span><span style="color:#e6db74">${</span>YYYY<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>MM<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>TODAY<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>POSTNAME<span style="color:#e6db74">}</span><span style="color:#e6db74">.md&#34;</span>
+
+hugo new $BASIC
+
+mv <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span><span style="color:#e6db74">/content/</span><span style="color:#e6db74">${</span>BASIC<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span><span style="color:#e6db74">/content/</span><span style="color:#e6db74">${</span>FULL<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><p>如上，自己建個檔案，把上面這段貼進去儲存，執行後只要打上檔名即可，再現跟 Hexo 一樣的體驗</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sh newPost.sh
+Input New Post Name: &lt;type_your_new_post_name&gt;
+post created!
+</code></pre></div></li>
+<li>
+<p>發佈腳本</p>
+<p>同樣麻煩，一樣寫了個腳本</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># deploy.sh</span>
+echo -e <span style="color:#e6db74">&#34;\033[0;32mDeploying updates to GitHub...\033[0m&#34;</span>
+
+<span style="color:#75715e"># Build the project.</span>
+hugo
+
+cd public/
+
+<span style="color:#75715e"># Add changes to git.</span>
+git add .
+
+<span style="color:#75715e"># Commit changes.</span>
+<span style="color:#75715e"># rebuilding site 2021年 2月1日 週日 21時33分47秒 CST</span>
+msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rebuilding site `date`&#34;</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -eq <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>
+    <span style="color:#66d9ef">then</span> msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">fi</span>
+git commit -m <span style="color:#e6db74">&#34;</span>$msg<span style="color:#e6db74">&#34;</span>
+
+<span style="color:#75715e"># Push source and build repos.</span>
+git push origin master
+</code></pre></div><p>同樣重現 Hexo 體驗，執行發佈檔即可，可多寫一個參數作為 commit 的內容</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sh deploy.sh
+-----------
+$ sh deploy.sh &lt;custom_commit_message&gt;
+</code></pre></div></li>
+</ul>
+<h2 id="結語">結語</h2>
+<p>應該可以從各方面看出我對新工具還不太熟悉，一方面是功能很多，另一方面是 Hugo 的官網不像 Hexo 有官方繁中文件</p>
+<p>反正現在基本的部落格建起來了，需要新功能再研究囉～</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://mix-liten.github.io/tags/other/">Other</a></span>
+        <span class="tag"><a href="https://mix-liten.github.io/tags/hugo/">Hugo</a></span>
+        
+    </p>
+
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://mix-liten.github.io/categories/other/">Other</a></span>
+        
+    </p>
+
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        362 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-02-01 08:00
+        
+
+         
+          
+            
+              (Last updated: 2021-02-01 21:47)
+            
+          
+        
+      </p>
+    </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+
+          
+            <span class="button next">
+              <a href="https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part1/">
+                <span class="button__text">為你自己學Git-讀書心得-part1</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
+            
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+
+
+
+    </body>
+</html>
