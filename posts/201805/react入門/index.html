@@ -28,7 +28,7 @@
 
 
 
-<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+<link rel="stylesheet" href="https://mix-liten.github.io/main.de188b3201233c251f4fd6306dbd2cb41e408fb8846c09781b2925de7df5025c.css">
 
 
 
@@ -48,16 +48,10 @@
 <meta itemprop="description" content="這幾天因為JS30單個章節長達30分鐘，有點沒耐心，就去看了一下之前存下來準備之後有時間看的內容，分享一下近年來使用率極高的React的相關資源，僅止於入門。
  React 官網 React 簡中官網 翻譯的版本稍微落後一點，右鍵翻譯成繁中即可，如果對大陸用語不習慣，最近剛好有人做轉換套件，效用是把數組-&gt;陣列之類的。 ReactJS 101 標榜從零開始學 ReactJS，希望讓初學者一看就懂的，不過解釋和說明的部分，如果是幾個月前我還沒學Vue還真看不懂，延伸資源和Google會很有幫助。 激戰 ReactJS 30天 IT邦幫忙鐵人賽的文章，號稱連續30天不間斷發文分享挑戰，但通常第一天和最後一天會寫引言和感想。  專案的組件越來越多的情況下，裡面的state比較難管理，可用一些套件幫忙管理狀態，如Flux、Redux、MobX，影片教學在youtube很多，像是Redux的教學就有：
  wes bos LearnCode.academy thenewboston  順便記錄一個之前用Vue就有的疑問，為什麼組件最外層都是div，先來看看官網最基礎的範例 如果同個組件，hello world後面還想放一個p段落，試著把下方兩種寫法貼到範例連結試試，原因其實是組件的解析只能有一層，不能並排。
-&lt;script type=&#34;text/babel&#34;&gt; // 錯誤 ReactDOM.render( &lt;h1&gt;Hello, world!&lt;/h1&gt; &lt;p&gt;content&lt;/p&gt;, document.getElementById(&#39;example&#39;) ); &lt;/script&gt; &lt;script type=&#34;text/babel&#34;&gt; /* 正確 */ ReactDOM.render( &lt;div&gt; &lt;h1&gt;Hello, world!&lt;/h1&gt; &lt;p&gt;content&lt;/p&gt; &lt;/div&gt;, document.getElementById(&#39;example&#39;) ); &lt;/script&gt; 總的來說，React的JSX其實只是讓你可以在js裡寫html，不過略有不同，詳細可以看官網介紹或是TechBridge 技術共筆部落格的分享。 React較精深的部分(官網的進階指引)目前我也還看不太懂，大略只知道它本身有提供一些能提高效能的作法。">
-<meta itemprop="datePublished" content="2018-05-28T22:11:36+00:00" />
+&lt;script type=&#34;text/babel&#34;&gt; // 錯誤 ReactDOM.render( &lt;h1&gt;Hello, world!&lt;/h1&gt; &lt;p&gt;content&lt;/p&gt;, document.getElementById(&#39;example&#39;) ); &lt;/script&gt; &lt;script type=&#34;text/babel&#34;&gt; /* 正確 */ ReactDOM.render( &lt;div&gt; &lt;h1&gt;Hello, world!&lt;/h1&gt; &lt;p&gt;content&lt;/p&gt; &lt;/div&gt;, document.getElementById(&#39;example&#39;) ); &lt;/script&gt; 總的來說，React的JSX其實只是讓你可以在js裡寫html，不過略有不同，詳細可以看官網介紹或是TechBridge 技術共筆部落格的分享。 React較精深的部分(官網的進階指引)目前我也還看不太懂，大略只知道它本身有提供一些能提高效能的作法。"><meta itemprop="datePublished" content="2018-05-28T22:11:36+00:00" />
 <meta itemprop="dateModified" content="2018-05-28T22:11:36+00:00" />
-<meta itemprop="wordCount" content="50">
-<meta itemprop="image" content="https://mix-liten.github.io/"/>
-
-
-
+<meta itemprop="wordCount" content="50"><meta itemprop="image" content="https://mix-liten.github.io/"/>
 <meta itemprop="keywords" content="js,React," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://mix-liten.github.io/"/>
 
@@ -66,7 +60,6 @@
  React 官網 React 簡中官網 翻譯的版本稍微落後一點，右鍵翻譯成繁中即可，如果對大陸用語不習慣，最近剛好有人做轉換套件，效用是把數組-&gt;陣列之類的。 ReactJS 101 標榜從零開始學 ReactJS，希望讓初學者一看就懂的，不過解釋和說明的部分，如果是幾個月前我還沒學Vue還真看不懂，延伸資源和Google會很有幫助。 激戰 ReactJS 30天 IT邦幫忙鐵人賽的文章，號稱連續30天不間斷發文分享挑戰，但通常第一天和最後一天會寫引言和感想。  專案的組件越來越多的情況下，裡面的state比較難管理，可用一些套件幫忙管理狀態，如Flux、Redux、MobX，影片教學在youtube很多，像是Redux的教學就有：
  wes bos LearnCode.academy thenewboston  順便記錄一個之前用Vue就有的疑問，為什麼組件最外層都是div，先來看看官網最基礎的範例 如果同個組件，hello world後面還想放一個p段落，試著把下方兩種寫法貼到範例連結試試，原因其實是組件的解析只能有一層，不能並排。
 &lt;script type=&#34;text/babel&#34;&gt; // 錯誤 ReactDOM.render( &lt;h1&gt;Hello, world!&lt;/h1&gt; &lt;p&gt;content&lt;/p&gt;, document.getElementById(&#39;example&#39;) ); &lt;/script&gt; &lt;script type=&#34;text/babel&#34;&gt; /* 正確 */ ReactDOM.render( &lt;div&gt; &lt;h1&gt;Hello, world!&lt;/h1&gt; &lt;p&gt;content&lt;/p&gt; &lt;/div&gt;, document.getElementById(&#39;example&#39;) ); &lt;/script&gt; 總的來說，React的JSX其實只是讓你可以在js裡寫html，不過略有不同，詳細可以看官網介紹或是TechBridge 技術共筆部落格的分享。 React較精深的部分(官網的進階指引)目前我也還看不太懂，大略只知道它本身有提供一些能提高效能的作法。"/>
-
 
 
 
@@ -173,7 +166,7 @@ IT邦幫忙鐵人賽的文章，號稱連續30天不間斷發文分享挑戰，�
 </ul>
 <p>順便記錄一個之前用Vue就有的疑問，為什麼組件最外層都是div，先來看看官網最基礎的<a href="http://jsbin.com/hefuvolixa/edit?html,output">範例</a>
 如果同個組件，hello world後面還想放一個p段落，試著把下方兩種寫法貼到範例連結試試，原因其實是組件的解析只能有一層，不能並排。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/babel&#34;</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/babel&#34;</span>&gt;
 <span style="color:#75715e">// 錯誤 
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">render</span>(
   <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">Hello</span>, <span style="color:#a6e22e">world</span><span style="color:#f92672">!&lt;</span><span style="color:#960050;background-color:#1e0010">/h1&gt;</span>
@@ -181,7 +174,7 @@ IT邦幫忙鐵人賽的文章，號稱連續30天不間斷發文分享挑戰，�
   document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;example&#39;</span>)
 );
 &lt;/<span style="color:#f92672">script</span>&gt;
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/babel&#34;</span>&gt;
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/babel&#34;</span>&gt;
 <span style="color:#75715e">/* 正確 */</span>
 <span style="color:#a6e22e">ReactDOM</span>.<span style="color:#a6e22e">render</span>(
   <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span><span style="color:#f92672">&gt;</span>
@@ -292,7 +285,7 @@ React較精深的部分(官網的進階指引)目前我也還看不太懂，大�
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2021</span>
+            <span>&copy; 2022</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
             
         </div>
@@ -312,7 +305,7 @@ React較精深的部分(官網的進階指引)目前我也還看不太懂，大�
 
 
 
-<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js" integrity="sha512-LOZOpupEpysT3YEvwutcyj7&#43;h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
 
 
 

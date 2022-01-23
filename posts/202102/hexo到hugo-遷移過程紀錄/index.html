@@ -36,7 +36,7 @@ $ hugo new site &amp;lt;site_name&amp;gt; 建好後，裡面的目錄結構長�
 
 
 
-<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+<link rel="stylesheet" href="https://mix-liten.github.io/main.de188b3201233c251f4fd6306dbd2cb41e408fb8846c09781b2925de7df5025c.css">
 
 
 
@@ -64,16 +64,10 @@ Hexo 是用 JS 寫的，不免俗的是使用 Node.js/npm 組合包，而我在�
 windows 去 Hugo GitHub 的 Releases 找安裝檔
 macOS 用 Homebrew 裝，$ brew install hugo
   建立站點
-$ hugo new site &lt;site_name&gt; 建好後，裡面的目錄結構長這樣 . ├── archetypes # 新文章樣板，後面建文章的部分解釋 ├── config.">
-<meta itemprop="datePublished" content="2021-02-01T21:47:21+08:00" />
+$ hugo new site &lt;site_name&gt; 建好後，裡面的目錄結構長這樣 . ├── archetypes # 新文章樣板，後面建文章的部分解釋 ├── config."><meta itemprop="datePublished" content="2021-02-01T21:47:21+08:00" />
 <meta itemprop="dateModified" content="2021-02-01T21:47:21+08:00" />
-<meta itemprop="wordCount" content="362">
-<meta itemprop="image" content="https://mix-liten.github.io/"/>
-
-
-
+<meta itemprop="wordCount" content="362"><meta itemprop="image" content="https://mix-liten.github.io/"/>
 <meta itemprop="keywords" content="Other,Hugo," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://mix-liten.github.io/"/>
 
@@ -90,7 +84,6 @@ windows 去 Hugo GitHub 的 Releases 找安裝檔
 macOS 用 Homebrew 裝，$ brew install hugo
   建立站點
 $ hugo new site &lt;site_name&gt; 建好後，裡面的目錄結構長這樣 . ├── archetypes # 新文章樣板，後面建文章的部分解釋 ├── config."/>
-
 
 
 
@@ -220,7 +213,7 @@ $ hugo new site &lt;site_name&gt; 建好後，裡面的目錄結構長這樣 . �
 <p>建立站點</p>
 <p><code>$ hugo new site &lt;site_name&gt;</code> <!-- raw HTML omitted -->
 建好後，裡面的目錄結構長這樣 <!-- raw HTML omitted --></p>
-<pre><code class="language-log" data-lang="log">.
+<pre tabindex="0"><code class="language-log" data-lang="log">.
 ├── archetypes  # 新文章樣板，後面建文章的部分解釋
 ├── config.toml # 設定檔，非常重要，預設格式為 toml，可改為 yaml / json
 ├── content     # 放文章，結構後面說
@@ -242,14 +235,14 @@ $ hugo new site &lt;site_name&gt; 建好後，裡面的目錄結構長這樣 . �
 <li>
 <p>建立新文章</p>
 <p>執行這行指令</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo new posts/my-first-post.md
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo new posts/my-first-post.md
 </code></pre></div><p>這個步驟有幾個細節</p>
 <ul>
 <li>指令中的<code>posts</code>，會使用<code>/archetypes</code>內的<code>posts.md</code>作為樣板生成後面的檔案，若樣板不存在則使用<code>default.md</code>，注意這裡會優先使用<code>/themes/&lt;theme_name&gt;/archetypes</code></li>
 <li>建出來的檔案位置是，<code>/content/posts/my-first-post.md</code></li>
 <li>此時若開啟預覽，文章網址預設在，<code>/posts/my-first-post</code></li>
 <li>預設的<code>default.md</code>樣板的<a href="https://gohugo.io/content-management/front-matter/"><code>Front Matter</code></a>會取得檔名，並經過<code>&quot;{{ replace .Name &quot;-&quot; &quot; &quot; | title }}&quot;</code>，轉換為<code>my first post</code>
-<pre><code class="language-log" data-lang="log"># default.md
+<pre tabindex="0"><code class="language-log" data-lang="log"># default.md
 ---
 title: &quot;{{ replace .Name &quot;-&quot; &quot; &quot; | title }}&quot;
 date: {{ .Date }}
@@ -267,7 +260,7 @@ draft: false
 </li>
 <li>
 <p>開發預覽</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo server -D
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo server -D
 <span style="color:#75715e"># -D，連同草稿( draft: true )一起編譯</span>
 </code></pre></div><p>此時注意，不管是設定檔修改，還是新增文章並修改，都可以即時預覽，不用重開</p>
 </li>
@@ -283,7 +276,7 @@ draft: false
 <li>
 <p>文章結構 &amp; 建檔腳本</p>
 <p>因朋友啟發，若文章數量變多易導致管理不易，我的<code>/content</code>資料夾結構如下</p>
-<pre><code class="language-log" data-lang="log">/content
+<pre tabindex="0"><code class="language-log" data-lang="log">/content
   └──posts
       ├───2020
       |     ├───01
@@ -300,9 +293,9 @@ draft: false
 </code></pre><p>別忘了上面有說，檔案放的位置和名稱會影響網址，但我不可能讓文章網址是<code>/posts/2021/02/2020-02-01-my-first-post</code></p>
 <p>這時候參考官網的<a href="https://gohugo.io/content-management/urls/"><code>URL Management</code></a>，在設定檔中增加 <code>[permalinks] posts = &quot;/posts/:year:month/:slug&quot;</code>，設定之後的網址是<code>/posts/202102/myfirstpost</code></p>
 <p>網址搞定之後，覺得如果每次建立新文章，要手動調整檔案到指定格式，或是打一長串指令</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo new posts/2021/02/2020-02-02-my-second-post.md
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ hugo new posts/2021/02/2020-02-02-my-second-post.md
 </code></pre></div><p>太麻煩了，所以寫了一個腳本，可以自動生成檔案，並且避免檔案內的標題抓到日期</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># newPost.sh</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># newPost.sh</span>
 
 <span style="color:#66d9ef">if</span> ! command -v hugo &amp;&gt; /dev/null
 <span style="color:#66d9ef">then</span>
@@ -322,14 +315,14 @@ hugo new $BASIC
 
 mv <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span><span style="color:#e6db74">/content/</span><span style="color:#e6db74">${</span>BASIC<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span><span style="color:#e6db74">/content/</span><span style="color:#e6db74">${</span>FULL<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 </code></pre></div><p>如上，自己建個檔案，把上面這段貼進去儲存，執行後只要打上檔名即可，再現跟 Hexo 一樣的體驗</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sh newPost.sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sh newPost.sh
 Input New Post Name: &lt;type_your_new_post_name&gt;
 post created!
 </code></pre></div></li>
 <li>
 <p>發佈腳本</p>
 <p>同樣麻煩，一樣寫了個腳本</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># deploy.sh</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># deploy.sh</span>
 echo -e <span style="color:#e6db74">&#34;\033[0;32mDeploying updates to GitHub...\033[0m&#34;</span>
 
 <span style="color:#75715e"># Build the project.</span>
@@ -351,7 +344,7 @@ git commit -m <span style="color:#e6db74">&#34;</span>$msg<span style="color:#e6
 <span style="color:#75715e"># Push source and build repos.</span>
 git push origin master
 </code></pre></div><p>同樣重現 Hexo 體驗，執行發佈檔即可，可多寫一個參數作為 commit 的內容</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sh deploy.sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ sh deploy.sh
 -----------
 $ sh deploy.sh &lt;custom_commit_message&gt;
 </code></pre></div></li>
@@ -458,7 +451,7 @@ $ sh deploy.sh &lt;custom_commit_message&gt;
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2021</span>
+            <span>&copy; 2022</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
             
         </div>
@@ -478,7 +471,7 @@ $ sh deploy.sh &lt;custom_commit_message&gt;
 
 
 
-<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js" integrity="sha512-LOZOpupEpysT3YEvwutcyj7&#43;h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
 
 
 

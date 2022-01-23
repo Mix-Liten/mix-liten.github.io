@@ -25,7 +25,7 @@
 
 
 
-<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+<link rel="stylesheet" href="https://mix-liten.github.io/main.de188b3201233c251f4fd6306dbd2cb41e408fb8846c09781b2925de7df5025c.css">
 
 
 
@@ -42,22 +42,15 @@
 
 
 <meta itemprop="name" content="Vue-筆記-2-模板">
-<meta itemprop="description" content="模板語言 Vue template (官網說法 指令 Directives)  v-text  &lt;span v-text=&#34;msg&#34;&gt;&lt;/span&gt; &lt;span&gt;{{msg}}&lt;/span&gt; 兩種寫法都可以。 v-html  &lt;div v-html=&#34;html&#34;&gt;&lt;/div&gt; 如果想要動態插入內容，使用innerHTML是拿不到實例中的data的喔。 v-show  &lt;h1 v-show=&#34;show&#34;&gt;Hello!&lt;/h1&gt; 等於CSS裡的display。 v-if, v-else-if, v-else  &lt;div v-if=&#34;type === &#39;A&#39;&#34;&gt;A&lt;/div&gt; &lt;div v-else-if=&#34;type === &#39;B&#39;&#34;&gt;B&lt;/div&gt; &lt;div v-else&gt;Not A/B&lt;/div&gt; v-if 和 v-show 的差別是在條件不成立的情況下，v-if不會被渲染到網頁上，v-show則是單純看不到。 v-for &lt;!-- Array --&gt; &lt;li v-for=&#34;todo in todos&#34; v-if=&#34;todo.isComplete&#34;&gt; {{ todo }} &lt;/li&gt; &lt;div v-for=&#34;(todo, index) in todos&#34;&gt; {{ index }}: {{ todo }} &lt;/div&gt; &lt;!-- Object --&gt; &lt;div v-for=&#34;value in object&#34;&gt; {{ value }} &lt;/div&gt; &lt;div v-for=&#34;(value, key) in object&#34;&gt; {{ key }}: {{ value }} &lt;/div&gt; &lt;div v-for=&#34;(value, key, index) in object&#34;&gt; {{ index }}.">
-<meta itemprop="datePublished" content="2018-04-26T19:08:26+00:00" />
+<meta itemprop="description" content="模板語言 Vue template (官網說法 指令 Directives)  v-text  &lt;span v-text=&#34;msg&#34;&gt;&lt;/span&gt; &lt;span&gt;{{msg}}&lt;/span&gt; 兩種寫法都可以。 v-html  &lt;div v-html=&#34;html&#34;&gt;&lt;/div&gt; 如果想要動態插入內容，使用innerHTML是拿不到實例中的data的喔。 v-show  &lt;h1 v-show=&#34;show&#34;&gt;Hello!&lt;/h1&gt; 等於CSS裡的display。 v-if, v-else-if, v-else  &lt;div v-if=&#34;type === &#39;A&#39;&#34;&gt;A&lt;/div&gt; &lt;div v-else-if=&#34;type === &#39;B&#39;&#34;&gt;B&lt;/div&gt; &lt;div v-else&gt;Not A/B&lt;/div&gt; v-if 和 v-show 的差別是在條件不成立的情況下，v-if不會被渲染到網頁上，v-show則是單純看不到。 v-for &lt;!-- Array --&gt; &lt;li v-for=&#34;todo in todos&#34; v-if=&#34;todo.isComplete&#34;&gt; {{ todo }} &lt;/li&gt; &lt;div v-for=&#34;(todo, index) in todos&#34;&gt; {{ index }}: {{ todo }} &lt;/div&gt; &lt;!-- Object --&gt; &lt;div v-for=&#34;value in object&#34;&gt; {{ value }} &lt;/div&gt; &lt;div v-for=&#34;(value, key) in object&#34;&gt; {{ key }}: {{ value }} &lt;/div&gt; &lt;div v-for=&#34;(value, key, index) in object&#34;&gt; {{ index }}."><meta itemprop="datePublished" content="2018-04-26T19:08:26+00:00" />
 <meta itemprop="dateModified" content="2018-04-26T19:08:26+00:00" />
-<meta itemprop="wordCount" content="302">
-<meta itemprop="image" content="https://mix-liten.github.io/"/>
-
-
-
+<meta itemprop="wordCount" content="302"><meta itemprop="image" content="https://mix-liten.github.io/"/>
 <meta itemprop="keywords" content="js,Vue," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://mix-liten.github.io/"/>
 
 <meta name="twitter:title" content="Vue-筆記-2-模板"/>
 <meta name="twitter:description" content="模板語言 Vue template (官網說法 指令 Directives)  v-text  &lt;span v-text=&#34;msg&#34;&gt;&lt;/span&gt; &lt;span&gt;{{msg}}&lt;/span&gt; 兩種寫法都可以。 v-html  &lt;div v-html=&#34;html&#34;&gt;&lt;/div&gt; 如果想要動態插入內容，使用innerHTML是拿不到實例中的data的喔。 v-show  &lt;h1 v-show=&#34;show&#34;&gt;Hello!&lt;/h1&gt; 等於CSS裡的display。 v-if, v-else-if, v-else  &lt;div v-if=&#34;type === &#39;A&#39;&#34;&gt;A&lt;/div&gt; &lt;div v-else-if=&#34;type === &#39;B&#39;&#34;&gt;B&lt;/div&gt; &lt;div v-else&gt;Not A/B&lt;/div&gt; v-if 和 v-show 的差別是在條件不成立的情況下，v-if不會被渲染到網頁上，v-show則是單純看不到。 v-for &lt;!-- Array --&gt; &lt;li v-for=&#34;todo in todos&#34; v-if=&#34;todo.isComplete&#34;&gt; {{ todo }} &lt;/li&gt; &lt;div v-for=&#34;(todo, index) in todos&#34;&gt; {{ index }}: {{ todo }} &lt;/div&gt; &lt;!-- Object --&gt; &lt;div v-for=&#34;value in object&#34;&gt; {{ value }} &lt;/div&gt; &lt;div v-for=&#34;(value, key) in object&#34;&gt; {{ key }}: {{ value }} &lt;/div&gt; &lt;div v-for=&#34;(value, key, index) in object&#34;&gt; {{ index }}."/>
-
 
 
 
@@ -150,33 +143,33 @@
 <ol>
 <li>v-text</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">v-text</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;msg&#34;</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">v-text</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;msg&#34;</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;
   &lt;<span style="color:#f92672">span</span>&gt;{{msg}}&lt;/<span style="color:#f92672">span</span>&gt;
 </code></pre></div><p>兩種寫法都可以。
 <!-- raw HTML omitted --></p>
 <ol start="2">
 <li>v-html</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-html</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;html&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-html</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;html&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
 </code></pre></div><p>如果想要動態插入內容，使用innerHTML是拿不到實例中的data的喔。
 <!-- raw HTML omitted --></p>
 <ol start="3">
 <li>v-show</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">v-show</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;show&#34;</span>&gt;Hello!&lt;/<span style="color:#f92672">h1</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">v-show</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;show&#34;</span>&gt;Hello!&lt;/<span style="color:#f92672">h1</span>&gt;
 </code></pre></div><p>等於CSS裡的display。
 <!-- raw HTML omitted --></p>
 <ol start="4">
 <li>v-if, v-else-if, v-else</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;type === &#39;A&#39;&#34;</span>&gt;A&lt;/<span style="color:#f92672">div</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;type === &#39;A&#39;&#34;</span>&gt;A&lt;/<span style="color:#f92672">div</span>&gt;
   &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-else-if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;type === &#39;B&#39;&#34;</span>&gt;B&lt;/<span style="color:#f92672">div</span>&gt;
   &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">v-else</span>&gt;Not A/B&lt;/<span style="color:#f92672">div</span>&gt;
 </code></pre></div><p>v-if 和 v-show 的差別是在條件不成立的情況下，v-if不會被渲染到網頁上，v-show則是單純看不到。
 <!-- raw HTML omitted --></p>
 <ol start="5">
 <li>v-for
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Array --&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- Array --&gt;</span>
 &lt;<span style="color:#f92672">li</span> <span style="color:#a6e22e">v-for</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;todo in todos&#34;</span> <span style="color:#a6e22e">v-if</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;todo.isComplete&#34;</span>&gt;
   {{ todo }}
 &lt;/<span style="color:#f92672">li</span>&gt;
@@ -199,7 +192,7 @@
 &lt;/<span style="color:#f92672">div</span>&gt;
 </code></pre></div></li>
 </ol>
-<pre><code>注意v-for的優先度比v-if高，所以放在同一層的話，可以有條件的印出內容。
+<pre tabindex="0"><code>注意v-for的優先度比v-if高，所以放在同一層的話，可以有條件的印出內容。
 &lt;br/&gt;
 
 6. v-model 雙向綁定
@@ -401,7 +394,7 @@ const vm = new Vue({
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2021</span>
+            <span>&copy; 2022</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
             
         </div>
@@ -421,7 +414,7 @@ const vm = new Vue({
 
 
 
-<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js" integrity="sha512-LOZOpupEpysT3YEvwutcyj7&#43;h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
 
 
 

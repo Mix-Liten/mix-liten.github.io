@@ -32,7 +32,7 @@
 
 
 
-<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+<link rel="stylesheet" href="https://mix-liten.github.io/main.de188b3201233c251f4fd6306dbd2cb41e408fb8846c09781b2925de7df5025c.css">
 
 
 
@@ -56,16 +56,10 @@
   Vue CLI plugin 別人造好的輪子，使用方式是先開啟 Vue CLI 3 新增的圖形化介面，進入你要使用的專案，選擇目錄中的插件(Plugins)，點擊新增插件後安裝vue-cli-plugin-storybook
   配置及插件(Addons) 安裝好後，使用 package.json 裡的相關指令把 Storybook 跑起來 此時你會發現，自己跑起來的 Storybook 與官網的影片相差甚遠，主要有兩部分，一是左邊的目錄很空，這是因為我們還沒配置要呈現的 story，二是右邊的元件控制項很少，這是另一項重點，插件(Addons)。
 首先配置的部分，這是一個很多工的步驟，以官方給的 Button 範例說明，程式部分僅供參考，實際使用要看 Storybook 的版本
-// Button.stories.js import { storiesOf } from &#39;@storybook/vue&#39; import { action } from &#39;@storybook/addon-actions&#39; import { withKnobs } from &#34;@storybook/addon-knobs&#34; const stories = storiesOf(&#34;Button&#34;, module) stories.">
-<meta itemprop="datePublished" content="2019-11-01T17:36:29+00:00" />
+// Button.stories.js import { storiesOf } from &#39;@storybook/vue&#39; import { action } from &#39;@storybook/addon-actions&#39; import { withKnobs } from &#34;@storybook/addon-knobs&#34; const stories = storiesOf(&#34;Button&#34;, module) stories."><meta itemprop="datePublished" content="2019-11-01T17:36:29+00:00" />
 <meta itemprop="dateModified" content="2019-11-01T17:36:29+00:00" />
-<meta itemprop="wordCount" content="141">
-<meta itemprop="image" content="https://mix-liten.github.io/"/>
-
-
-
+<meta itemprop="wordCount" content="141"><meta itemprop="image" content="https://mix-liten.github.io/"/>
 <meta itemprop="keywords" content="Vue,Other," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://mix-liten.github.io/"/>
 
@@ -78,7 +72,6 @@
   配置及插件(Addons) 安裝好後，使用 package.json 裡的相關指令把 Storybook 跑起來 此時你會發現，自己跑起來的 Storybook 與官網的影片相差甚遠，主要有兩部分，一是左邊的目錄很空，這是因為我們還沒配置要呈現的 story，二是右邊的元件控制項很少，這是另一項重點，插件(Addons)。
 首先配置的部分，這是一個很多工的步驟，以官方給的 Button 範例說明，程式部分僅供參考，實際使用要看 Storybook 的版本
 // Button.stories.js import { storiesOf } from &#39;@storybook/vue&#39; import { action } from &#39;@storybook/addon-actions&#39; import { withKnobs } from &#34;@storybook/addon-knobs&#34; const stories = storiesOf(&#34;Button&#34;, module) stories."/>
-
 
 
 
@@ -197,7 +190,7 @@
 <li>Automatic setup
 在 Vue 專案裡使用下方指令</li>
 </ol>
-<pre><code>npx -p @storybook/cli sb init --type vue
+<pre tabindex="0"><code>npx -p @storybook/cli sb init --type vue
 </code></pre><ol start="2">
 <li>
 <p>Manual setup
@@ -213,7 +206,7 @@
 <img src="https://mix-liten.github.io/images/other/storybook/storybook_demo.jpg" alt="官方首頁Demo">
 此時你會發現，自己跑起來的 Storybook 與官網的影片相差甚遠，主要有兩部分，一是左邊的目錄很空，這是因為我們還沒配置要呈現的 story，二是右邊的元件控制項很少，這是另一項重點，插件(Addons)。</p>
 <p>首先配置的部分，這是一個很多工的步驟，以官方給的 Button 範例說明，程式部分僅供參考，實際使用要看 Storybook 的版本</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// Button.stories.js
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// Button.stories.js
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">storiesOf</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@storybook/vue&#39;</span>
 <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">action</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@storybook/addon-actions&#39;</span>
 <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">withKnobs</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;@storybook/addon-knobs&#34;</span>
@@ -229,7 +222,7 @@
     },
   }))
 </code></pre></div><p>在這段範例中，首先要建一個 story 的主體，接著往裡面增加內容，中間配置了 knobs 的插件，如果要用全域插件也可以在 config.js 裡使用以下這段</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">addDecorator</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@storybook/vue&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">addDecorator</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;@storybook/vue&#39;</span>
 <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">withInfo</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;storybook-addon-vue-info&#39;</span>
 <span style="color:#a6e22e">addDecorator</span>(<span style="color:#a6e22e">withInfo</span>)
 </code></pre></div><ul>
@@ -338,7 +331,7 @@
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2021</span>
+            <span>&copy; 2022</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
             
         </div>
@@ -358,7 +351,7 @@
 
 
 
-<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js" integrity="sha512-LOZOpupEpysT3YEvwutcyj7&#43;h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
 
 
 

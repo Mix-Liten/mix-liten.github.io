@@ -26,7 +26,7 @@
 
 
 
-<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+<link rel="stylesheet" href="https://mix-liten.github.io/main.de188b3201233c251f4fd6306dbd2cb41e408fb8846c09781b2925de7df5025c.css">
 
 
 
@@ -44,23 +44,16 @@
 
 <meta itemprop="name" content="為你自己學Git-讀書心得-part2">
 <meta itemprop="description" content="前言 接續前一篇，直接進入紀錄的部分。
-分支相關指令 # 列出 local 分支 $ git branch # 列出 remote 分支 $ git branch -r # 等於 --remote # 列出 local &#43; remote 分支 $ git branch -a # 開新分支 $ git branch branch_name # 在指定 commit 的位置開新分支 $ git branch branch_name 657fce7 # 更名分支 $ git branch -m old_name new_name # 刪除分支，若該分支內容未備份於其他分支會給予提示並且不可刪除，此時使用大寫 -D 以強制刪除 $ git branch -d branch_name # 切換分支 $ git checkout branch_name # 存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name # 在指定 commit 的位置，存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name 657fce7 # 切換到遠端分支時會發生 detached HEAD 狀態，使用追蹤參數在 local 建立追蹤分支，即可解決 $ git checkout -t origin/branch_name # 等於 --track # 回復分支，紀錄或找到被刪除分支最新 commit 的 SHA-1 值則可回復 $ git branch branch_name b174a5a # 列出所有節點紀錄，等同於 GUI 線圖 $ git show-branch -a # 強制遷移 master branch 到指定位置，HEAD 要先移到其他位置，忘開分支就 commit 時可能有用 $ git branch -f master e12d8ef 合併分支相關 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖相同，用線圖來看就是仍在一直線上，會啟用 快轉模式(Fast Forward)，效果看起來是只平移原分支 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖不相同，線圖類似 Y 形分岔，合併時會產生新的 commit，作為合併紀錄點，若發生 衝突(Conflict) 也會一併解決 # 使用以下指令可以總是產生分岔合併節點，即使刪除已合併過的分支，也可以在線圖上知道這裡曾經合併過 $ git merge branch_name --no-ff # 重設基礎合併，此方法會將當前分支的每個 commit 照順序嫁接到指定的分支上 $ git rebase branch_name # 此為危險操作，可用 Reflog 指令找到危險操作前最新 commit 的 SHA-1 值，並且執行 Reset 指令回復 # 或是使用危險操作皆有的額外紀錄點 ORIG_HEAD，執行 Reset 指令回復 $ git reset ORIG_HEAD --hard # rebase 指令進行時，若發生 衝突(Conflict)，處理方式和 merge 不同，此時看線圖會看到 HEAD 節點正卡出狀況的新移植節點上，此時將衝突解決，之後執行以下指令繼續 rebase $ git rebase --continue # 若衝突發生點不是文字檔而是圖片或其他二進位檔 $ git checkout --ours sample.">
-<meta itemprop="datePublished" content="2021-01-30T23:01:10+00:00" />
+分支相關指令 # 列出 local 分支 $ git branch # 列出 remote 分支 $ git branch -r # 等於 --remote # 列出 local &#43; remote 分支 $ git branch -a # 開新分支 $ git branch branch_name # 在指定 commit 的位置開新分支 $ git branch branch_name 657fce7 # 更名分支 $ git branch -m old_name new_name # 刪除分支，若該分支內容未備份於其他分支會給予提示並且不可刪除，此時使用大寫 -D 以強制刪除 $ git branch -d branch_name # 切換分支 $ git checkout branch_name # 存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name # 在指定 commit 的位置，存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name 657fce7 # 切換到遠端分支時會發生 detached HEAD 狀態，使用追蹤參數在 local 建立追蹤分支，即可解決 $ git checkout -t origin/branch_name # 等於 --track # 回復分支，紀錄或找到被刪除分支最新 commit 的 SHA-1 值則可回復 $ git branch branch_name b174a5a # 列出所有節點紀錄，等同於 GUI 線圖 $ git show-branch -a # 強制遷移 master branch 到指定位置，HEAD 要先移到其他位置，忘開分支就 commit 時可能有用 $ git branch -f master e12d8ef 合併分支相關 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖相同，用線圖來看就是仍在一直線上，會啟用 快轉模式(Fast Forward)，效果看起來是只平移原分支 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖不相同，線圖類似 Y 形分岔，合併時會產生新的 commit，作為合併紀錄點，若發生 衝突(Conflict) 也會一併解決 # 使用以下指令可以總是產生分岔合併節點，即使刪除已合併過的分支，也可以在線圖上知道這裡曾經合併過 $ git merge branch_name --no-ff # 重設基礎合併，此方法會將當前分支的每個 commit 照順序嫁接到指定的分支上 $ git rebase branch_name # 此為危險操作，可用 Reflog 指令找到危險操作前最新 commit 的 SHA-1 值，並且執行 Reset 指令回復 # 或是使用危險操作皆有的額外紀錄點 ORIG_HEAD，執行 Reset 指令回復 $ git reset ORIG_HEAD --hard # rebase 指令進行時，若發生 衝突(Conflict)，處理方式和 merge 不同，此時看線圖會看到 HEAD 節點正卡出狀況的新移植節點上，此時將衝突解決，之後執行以下指令繼續 rebase $ git rebase --continue # 若衝突發生點不是文字檔而是圖片或其他二進位檔 $ git checkout --ours sample."><meta itemprop="datePublished" content="2021-01-30T23:01:10+00:00" />
 <meta itemprop="dateModified" content="2021-01-30T23:01:10+00:00" />
-<meta itemprop="wordCount" content="824">
-<meta itemprop="image" content="https://mix-liten.github.io/"/>
-
-
-
+<meta itemprop="wordCount" content="824"><meta itemprop="image" content="https://mix-liten.github.io/"/>
 <meta itemprop="keywords" content="Git,心得," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://mix-liten.github.io/"/>
 
 <meta name="twitter:title" content="為你自己學Git-讀書心得-part2"/>
 <meta name="twitter:description" content="前言 接續前一篇，直接進入紀錄的部分。
 分支相關指令 # 列出 local 分支 $ git branch # 列出 remote 分支 $ git branch -r # 等於 --remote # 列出 local &#43; remote 分支 $ git branch -a # 開新分支 $ git branch branch_name # 在指定 commit 的位置開新分支 $ git branch branch_name 657fce7 # 更名分支 $ git branch -m old_name new_name # 刪除分支，若該分支內容未備份於其他分支會給予提示並且不可刪除，此時使用大寫 -D 以強制刪除 $ git branch -d branch_name # 切換分支 $ git checkout branch_name # 存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name # 在指定 commit 的位置，存在分支則切換分支，不存在分支則新建分支並切換分支 $ git checkout -b branch_name 657fce7 # 切換到遠端分支時會發生 detached HEAD 狀態，使用追蹤參數在 local 建立追蹤分支，即可解決 $ git checkout -t origin/branch_name # 等於 --track # 回復分支，紀錄或找到被刪除分支最新 commit 的 SHA-1 值則可回復 $ git branch branch_name b174a5a # 列出所有節點紀錄，等同於 GUI 線圖 $ git show-branch -a # 強制遷移 master branch 到指定位置，HEAD 要先移到其他位置，忘開分支就 commit 時可能有用 $ git branch -f master e12d8ef 合併分支相關 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖相同，用線圖來看就是仍在一直線上，會啟用 快轉模式(Fast Forward)，效果看起來是只平移原分支 # 合併分支時，如果原分支比對要被合進來的分支，發現根莖不相同，線圖類似 Y 形分岔，合併時會產生新的 commit，作為合併紀錄點，若發生 衝突(Conflict) 也會一併解決 # 使用以下指令可以總是產生分岔合併節點，即使刪除已合併過的分支，也可以在線圖上知道這裡曾經合併過 $ git merge branch_name --no-ff # 重設基礎合併，此方法會將當前分支的每個 commit 照順序嫁接到指定的分支上 $ git rebase branch_name # 此為危險操作，可用 Reflog 指令找到危險操作前最新 commit 的 SHA-1 值，並且執行 Reset 指令回復 # 或是使用危險操作皆有的額外紀錄點 ORIG_HEAD，執行 Reset 指令回復 $ git reset ORIG_HEAD --hard # rebase 指令進行時，若發生 衝突(Conflict)，處理方式和 merge 不同，此時看線圖會看到 HEAD 節點正卡出狀況的新移植節點上，此時將衝突解決，之後執行以下指令繼續 rebase $ git rebase --continue # 若衝突發生點不是文字檔而是圖片或其他二進位檔 $ git checkout --ours sample."/>
-
 
 
 
@@ -170,7 +163,7 @@
         <h2 id="前言">前言</h2>
 <p>接續前一篇，直接進入紀錄的部分。</p>
 <h3 id="分支相關指令">分支相關指令</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 列出 local 分支</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 列出 local 分支</span>
 $ git branch
 <span style="color:#75715e"># 列出 remote 分支</span>
 $ git branch -r <span style="color:#75715e"># 等於 --remote</span>
@@ -199,7 +192,7 @@ $ git show-branch -a
 <span style="color:#75715e"># 強制遷移 master branch 到指定位置，HEAD 要先移到其他位置，忘開分支就 commit 時可能有用</span>
 $ git branch -f master e12d8ef
 </code></pre></div><h4 id="合併分支相關">合併分支相關</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 合併分支時，如果原分支比對要被合進來的分支，發現根莖相同，用線圖來看就是仍在一直線上，會啟用 快轉模式(Fast Forward)，效果看起來是只平移原分支</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 合併分支時，如果原分支比對要被合進來的分支，發現根莖相同，用線圖來看就是仍在一直線上，會啟用 快轉模式(Fast Forward)，效果看起來是只平移原分支</span>
 <span style="color:#75715e"># 合併分支時，如果原分支比對要被合進來的分支，發現根莖不相同，線圖類似 Y 形分岔，合併時會產生新的 commit，作為合併紀錄點，若發生 衝突(Conflict) 也會一併解決</span>
 <span style="color:#75715e"># 使用以下指令可以總是產生分岔合併節點，即使刪除已合併過的分支，也可以在線圖上知道這裡曾經合併過</span>
 $ git merge branch_name --no-ff
@@ -220,7 +213,7 @@ $ git checkout --theirs sample.jpg <span style="color:#75715e"># 保留被合分
 $ git rebase -i 657fce7
 </code></pre></div><h4 id="標籤相關">標籤相關</h4>
 <p>分兩種類型，輕量標籤(lightweight tag)，適用於個人標記；有附註標籤(annotated tag)，適用於版本發布</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 新增輕量標籤在當前 commit</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 新增輕量標籤在當前 commit</span>
 $ git tag tag_name
 <span style="color:#75715e"># 新增輕量標籤在指定 commit</span>
 $ git tag tag_name 51d54ff
@@ -232,7 +225,7 @@ $ git tag -d tag_name
 $ git show any_point
 </code></pre></div><h4 id="暫存相關">暫存相關</h4>
 <p>可先 commit，之後再 reset 拆掉繼續做，或是使用 stash 指令放入暫存</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 新增暫存</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 新增暫存</span>
 $ git stash
 <span style="color:#75715e"># 新增暫存，連同 Untracked 的檔案</span>
 $ git stash -u
@@ -247,7 +240,7 @@ $ git stash drop stash@<span style="color:#f92672">{</span>1<span style="color:#
 <span style="color:#75715e"># 取出並刪除暫存，等同於 apply + drop</span>
 $ git stash pop stash@<span style="color:#f92672">{</span>1<span style="color:#f92672">}</span>
 </code></pre></div><h4 id="撿其他-branch-的-commit">撿其他 branch 的 commit</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 合併進當前位置</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 合併進當前位置</span>
 $ git cherry-pick 6a498ec
 <span style="color:#75715e"># 合併進當前位置，可一次撿多個，依順序</span>
 $ git cherry-pick fd23e1c 6a498ec f4f4442
@@ -257,14 +250,14 @@ $ git cherry-pick 6a498ec --no-commit
 <ol>
 <li>軟刪除，還是有辦法復原</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 讓所有 commit 執行指定命令，刪除重要資料</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 讓所有 commit 執行指定命令，刪除重要資料</span>
 $ git filter-branch --tree-filter <span style="color:#e6db74">&#34;rm -f config/database.yml&#34;</span>
 <span style="color:#75715e"># 復原</span>
 $ git reset refs/original/refs/heads/master --hard
 </code></pre></div><ol start="2">
 <li>徹底刪除</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 讓所有 commit 執行指定命令，刪除重要資料</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 讓所有 commit 執行指定命令，刪除重要資料</span>
 $ git filter-branch -f --tree-filter <span style="color:#e6db74">&#34;rm -f config/database.yml&#34;</span>
 <span style="color:#75715e"># 刪除執行 filter-branch 產生的還原點</span>
 $ rm .git/refs/original/refs/heads/master
@@ -281,7 +274,7 @@ $ git gc --prune<span style="color:#f92672">=</span>now <span style="color:#7571
 <span style="color:#75715e"># 若已推到 remote 則強制覆蓋</span>
 $ git push -f
 </code></pre></div><h3 id="remote-相關">remote 相關</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 增加 remote，origin 是慣例用詞，代表遠端，可任意命名，最後一長串是遠端伺服器的連線位置</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 增加 remote，origin 是慣例用詞，代表遠端，可任意命名，最後一長串是遠端伺服器的連線位置</span>
 $ git remote add origin git@github.com:GitHub_id/repository_name.git
 <span style="color:#75715e"># 從 local 推到 remote，此時是將 local 的 master branch 推到 remote 的 master branch</span>
 <span style="color:#75715e"># 參數 -u(--set-upstream)，設定 local 端分支的上游，會 追蹤(track) 並默認為推送目標，設定一次之後，下次推送只要 git push，每個分支只有一個上游</span>
@@ -306,7 +299,7 @@ $ git clone git@github.com:sample_user/project_name.git
 $ git clone git@github.com:sample_user/project_name.git new_project_name
 </code></pre></div><h3 id="fork">fork</h3>
 <p>fork 其他人的專案時，為同步原專案最新進度，進行以下流程</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 增加 remote，upstream 名為慣例用詞</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 增加 remote，upstream 名為慣例用詞</span>
 $ git remote add upstream git@github.com:GitHub_id/repository_name.git
 <span style="color:#75715e"># 取得遠端更新內容</span>
 $ git fetch upstream
@@ -316,7 +309,7 @@ $ git merge upstream/master
 $ git push origin master
 </code></pre></div><h3 id="更新檔-相關">更新檔 相關</h3>
 <p>產生 patch 檔案，從來沒用過</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 範例 git log</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 範例 git log</span>
 $ git log --oneline
 6e6ed76 <span style="color:#f92672">(</span>HEAD -&gt; master<span style="color:#f92672">)</span> add product page
 6aba968 update info.html
@@ -352,7 +345,7 @@ $ git am /tmp/patches/*
 </ol>
 <h4 id="二分法除錯">二分法除錯</h4>
 <p>適用在大範圍 commit，不確定何時開始出錯的狀況</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 開始執行二分法，執行這行後，HEAD 會跳到兩點正中間的 commit</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 開始執行二分法，執行這行後，HEAD 會跳到兩點正中間的 commit</span>
 $ git bisect start 起始點 結束點
 $ git bisect start HEAD f6b72af
 <span style="color:#75715e"># 確認該 commit 是否已出問題</span>
@@ -361,7 +354,7 @@ $ git bisect bad <span style="color:#75715e"># 有問題，執行這行，再跳
 <span style="color:#75715e"># 中途放棄流程</span>
 $ git bisect reset
 </code></pre></div><p>建立新目錄的分支，此方法適用於正在跑 CI/CD 流程時，仍想處理其他需求的狀況，Git v2.6.0 以上才有</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git worktree add -b cat ../copycat
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git worktree add -b cat ../copycat
 <span style="color:#75715e"># 此方法會再與專案同一層的位置建立目錄，最後一樣可以合併回來，處理完後，新的目錄即可刪除</span>
 </code></pre></div>
       </div>
@@ -439,8 +432,8 @@ $ git bisect reset
 
           
             <span class="button next">
-              <a href="https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E4%BD%BF%E7%94%A8-homebrew-%E5%AE%89%E8%A3%9D-%E6%9B%B4%E6%96%B0-git/">
-                <span class="button__text">在-macOS-上使用-Homebrew-安裝&amp;更新-git</span>
+              <a href="https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E5%BB%BA%E7%AB%8B-laradock-%E7%92%B0%E5%A2%83/">
+                <span class="button__text">在-macOS-上建立-Laradock-環境</span>
                 <span class="button__icon">→</span>
               </a>
             </span>
@@ -462,7 +455,7 @@ $ git bisect reset
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2021</span>
+            <span>&copy; 2022</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
             
         </div>
@@ -482,7 +475,7 @@ $ git bisect reset
 
 
 
-<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js" integrity="sha512-LOZOpupEpysT3YEvwutcyj7&#43;h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
 
 
 

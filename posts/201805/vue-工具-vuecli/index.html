@@ -31,7 +31,7 @@ Vue-router 說明文件
 
 
 
-<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+<link rel="stylesheet" href="https://mix-liten.github.io/main.de188b3201233c251f4fd6306dbd2cb41e408fb8846c09781b2925de7df5025c.css">
 
 
 
@@ -54,16 +54,10 @@ Vue-CLI GitHub連結
 Vue-router 說明文件
 順便介紹同樣內建在裡面的vue-router，這東西的用途是可以把網頁做成單頁應用SPA(Single Page Application)，優點是頁面間切換很順暢，缺點是進網頁會讀久一點。
  挖空格放組件(router-view)  &lt;template&gt; &lt;div&gt; &lt;Menu/&gt; &lt;div class=&#34;container&#34;&gt; &lt;router-view/&gt; &lt;/div&gt; &lt;Footer/&gt; &lt;/div&gt; &lt;/template&gt; &lt;script&gt; import Menu from &#39;./Menu&#39;; import Footer from &#39;./Footer&#39;; export default{ components: { Menu, Footer, } } &lt;/script&gt; router-view tag 會塞入子組件的內容，menu和footer則是直接引入組件到Vue實例裡直接使用。
- 組件之間的連結(router-link)  &lt;router-link to=&#34;about&#34;&gt;About&lt;/router-link&gt; 這句會被自動編譯成a連結。">
-<meta itemprop="datePublished" content="2018-05-13T19:44:26+00:00" />
+ 組件之間的連結(router-link)  &lt;router-link to=&#34;about&#34;&gt;About&lt;/router-link&gt; 這句會被自動編譯成a連結。"><meta itemprop="datePublished" content="2018-05-13T19:44:26+00:00" />
 <meta itemprop="dateModified" content="2018-05-13T19:44:26+00:00" />
-<meta itemprop="wordCount" content="149">
-<meta itemprop="image" content="https://mix-liten.github.io/"/>
-
-
-
+<meta itemprop="wordCount" content="149"><meta itemprop="image" content="https://mix-liten.github.io/"/>
 <meta itemprop="keywords" content="Vue," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://mix-liten.github.io/"/>
 
@@ -75,7 +69,6 @@ Vue-router 說明文件
 順便介紹同樣內建在裡面的vue-router，這東西的用途是可以把網頁做成單頁應用SPA(Single Page Application)，優點是頁面間切換很順暢，缺點是進網頁會讀久一點。
  挖空格放組件(router-view)  &lt;template&gt; &lt;div&gt; &lt;Menu/&gt; &lt;div class=&#34;container&#34;&gt; &lt;router-view/&gt; &lt;/div&gt; &lt;Footer/&gt; &lt;/div&gt; &lt;/template&gt; &lt;script&gt; import Menu from &#39;./Menu&#39;; import Footer from &#39;./Footer&#39;; export default{ components: { Menu, Footer, } } &lt;/script&gt; router-view tag 會塞入子組件的內容，menu和footer則是直接引入組件到Vue實例裡直接使用。
  組件之間的連結(router-link)  &lt;router-link to=&#34;about&#34;&gt;About&lt;/router-link&gt; 這句會被自動編譯成a連結。"/>
-
 
 
 
@@ -183,11 +176,11 @@ Vue-router 說明文件
         <p>本來第三篇要說關於Vue組件Global和Local的應用還有組件之間上下傳遞事件的方法，不過一想到就有點懶，暫時逃避一下，這篇先介紹一下最近在做作品用到的工具吧。</p>
 <p><a href="https://github.com/vuejs/vue-cli">Vue-CLI GitHub連結</a></p>
 <h3 id="安裝">安裝</h3>
-<pre><code>npm i vue-cli -g //安裝在global
+<pre tabindex="0"><code>npm i vue-cli -g //安裝在global
 
 vue -V //看看版本 確定安裝好沒
 </code></pre><h3 id="提供六種起始樣板">提供六種起始樣板</h3>
-<pre><code>vue list //檢視Available official templates
+<pre tabindex="0"><code>vue list //檢視Available official templates
 
 vue init &lt;樣板名稱&gt; &lt;專案名稱&gt; //下載樣板
 </code></pre><p><img src="https://mix-liten.github.io/images/JS/Vue/vue-list.jpg" alt="六種樣板" title="Vue-list"></p>
@@ -197,7 +190,7 @@ vue init &lt;樣板名稱&gt; &lt;專案名稱&gt; //下載樣板
 <ul>
 <li>挖空格放組件(router-view)</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">template</span>&gt;
   &lt;<span style="color:#f92672">div</span>&gt;
     &lt;<span style="color:#f92672">Menu</span>/&gt;
     &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;container&#34;</span>&gt;
@@ -222,12 +215,12 @@ vue init &lt;樣板名稱&gt; &lt;專案名稱&gt; //下載樣板
 <ul>
 <li>組件之間的連結(router-link)</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">router-link</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;about&#34;</span>&gt;About&lt;/<span style="color:#f92672">router-link</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">router-link</span> <span style="color:#a6e22e">to</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;about&#34;</span>&gt;About&lt;/<span style="color:#f92672">router-link</span>&gt;
 </code></pre></div><p>這句會被自動編譯成a連結。</p>
 <ul>
 <li>router設定</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// router.js
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// router.js
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vue</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>;
 <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">VueRouter</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue-router&#39;</span>;
 
@@ -361,7 +354,7 @@ vue init &lt;樣板名稱&gt; &lt;專案名稱&gt; //下載樣板
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2021</span>
+            <span>&copy; 2022</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
             
         </div>
@@ -381,7 +374,7 @@ vue init &lt;樣板名稱&gt; &lt;專案名稱&gt; //下載樣板
 
 
 
-<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js" integrity="sha512-LOZOpupEpysT3YEvwutcyj7&#43;h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
 
 
 

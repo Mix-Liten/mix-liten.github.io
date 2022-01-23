@@ -28,7 +28,7 @@ Node.js的用法 //exports.js const test = 100; console.log(module.exports); // 
 
 
 
-<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+<link rel="stylesheet" href="https://mix-liten.github.io/main.de188b3201233c251f4fd6306dbd2cb41e408fb8846c09781b2925de7df5025c.css">
 
 
 
@@ -48,16 +48,10 @@ Node.js的用法 //exports.js const test = 100; console.log(module.exports); // 
 <meta itemprop="description" content="前言 使用套件和框架經常看到 require / import / export / exports，因為之前都抱著「能用就好」的想法，一直沒有詳細了解，最近因為學習 Vue、React 和 Webpack，覺得有必要把這種偏向基礎但很重要的部分看懂。
 首先先了解它們原本的界定範圍： require： Node.js、ES6 export ／ import ： ES6 module.exports ／ exports： Node.js
 可能有疑問為什麼要說Node.js的語法，因為現在前端幾乎都仰賴Node.js的npm在做事，框架也不例外，另外跟原生的語法也滿容易搞混，用法和用詞都是。
-Node.js的用法 //exports.js const test = 100; console.log(module.exports); // {} console.log(exports); // {}  exports.output = test; // 同步修改 module.exports 為 {output : 100} /* 千萬不要 exports = test; */ //require.js const a = require(&#39;./exports&#39;); console.log(a) // {output : 100} 理論上 exports = module.exports = {}，但是有一點要注意，直接指定 exports 是無效的，而且也不會匯出，因為 require 拿到的只會是 module.">
-<meta itemprop="datePublished" content="2018-11-14T20:24:23+00:00" />
+Node.js的用法 //exports.js const test = 100; console.log(module.exports); // {} console.log(exports); // {}  exports.output = test; // 同步修改 module.exports 為 {output : 100} /* 千萬不要 exports = test; */ //require.js const a = require(&#39;./exports&#39;); console.log(a) // {output : 100} 理論上 exports = module.exports = {}，但是有一點要注意，直接指定 exports 是無效的，而且也不會匯出，因為 require 拿到的只會是 module."><meta itemprop="datePublished" content="2018-11-14T20:24:23+00:00" />
 <meta itemprop="dateModified" content="2018-11-14T20:24:23+00:00" />
-<meta itemprop="wordCount" content="161">
-<meta itemprop="image" content="https://mix-liten.github.io/"/>
-
-
-
+<meta itemprop="wordCount" content="161"><meta itemprop="image" content="https://mix-liten.github.io/"/>
 <meta itemprop="keywords" content="js," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://mix-liten.github.io/"/>
 
@@ -66,7 +60,6 @@ Node.js的用法 //exports.js const test = 100; console.log(module.exports); // 
 首先先了解它們原本的界定範圍： require： Node.js、ES6 export ／ import ： ES6 module.exports ／ exports： Node.js
 可能有疑問為什麼要說Node.js的語法，因為現在前端幾乎都仰賴Node.js的npm在做事，框架也不例外，另外跟原生的語法也滿容易搞混，用法和用詞都是。
 Node.js的用法 //exports.js const test = 100; console.log(module.exports); // {} console.log(exports); // {}  exports.output = test; // 同步修改 module.exports 為 {output : 100} /* 千萬不要 exports = test; */ //require.js const a = require(&#39;./exports&#39;); console.log(a) // {output : 100} 理論上 exports = module.exports = {}，但是有一點要注意，直接指定 exports 是無效的，而且也不會匯出，因為 require 拿到的只會是 module."/>
-
 
 
 
@@ -179,7 +172,7 @@ export ／ import ： ES6
 module.exports ／ exports： Node.js</p>
 <p>可能有疑問為什麼要說Node.js的語法，因為現在前端幾乎都仰賴Node.js的npm在做事，框架也不例外，另外跟原生的語法也滿容易搞混，用法和用詞都是。</p>
 <h3 id="nodejs的用法">Node.js的用法</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//exports.js
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//exports.js
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">test</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;
 
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span>); <span style="color:#75715e">// {}
@@ -204,12 +197,12 @@ module.exports ／ exports： Node.js</p>
 <p>另外還有個重點是，在一個檔案中，<strong>export、import 可以有很多個</strong>，但是 <strong>export default 只能有一個</strong>。</p>
 <h6 id="備註">備註</h6>
 <p>現在有種寫法可以直接在html裡import</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// example.js
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// example.js
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">cube</span>(<span style="color:#a6e22e">x</span>) {
   <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">x</span>
 }
 <span style="color:#66d9ef">export</span> { <span style="color:#a6e22e">cube</span> }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- index.html --&gt;</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#75715e">&lt;!-- index.html --&gt;</span>
 &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;module&#34;</span>&gt;
 <span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">cube</span> } <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#34;example.js&#34;</span>
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">cube</span>(<span style="color:#ae81ff">3</span>)) <span style="color:#75715e">// 27
@@ -315,7 +308,7 @@ module.exports ／ exports： Node.js</p>
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2021</span>
+            <span>&copy; 2022</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
             
         </div>
@@ -335,7 +328,7 @@ module.exports ／ exports： Node.js</p>
 
 
 
-<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js" integrity="sha512-LOZOpupEpysT3YEvwutcyj7&#43;h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
 
 
 

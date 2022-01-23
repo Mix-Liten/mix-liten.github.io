@@ -1,350 +1,209 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://mix-liten.github.io/categories/</loc>
-    <lastmod>2021-03-06T13:27:00+08:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2022-01-23T21:04:51+08:00</lastmod>
+  </url><url>
+    <loc>https://mix-liten.github.io/tags/homebrew/</loc>
+    <lastmod>2022-01-23T21:04:51+08:00</lastmod>
+  </url><url>
+    <loc>https://mix-liten.github.io/posts/202201/homebrew-%E7%B0%A1%E4%BB%8B/</loc>
+    <lastmod>2022-01-23T21:04:51+08:00</lastmod>
+  </url><url>
+    <loc>https://mix-liten.github.io/categories/other/</loc>
+    <lastmod>2022-01-23T21:04:51+08:00</lastmod>
+  </url><url>
+    <loc>https://mix-liten.github.io/posts/</loc>
+    <lastmod>2022-01-23T21:04:51+08:00</lastmod>
+  </url><url>
+    <loc>https://mix-liten.github.io/tags/</loc>
+    <lastmod>2022-01-23T21:04:51+08:00</lastmod>
+  </url><url>
+    <loc>https://mix-liten.github.io/</loc>
+    <lastmod>2022-01-23T21:04:51+08:00</lastmod>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/dev/</loc>
     <lastmod>2021-03-06T13:27:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/npm/</loc>
     <lastmod>2021-03-06T13:27:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/202103/npm_package_json_%E4%BD%BF%E7%94%A8%E6%A6%82%E8%BF%B0/</loc>
     <lastmod>2021-03-06T13:27:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mix-liten.github.io/categories/other/</loc>
-    <lastmod>2021-03-06T13:27:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mix-liten.github.io/posts/</loc>
-    <lastmod>2021-03-06T13:27:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mix-liten.github.io/tags/</loc>
-    <lastmod>2021-03-06T13:27:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mix-liten.github.io/</loc>
-    <lastmod>2021-03-06T13:27:00+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/typescript/</loc>
     <lastmod>2021-03-04T22:38:48+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/webpack/</loc>
     <lastmod>2021-03-04T22:38:48+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/202103/webpack_with_typescript/</loc>
     <lastmod>2021-03-04T22:38:48+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/202102/hexo%E5%88%B0hugo-%E9%81%B7%E7%A7%BB%E9%81%8E%E7%A8%8B%E7%B4%80%E9%8C%84/</loc>
     <lastmod>2021-02-01T21:47:21+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/hugo/</loc>
     <lastmod>2021-02-01T21:47:21+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/other/</loc>
     <lastmod>2021-02-01T21:47:21+08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/git/</loc>
     <lastmod>2021-01-30T23:01:10+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/%E5%BF%83%E5%BE%97/</loc>
     <lastmod>2021-01-30T23:01:10+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part1/</loc>
     <lastmod>2021-01-30T23:00:59+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part2/</loc>
     <lastmod>2021-01-30T23:01:10+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mix-liten.github.io/tags/homebrew/</loc>
-    <lastmod>2019-12-25T23:32:25+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E4%BD%BF%E7%94%A8-homebrew-%E5%AE%89%E8%A3%9D-%E6%9B%B4%E6%96%B0-git/</loc>
-    <lastmod>2019-12-25T23:32:25+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://mix-liten.github.io/tags/%E5%AE%89%E8%A3%9D/</loc>
-    <lastmod>2019-12-25T23:32:25+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/docker/</loc>
     <lastmod>2019-12-22T21:08:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/laravel/</loc>
     <lastmod>2019-12-22T21:08:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/categories/laravel/</loc>
     <lastmod>2019-12-22T21:08:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E5%BB%BA%E7%AB%8B-laradock-%E7%92%B0%E5%A2%83/</loc>
     <lastmod>2019-12-22T21:08:39+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/vue/</loc>
     <lastmod>2019-11-01T17:36:29+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/categories/vue/</loc>
     <lastmod>2019-11-01T17:36:29+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201911/storybook_with_vue/</loc>
     <lastmod>2019-11-01T17:36:29+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/vscode/</loc>
     <lastmod>2019-08-22T00:22:16+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/categories/vscode/</loc>
     <lastmod>2019-08-22T00:22:16+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201908/%E9%81%B7%E7%A7%BBvscode%E7%9A%84%E8%A8%AD%E5%AE%9A%E8%88%87%E5%A5%97%E4%BB%B6/</loc>
     <lastmod>2019-08-22T00:22:16+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/free/</loc>
     <lastmod>2019-08-04T17:36:29+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/mongodb/</loc>
     <lastmod>2019-08-04T17:36:29+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/categories/mongodb/</loc>
     <lastmod>2019-08-04T17:36:29+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201908/%E5%85%8D%E8%B2%BB%E7%B7%9A%E4%B8%8Amongodb/</loc>
     <lastmod>2019-08-04T17:36:29+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/vuex/</loc>
     <lastmod>2019-07-26T21:56:40+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part2/</loc>
     <lastmod>2019-07-26T21:56:40+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201907/vuex%E5%85%A5%E9%96%80-part1/</loc>
     <lastmod>2019-07-25T21:56:40+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/categories/chrome/</loc>
     <lastmod>2019-07-03T21:56:40+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/chrome/</loc>
     <lastmod>2019-07-03T21:56:40+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201907/chrome-extensions/</loc>
     <lastmod>2019-07-03T21:56:40+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/diary/</loc>
     <lastmod>2019-07-03T21:56:40+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/categories/diary/</loc>
     <lastmod>2019-04-18T20:16:45+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/%E9%9B%9C%E8%A8%98/</loc>
     <lastmod>2019-04-18T20:16:45+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201904/diary-2/</loc>
     <lastmod>2019-04-18T20:16:45+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/js/</loc>
     <lastmod>2018-11-14T20:24:23+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201811/%E9%87%90%E6%B8%85js%E7%9A%84export%E8%88%87exports/</loc>
     <lastmod>2018-11-14T20:24:23+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201806/diary-1/</loc>
     <lastmod>2018-06-03T19:43:01+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/react/</loc>
     <lastmod>2018-05-28T22:11:36+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/categories/react/</loc>
     <lastmod>2018-05-28T22:11:36+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201805/react%E5%85%A5%E9%96%80/</loc>
     <lastmod>2018-05-28T22:11:36+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/categories/js30/</loc>
     <lastmod>2018-05-22T18:37:41+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201805/js30-day14day15day16/</loc>
     <lastmod>2018-05-22T18:37:41+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201805/js30-day11day12day13/</loc>
     <lastmod>2018-05-20T12:38:33+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201805/css%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2018-05-19T02:56:26+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/css%E8%A8%AD%E8%A8%88%E6%A8%A1%E5%BC%8F/</loc>
     <lastmod>2018-05-19T02:56:26+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/canvas/</loc>
     <lastmod>2018-05-17T16:24:48+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201805/js30-day8day9day10/</loc>
     <lastmod>2018-05-17T16:24:48+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/css/</loc>
     <lastmod>2018-05-16T10:31:22+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201805/js30-day5day6/</loc>
     <lastmod>2018-05-16T10:31:22+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201805/js30-day4day7/</loc>
     <lastmod>2018-05-15T21:46:11+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201805/js30-day1day2day3/</loc>
     <lastmod>2018-05-14T00:18:59+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201805/vue-%E5%B7%A5%E5%85%B7-vuecli/</loc>
     <lastmod>2018-05-13T19:44:26+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-2-%E6%A8%A1%E6%9D%BF/</loc>
     <lastmod>2018-04-26T19:08:26+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201804/vue-%E7%AD%86%E8%A8%98-1-vue%E5%AF%A6%E4%BE%8B/</loc>
     <lastmod>2018-04-24T17:57:30+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/about/</loc>
     <lastmod>2018-04-18T00:11:25+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/tags/cs/</loc>
     <lastmod>2018-04-17T03:52:19+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/categories/cs/</loc>
     <lastmod>2018-04-17T03:52:19+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://mix-liten.github.io/posts/201804/cs-%E9%97%9C%E6%96%BCip/</loc>
     <lastmod>2018-04-17T03:52:19+00:00</lastmod>
   </url>
-  
 </urlset>

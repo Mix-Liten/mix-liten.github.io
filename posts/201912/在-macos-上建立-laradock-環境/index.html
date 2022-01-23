@@ -32,7 +32,7 @@ default_authentication_plugin=mysql_native_password 建立 Laravel 專案  cd ~/
 
 
 
-<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+<link rel="stylesheet" href="https://mix-liten.github.io/main.de188b3201233c251f4fd6306dbd2cb41e408fb8846c09781b2925de7df5025c.css">
 
 
 
@@ -56,16 +56,10 @@ default_authentication_plugin=mysql_native_password 建立 Laravel 專案  cd ~/
 cd ~/Documents/Laravel git clone https://github.com/Laradock/laradock.git cd laradock cp env-example .env 第一行 cd 進入的位置 可任意更換為你想要放 Laradock 專案的位置 第四行 cp 即是 複製 env-example 並更名為 .env
 修改 .env 檔  APP_CODE_PATH_HOST=~/Documents/PHPProject 後方位置請設定為預備要映射進虛擬機裡的放置專案的資料夾
 MYSQL_VERSION=5.7 MySQL 預設的版本是 latest，但這會有個延伸問題，如果你真想要用最新版本的 MySQL，就再多做一個步驟 於 laradock/mysql/my.cnf 新增下面這一行並儲存
-default_authentication_plugin=mysql_native_password 建立 Laravel 專案  cd ~/Documents/PHPProject laravel new testProject 如果出現錯誤說無法識別 laravel 指令，請參考官方文件安裝 laravel/installer">
-<meta itemprop="datePublished" content="2019-12-22T21:08:39+00:00" />
+default_authentication_plugin=mysql_native_password 建立 Laravel 專案  cd ~/Documents/PHPProject laravel new testProject 如果出現錯誤說無法識別 laravel 指令，請參考官方文件安裝 laravel/installer"><meta itemprop="datePublished" content="2019-12-22T21:08:39+00:00" />
 <meta itemprop="dateModified" content="2019-12-22T21:08:39+00:00" />
-<meta itemprop="wordCount" content="181">
-<meta itemprop="image" content="https://mix-liten.github.io/"/>
-
-
-
+<meta itemprop="wordCount" content="181"><meta itemprop="image" content="https://mix-liten.github.io/"/>
 <meta itemprop="keywords" content="docker,laravel," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://mix-liten.github.io/"/>
 
@@ -78,7 +72,6 @@ cd ~/Documents/Laravel git clone https://github.com/Laradock/laradock.git cd lar
 修改 .env 檔  APP_CODE_PATH_HOST=~/Documents/PHPProject 後方位置請設定為預備要映射進虛擬機裡的放置專案的資料夾
 MYSQL_VERSION=5.7 MySQL 預設的版本是 latest，但這會有個延伸問題，如果你真想要用最新版本的 MySQL，就再多做一個步驟 於 laradock/mysql/my.cnf 新增下面這一行並儲存
 default_authentication_plugin=mysql_native_password 建立 Laravel 專案  cd ~/Documents/PHPProject laravel new testProject 如果出現錯誤說無法識別 laravel 指令，請參考官方文件安裝 laravel/installer"/>
-
 
 
 
@@ -191,7 +184,7 @@ default_authentication_plugin=mysql_native_password 建立 Laravel 專案  cd ~/
 <li>安裝 <a href="https://laradock.io/">Laradock</a></li>
 </ol>
 <p>打開 CMD 或同等功用的 Command Line，依照下方範例逐行執行</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">cd ~/Documents/Laravel
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">cd ~/Documents/Laravel
 git clone https://github.com/Laradock/laradock.git
 cd laradock
 cp env-example .env
@@ -200,20 +193,20 @@ cp env-example .env
 <ol start="3">
 <li>修改 <code>.env</code> 檔</li>
 </ol>
-<pre><code>APP_CODE_PATH_HOST=~/Documents/PHPProject
+<pre tabindex="0"><code>APP_CODE_PATH_HOST=~/Documents/PHPProject
 </code></pre><p>後方位置請設定為預備要映射進虛擬機裡的放置專案的資料夾</p>
-<pre><code>MYSQL_VERSION=5.7
+<pre tabindex="0"><code>MYSQL_VERSION=5.7
 </code></pre><p>MySQL 預設的版本是 latest，但這會有個延伸問題，如果你真想要用最新版本的 MySQL，就再多做一個步驟
 於 <code>laradock/mysql/my.cnf</code> 新增下面這一行並儲存</p>
-<pre><code>default_authentication_plugin=mysql_native_password
+<pre tabindex="0"><code>default_authentication_plugin=mysql_native_password
 </code></pre><ol start="4">
 <li>建立 Laravel 專案</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">cd ~/Documents/PHPProject
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">cd ~/Documents/PHPProject
 laravel new testProject
 </code></pre></div><p>如果出現錯誤說無法識別 laravel 指令，請參考<a href="https://laravel.com/docs/6.x">官方文件</a>安裝 <code>laravel/installer</code></p>
 <p>接著修改修改該專案的 <code>.env</code> 檔</p>
-<pre><code class="language-ENV" data-lang="ENV">DB_CONNECTION=mysql
+<pre tabindex="0"><code class="language-ENV" data-lang="ENV">DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=testDatabase
@@ -223,10 +216,10 @@ DB_PASSWORD=secret
 <ol start="5">
 <li>設定 nginx 站點</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">cd ~/Documents/Laravel/laradock/nginx/sites
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">cd ~/Documents/Laravel/laradock/nginx/sites
 cp laravel.conf.example laravel.test.conf
 </code></pre></div><p>接著用文字編輯器打開 <code>laravel.test.conf</code> 並修改</p>
-<pre><code>server_name test.com;
+<pre tabindex="0"><code>server_name test.com;
 root /var/www/testProject/public;
 </code></pre><p>請自行替換自己想要的網址於 <code>server_name</code>，以及替換專案名稱</p>
 <ol start="6">
@@ -234,28 +227,28 @@ root /var/www/testProject/public;
 </ol>
 <p>macOS使用者 請於 <code>Finder</code> 的 <code>前往/前往檔案夾...</code> 輸入 <code>/private/etc/hosts</code>
 之後複製 hosts 檔至 Desktop，並以文字編輯器在其中新增下方內容，最後貼回去覆蓋掉 <code>/private/etc/hosts</code></p>
-<pre><code>127.0.0.1 test.com
+<pre tabindex="0"><code>127.0.0.1 test.com
 </code></pre><ol start="7">
 <li>安裝並運行虛擬機</li>
 </ol>
 <p>先確定 cmd 目前位置在 laradock 專案中，接著運行下方指令，然後等待一段時間讓它安裝虛擬機</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">docker-compose up -d nginx mysql
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">docker-compose up -d nginx mysql
 </code></pre></div><ol start="8">
 <li>進入 MySQL image 建立專案所用的資料庫</li>
 </ol>
 <p>進入 MySQL image</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">docker-compose exec mysql bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">docker-compose exec mysql bash
 </code></pre></div><p>登入資料庫並建立資料庫</p>
-<pre><code>mysql --user=&quot;root&quot; --password=&quot;root&quot;
+<pre tabindex="0"><code>mysql --user=&quot;root&quot; --password=&quot;root&quot;
 CREATE DATABASE `testDatabase`;
 </code></pre><p>離開資料庫及 image 的方式皆為 <code>exit</code></p>
 <ol start="9">
 <li>進入運行中的 container 執行專案的資料庫遷移</li>
 </ol>
 <p>進入 container</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">docker-compose exec workspace bash
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">docker-compose exec workspace bash
 </code></pre></div><p>執行遷移</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">cd testProject
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">cd testProject
 php artisan migrate
 </code></pre></div><ol start="10">
 <li>測試網站是否建立成功</li>
@@ -264,7 +257,7 @@ php artisan migrate
 <ol start="11">
 <li>關閉運行中的 container</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">docker-compose stop
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-BASH" data-lang="BASH">docker-compose stop
 </code></pre></div><h2 id="結語">結語</h2>
 <p>步驟七可能會受到網速影響，順利的話，應該可以在一小時內建置完成。
 有問題可留言詢問，或是自行餵狗。</p>
@@ -335,9 +328,9 @@ php artisan migrate
         <div class="pagination__buttons">
           
             <span class="button previous">
-              <a href="https://mix-liten.github.io/posts/201912/%E5%9C%A8-macos-%E4%B8%8A%E4%BD%BF%E7%94%A8-homebrew-%E5%AE%89%E8%A3%9D-%E6%9B%B4%E6%96%B0-git/">
+              <a href="https://mix-liten.github.io/posts/202101/%E7%82%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E5%AD%B8git-%E8%AE%80%E6%9B%B8%E5%BF%83%E5%BE%97-part2/">
                 <span class="button__icon">←</span>
-                <span class="button__text">在-macOS-上使用-Homebrew-安裝&amp;更新-git</span>
+                <span class="button__text">為你自己學Git-讀書心得-part2</span>
               </a>
             </span>
           
@@ -367,7 +360,7 @@ php artisan migrate
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2021</span>
+            <span>&copy; 2022</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
             
         </div>
@@ -387,7 +380,7 @@ php artisan migrate
 
 
 
-<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js" integrity="sha512-LOZOpupEpysT3YEvwutcyj7&#43;h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
 
 
 

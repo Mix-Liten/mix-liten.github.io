@@ -29,7 +29,7 @@ $ npm install typescript -g $ tsc --init   使用專案內的 typescript" />
 
 
 
-<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+<link rel="stylesheet" href="https://mix-liten.github.io/main.de188b3201233c251f4fd6306dbd2cb41e408fb8846c09781b2925de7df5025c.css">
 
 
 
@@ -50,16 +50,10 @@ $ npm install typescript -g $ tsc --init   使用專案內的 typescript" />
 本篇旨在使用 webpack 打包 typescript 程式碼建立的開發流程，內文中的程式碼皆出自上述影片，可自行參考
 建置步驟   npm 安裝 webpack 及相關套件 $ npm init -y $ npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader   修改 package.json 的 scripts { &#34;scripts&#34;: { &#34;serve&#34;: &#34;webpack-dev-server&#34;, &#34;build&#34;: &#34;webpack&#34; } }   新增 tsconfig.json 有兩種方式：
   安裝全域 typescript
-$ npm install typescript -g $ tsc --init   使用專案內的 typescript">
-<meta itemprop="datePublished" content="2021-03-04T22:38:48+08:00" />
+$ npm install typescript -g $ tsc --init   使用專案內的 typescript"><meta itemprop="datePublished" content="2021-03-04T22:38:48+08:00" />
 <meta itemprop="dateModified" content="2021-03-04T22:38:48+08:00" />
-<meta itemprop="wordCount" content="233">
-<meta itemprop="image" content="https://mix-liten.github.io/"/>
-
-
-
+<meta itemprop="wordCount" content="233"><meta itemprop="image" content="https://mix-liten.github.io/"/>
 <meta itemprop="keywords" content="dev,webpack,typescript," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://mix-liten.github.io/"/>
 
@@ -69,7 +63,6 @@ $ npm install typescript -g $ tsc --init   使用專案內的 typescript">
 建置步驟   npm 安裝 webpack 及相關套件 $ npm init -y $ npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader   修改 package.json 的 scripts { &#34;scripts&#34;: { &#34;serve&#34;: &#34;webpack-dev-server&#34;, &#34;build&#34;: &#34;webpack&#34; } }   新增 tsconfig.json 有兩種方式：
   安裝全域 typescript
 $ npm install typescript -g $ tsc --init   使用專案內的 typescript"/>
-
 
 
 
@@ -191,12 +184,12 @@ $ npm install typescript -g $ tsc --init   使用專案內的 typescript"/>
 <ol>
 <li>
 <h3 id="npm-安裝-webpack-及相關套件">npm 安裝 webpack 及相關套件</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ npm init -y
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ npm init -y
 $ npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader
 </code></pre></div></li>
 <li>
 <h3 id="修改-packagejson-的-scripts">修改 package.json 的 scripts</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;scripts&#34;</span>: {
     <span style="color:#f92672">&#34;serve&#34;</span>: <span style="color:#e6db74">&#34;webpack-dev-server&#34;</span>,
     <span style="color:#f92672">&#34;build&#34;</span>: <span style="color:#e6db74">&#34;webpack&#34;</span>
@@ -209,24 +202,24 @@ $ npm install -D webpack webpack-cli webpack-dev-server typescript ts-loader
 <ul>
 <li>
 <p>安裝全域 typescript</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ npm install typescript -g
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ npm install typescript -g
 $ tsc --init
 </code></pre></div></li>
 <li>
 <p>使用專案內的 typescript</p>
 <p>package.json 的 scripts 新增建立指令並執行</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
   <span style="color:#f92672">&#34;scripts&#34;</span>: {
     <span style="color:#f92672">&#34;tsconfig&#34;</span>: <span style="color:#e6db74">&#34;node_modules/.bin/tsc --init&#34;</span>
   }
 }
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ npm run tsconfig
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ npm run tsconfig
 </code></pre></div></li>
 </ul>
 </li>
 <li>
 <h3 id="新增-webpackconfigjs-並添加以下設定">新增 webpack.config.js 並添加以下設定</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">path</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;path&#34;</span>);
 
 <span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> {
   <span style="color:#a6e22e">entry</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;./src/index.ts&#34;</span>, <span style="color:#75715e">// 進入點
@@ -258,7 +251,7 @@ $ tsc --init
 <li>
 <h3 id="使用打包後的程式檔">使用打包後的程式檔</h3>
 <p>以第四步驟的 <code>output</code> 來說，ts 檔編譯成 js 檔後會放在 <code>public/bundle.js</code>，所以在 public 資料夾中新增的 html 檔案就這樣引用</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
   &lt;<span style="color:#f92672">head</span>&gt;
     &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span> /&gt;
     &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span> /&gt;
@@ -273,7 +266,7 @@ $ tsc --init
 <li>
 <h3 id="開始使用開發流程">開始使用開發流程</h3>
 <p>使用一開始寫在 package.json scripts 的 serve 指令</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ npm run serve
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ npm run serve
 </code></pre></div></li>
 </ol>
 <h2 id="總結">總結</h2>
@@ -380,7 +373,7 @@ $ tsc --init
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2021</span>
+            <span>&copy; 2022</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
             
         </div>
@@ -400,7 +393,7 @@ $ tsc --init
 
 
 
-<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js" integrity="sha512-LOZOpupEpysT3YEvwutcyj7&#43;h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
 
 
 

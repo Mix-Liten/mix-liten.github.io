@@ -26,7 +26,7 @@
 
 
 
-<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+<link rel="stylesheet" href="https://mix-liten.github.io/main.de188b3201233c251f4fd6306dbd2cb41e408fb8846c09781b2925de7df5025c.css">
 
 
 
@@ -44,23 +44,16 @@
 
 <meta itemprop="name" content="Vuex入門 Part1">
 <meta itemprop="description" content="前言 Vuex 是 Vue.js 的一種狀態管理模式(工具)，其他前端框架也有類似的管理工具，用來解決多個元件共用資料導致資料流混亂的問題，參考一的動圖解釋雖然是以 Redux 為例，但清楚的說明了狀態管理的使用情境。 參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  概述 下方以 Counter 舉例，大概看一下應該會發現跟原本的 Vue 差不多，也是有 data、methods、computed，只是在 Vuex 裡改叫 state、mutations、getters，還多了跟 emit 很像的 actions 屬性。
-// src/store/index.js const store = new Vuex.Store({ state: { count: 0, }, getters: { count: (state) =&gt; state.count, }, mutations: { incrementMutation: (state) =&gt; state.count&#43;&#43;, decrementMutation: (state) =&gt; state.count--, }, actions: { incrementAction: ({ commit }) =&gt; commit(&#39;incrementMutation&#39;), decrementAction: ({ commit }) =&gt; commit(&#39;decrementMutation&#39;), } }) // template const Counter = { template: ` &lt;div id=&#34;counter&#34;&gt; &lt;p&gt; {{ count }} &lt;/p&gt; &lt;p&gt; &lt;button @click=&#34;increment&#34;&gt;&#43;&lt;/button&gt; &lt;button @click=&#34;decrement&#34;&gt;-&lt;/button&gt; &lt;/p&gt; &lt;/div&gt; `, computed: { count() { return this.">
-<meta itemprop="datePublished" content="2019-07-25T21:56:40+00:00" />
+// src/store/index.js const store = new Vuex.Store({ state: { count: 0, }, getters: { count: (state) =&gt; state.count, }, mutations: { incrementMutation: (state) =&gt; state.count&#43;&#43;, decrementMutation: (state) =&gt; state.count--, }, actions: { incrementAction: ({ commit }) =&gt; commit(&#39;incrementMutation&#39;), decrementAction: ({ commit }) =&gt; commit(&#39;decrementMutation&#39;), } }) // template const Counter = { template: ` &lt;div id=&#34;counter&#34;&gt; &lt;p&gt; {{ count }} &lt;/p&gt; &lt;p&gt; &lt;button @click=&#34;increment&#34;&gt;&#43;&lt;/button&gt; &lt;button @click=&#34;decrement&#34;&gt;-&lt;/button&gt; &lt;/p&gt; &lt;/div&gt; `, computed: { count() { return this."><meta itemprop="datePublished" content="2019-07-25T21:56:40+00:00" />
 <meta itemprop="dateModified" content="2019-07-25T21:56:40+00:00" />
-<meta itemprop="wordCount" content="186">
-<meta itemprop="image" content="https://mix-liten.github.io/"/>
-
-
-
+<meta itemprop="wordCount" content="186"><meta itemprop="image" content="https://mix-liten.github.io/"/>
 <meta itemprop="keywords" content="Vue,Vuex," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://mix-liten.github.io/"/>
 
 <meta name="twitter:title" content="Vuex入門 Part1"/>
 <meta name="twitter:description" content="前言 Vuex 是 Vue.js 的一種狀態管理模式(工具)，其他前端框架也有類似的管理工具，用來解決多個元件共用資料導致資料流混亂的問題，參考一的動圖解釋雖然是以 Redux 為例，但清楚的說明了狀態管理的使用情境。 參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  概述 下方以 Counter 舉例，大概看一下應該會發現跟原本的 Vue 差不多，也是有 data、methods、computed，只是在 Vuex 裡改叫 state、mutations、getters，還多了跟 emit 很像的 actions 屬性。
 // src/store/index.js const store = new Vuex.Store({ state: { count: 0, }, getters: { count: (state) =&gt; state.count, }, mutations: { incrementMutation: (state) =&gt; state.count&#43;&#43;, decrementMutation: (state) =&gt; state.count--, }, actions: { incrementAction: ({ commit }) =&gt; commit(&#39;incrementMutation&#39;), decrementAction: ({ commit }) =&gt; commit(&#39;decrementMutation&#39;), } }) // template const Counter = { template: ` &lt;div id=&#34;counter&#34;&gt; &lt;p&gt; {{ count }} &lt;/p&gt; &lt;p&gt; &lt;button @click=&#34;increment&#34;&gt;&#43;&lt;/button&gt; &lt;button @click=&#34;decrement&#34;&gt;-&lt;/button&gt; &lt;/p&gt; &lt;/div&gt; `, computed: { count() { return this."/>
-
 
 
 
@@ -174,7 +167,7 @@
 <h2 id="概述">概述</h2>
 <p><img src="https://mix-liten.github.io/images/JS/Vue/vuexFlow.png" alt="Vuex流程圖" title="Vuex流程圖">
 下方以 Counter 舉例，大概看一下應該會發現跟原本的 Vue 差不多，也是有 data、methods、computed，只是在 Vuex 裡改叫 state、mutations、getters，還多了跟 emit 很像的 actions 屬性。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// src/store/index.js
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// src/store/index.js
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">store</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
   <span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> {
     <span style="color:#a6e22e">count</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
@@ -334,7 +327,7 @@ Vuex 的狀態管理模式定義了資料流(Data Flow)</p>
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2021</span>
+            <span>&copy; 2022</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
             
         </div>
@@ -354,7 +347,7 @@ Vuex 的狀態管理模式定義了資料流(Data Flow)</p>
 
 
 
-<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js" integrity="sha512-LOZOpupEpysT3YEvwutcyj7&#43;h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
 
 
 

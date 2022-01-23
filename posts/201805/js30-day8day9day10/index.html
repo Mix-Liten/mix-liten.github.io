@@ -26,7 +26,7 @@ Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個�
 
 
 
-<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+<link rel="stylesheet" href="https://mix-liten.github.io/main.de188b3201233c251f4fd6306dbd2cb41e408fb8846c09781b2925de7df5025c.css">
 
 
 
@@ -44,23 +44,16 @@ Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個�
 
 <meta itemprop="name" content="JS30-Day8 &amp; Day9 &amp; Day10">
 <meta itemprop="description" content="這篇主要講一下入門的2D canvas、console的應用、還有感覺很像UX的想法(?)
-Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個容器，內容必須用JS繪圖。 canvas 基礎 繪圖原點是(0,0)，X軸往右為正，Y軸往下為正，單位是px。  &lt;canvas id=&#34;mycanvas&#34;&gt;&lt;/canvas&gt; &lt;script&gt; const canvas = document.getElementById(&#34;mycanvas&#34;); const ctx = canvas.getContext(&#34;2d&#34;); // 設定畫布寬高 canvas.width = window.innerWidth; canvas.height = window.innerHeight; ctx.beginPath(); // 開始畫 ctx.arc(80,70,60,-0.5*Math.PI,1*Math.PI); // 以(80,70)為中心點畫從-90度到180度且半徑為60的圓 ctx.fillStyle = &#34;#666&#34;; // 類似background-color ctx.fill(); // 設定好顏色之後還要執行填滿 ctx.strokeStyle = &#34;#fa0&#34;; // 類似border-color ctx.stroke(); // 邊框同樣要執行  ctx.fillStyle = &#34;red&#34;; // 重新指定顏色 ctx.strokeStyle = &#34;green&#34;; ctx.strokeRect(10,10,25,25); //從(10,10)畫一個寬高都是25的正方形邊框 ctx.fillRect(40,30,50,50); //從(40,30)畫一個寬高都是50的正方形 ctx.clearRect(45,35,20,20); //從(45,35)清空一塊寬高都是20的正方形  ctx.">
-<meta itemprop="datePublished" content="2018-05-17T16:24:48+00:00" />
+Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個容器，內容必須用JS繪圖。 canvas 基礎 繪圖原點是(0,0)，X軸往右為正，Y軸往下為正，單位是px。  &lt;canvas id=&#34;mycanvas&#34;&gt;&lt;/canvas&gt; &lt;script&gt; const canvas = document.getElementById(&#34;mycanvas&#34;); const ctx = canvas.getContext(&#34;2d&#34;); // 設定畫布寬高 canvas.width = window.innerWidth; canvas.height = window.innerHeight; ctx.beginPath(); // 開始畫 ctx.arc(80,70,60,-0.5*Math.PI,1*Math.PI); // 以(80,70)為中心點畫從-90度到180度且半徑為60的圓 ctx.fillStyle = &#34;#666&#34;; // 類似background-color ctx.fill(); // 設定好顏色之後還要執行填滿 ctx.strokeStyle = &#34;#fa0&#34;; // 類似border-color ctx.stroke(); // 邊框同樣要執行  ctx.fillStyle = &#34;red&#34;; // 重新指定顏色 ctx.strokeStyle = &#34;green&#34;; ctx.strokeRect(10,10,25,25); //從(10,10)畫一個寬高都是25的正方形邊框 ctx.fillRect(40,30,50,50); //從(40,30)畫一個寬高都是50的正方形 ctx.clearRect(45,35,20,20); //從(45,35)清空一塊寬高都是20的正方形  ctx."><meta itemprop="datePublished" content="2018-05-17T16:24:48+00:00" />
 <meta itemprop="dateModified" content="2018-05-17T16:24:48+00:00" />
-<meta itemprop="wordCount" content="449">
-<meta itemprop="image" content="https://mix-liten.github.io/"/>
-
-
-
+<meta itemprop="wordCount" content="449"><meta itemprop="image" content="https://mix-liten.github.io/"/>
 <meta itemprop="keywords" content="js,canvas," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://mix-liten.github.io/"/>
 
 <meta name="twitter:title" content="JS30-Day8 &amp; Day9 &amp; Day10"/>
 <meta name="twitter:description" content="這篇主要講一下入門的2D canvas、console的應用、還有感覺很像UX的想法(?)
 Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個容器，內容必須用JS繪圖。 canvas 基礎 繪圖原點是(0,0)，X軸往右為正，Y軸往下為正，單位是px。  &lt;canvas id=&#34;mycanvas&#34;&gt;&lt;/canvas&gt; &lt;script&gt; const canvas = document.getElementById(&#34;mycanvas&#34;); const ctx = canvas.getContext(&#34;2d&#34;); // 設定畫布寬高 canvas.width = window.innerWidth; canvas.height = window.innerHeight; ctx.beginPath(); // 開始畫 ctx.arc(80,70,60,-0.5*Math.PI,1*Math.PI); // 以(80,70)為中心點畫從-90度到180度且半徑為60的圓 ctx.fillStyle = &#34;#666&#34;; // 類似background-color ctx.fill(); // 設定好顏色之後還要執行填滿 ctx.strokeStyle = &#34;#fa0&#34;; // 類似border-color ctx.stroke(); // 邊框同樣要執行  ctx.fillStyle = &#34;red&#34;; // 重新指定顏色 ctx.strokeStyle = &#34;green&#34;; ctx.strokeRect(10,10,25,25); //從(10,10)畫一個寬高都是25的正方形邊框 ctx.fillRect(40,30,50,50); //從(40,30)畫一個寬高都是50的正方形 ctx.clearRect(45,35,20,20); //從(45,35)清空一塊寬高都是20的正方形  ctx."/>
-
 
 
 
@@ -173,7 +166,7 @@ Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個�
 <li>canvas 基礎
 繪圖原點是(0,0)，X軸往右為正，Y軸往下為正，單位是px。</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mycanvas&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mycanvas&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
 
 &lt;<span style="color:#f92672">script</span>&gt;
 <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">canvas</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#34;mycanvas&#34;</span>);
@@ -209,7 +202,7 @@ Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個�
 <ol start="3">
 <li>幫自己畫網格，方便繪製</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mycanvas&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">canvas</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;mycanvas&#34;</span>&gt;&lt;/<span style="color:#f92672">canvas</span>&gt;
 
 &lt;<span style="color:#f92672">style</span>&gt;
 <span style="color:#f92672">html</span><span style="color:#f92672">,</span> <span style="color:#f92672">body</span> {
@@ -254,7 +247,7 @@ Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個�
 <ul>
 <li>console</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">clear</span>(); <span style="color:#75715e">// 清空console 通常放在最前面
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">clear</span>(); <span style="color:#75715e">// 清空console 通常放在最前面
 </span><span style="color:#75715e"></span>
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;hello&#39;</span>); <span style="color:#75715e">// 普普通通的log，除錯好幫手
 </span><span style="color:#75715e"></span>
@@ -276,7 +269,7 @@ Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個�
 </span><span style="color:#75715e"></span>
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">count</span>(<span style="color:#e6db74">&#39;num&#39;</span>);
 <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">count</span>(<span style="color:#e6db74">&#39;num&#39;</span>); <span style="color:#75715e">//  數出指定的Label被count幾次，平常可以用來數事件觸發次數
-</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dogs</span> <span style="color:#f92672">=</span> [{
+</span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dogs</span> <span style="color:#f92672">=</span> [{
   <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Snickers&#39;</span>,
   <span style="color:#a6e22e">age</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
 }, {
@@ -325,7 +318,7 @@ Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個�
 <h2 id="其他">其他</h2>
 <p>解構賦值
 [a,b] = [x, y]</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//基本用法
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">//基本用法
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">a</span>, <span style="color:#a6e22e">b</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>] <span style="color:#75715e">// a = 1, b = 2
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">//先宣告後指定值，要用let才行
@@ -450,7 +443,7 @@ Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個�
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2021</span>
+            <span>&copy; 2022</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
             
         </div>
@@ -470,7 +463,7 @@ Day 8  Canvas   為何canvas要用JS寫? 規定，html的canvas元素只是個�
 
 
 
-<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js" integrity="sha512-LOZOpupEpysT3YEvwutcyj7&#43;h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
 
 
 

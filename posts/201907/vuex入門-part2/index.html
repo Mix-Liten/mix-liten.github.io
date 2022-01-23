@@ -26,7 +26,7 @@
 
 
 
-<link rel="stylesheet" href="https://mix-liten.github.io/main.d7bdd8ee18bfbf4c605488a7e5b1b92cd980dfeed2bdaeab4dd5e931a7a78bc0.css">
+<link rel="stylesheet" href="https://mix-liten.github.io/main.de188b3201233c251f4fd6306dbd2cb41e408fb8846c09781b2925de7df5025c.css">
 
 
 
@@ -44,23 +44,16 @@
 
 <meta itemprop="name" content="Vuex入門 Part2">
 <meta itemprop="description" content="前言 系列文(?)的第二篇，本篇會以參考三的語法表為主軸，文中範例的環境是以 Vue CLI 以上來說明，可參考Vuex_Todo範例幫助理解。
-參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  語法(三步驟說明)  使用第一步，把 Vuex 加進 Vue 的實例裡  // main.js, CLI import Vue from &#39;vue&#39; import Vuex from &#39;vuex&#39; import store from &#39;./store&#39; // Vuex 實例  Vue.use(Vuex) // 等同於 Vue.prototype.$store = Vuex; 讓所有元件都可藉由 this.$store 使用 vuex  new Vue({ el: &#39;#app&#39;, store }) // with script src, 偶爾在 codepen 上寫寫 Demo 用 // 照順序引入 Vue, Vuex 的 CDN // 建立 Vuex 實例 var store = new Vuex.">
-<meta itemprop="datePublished" content="2019-07-26T21:56:40+00:00" />
+參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  語法(三步驟說明)  使用第一步，把 Vuex 加進 Vue 的實例裡  // main.js, CLI import Vue from &#39;vue&#39; import Vuex from &#39;vuex&#39; import store from &#39;./store&#39; // Vuex 實例  Vue.use(Vuex) // 等同於 Vue.prototype.$store = Vuex; 讓所有元件都可藉由 this.$store 使用 vuex  new Vue({ el: &#39;#app&#39;, store }) // with script src, 偶爾在 codepen 上寫寫 Demo 用 // 照順序引入 Vue, Vuex 的 CDN // 建立 Vuex 實例 var store = new Vuex."><meta itemprop="datePublished" content="2019-07-26T21:56:40+00:00" />
 <meta itemprop="dateModified" content="2019-07-26T21:56:40+00:00" />
-<meta itemprop="wordCount" content="513">
-<meta itemprop="image" content="https://mix-liten.github.io/"/>
-
-
-
+<meta itemprop="wordCount" content="513"><meta itemprop="image" content="https://mix-liten.github.io/"/>
 <meta itemprop="keywords" content="Vue,Vuex," />
-
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://mix-liten.github.io/"/>
 
 <meta name="twitter:title" content="Vuex入門 Part2"/>
 <meta name="twitter:description" content="前言 系列文(?)的第二篇，本篇會以參考三的語法表為主軸，文中範例的環境是以 Vue CLI 以上來說明，可參考Vuex_Todo範例幫助理解。
 參考  四張動圖解釋何時該用Redux Vuex官方文件 Vuex語法表 EventBus  語法(三步驟說明)  使用第一步，把 Vuex 加進 Vue 的實例裡  // main.js, CLI import Vue from &#39;vue&#39; import Vuex from &#39;vuex&#39; import store from &#39;./store&#39; // Vuex 實例  Vue.use(Vuex) // 等同於 Vue.prototype.$store = Vuex; 讓所有元件都可藉由 this.$store 使用 vuex  new Vue({ el: &#39;#app&#39;, store }) // with script src, 偶爾在 codepen 上寫寫 Demo 用 // 照順序引入 Vue, Vuex 的 CDN // 建立 Vuex 實例 var store = new Vuex."/>
-
 
 
 
@@ -176,7 +169,7 @@
 <ol>
 <li>使用第一步，把 Vuex 加進 Vue 的實例裡</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// main.js, CLI
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// main.js, CLI
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vue</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vue&#39;</span>
 <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vuex</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vuex&#39;</span>
 <span style="color:#66d9ef">import</span> <span style="color:#a6e22e">store</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;./store&#39;</span> <span style="color:#75715e">// Vuex 實例
@@ -217,7 +210,7 @@
 <li><a href="https://vuex.vuejs.org/guide/modules.html#namespacing">namespaced說明</a></li>
 <li><a href="https://blog.hinablue.me/vuejs-vuex-2-0-guan-yu-plugins-de-shi-qing/">plugins說明</a></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// store.js
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// store.js
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">import</span> <span style="color:#a6e22e">Vuex</span> <span style="color:#a6e22e">from</span> <span style="color:#e6db74">&#39;vuex&#39;</span>
 
 <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
@@ -234,7 +227,7 @@
 </code></pre></div><ul>
 <li><a href="https://vuex.vuejs.org/zh/api/#api-%E5%8F%82%E8%80%83">屬性細項說明</a></li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// vuex 屬性下放的方法有設定一些參數
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// vuex 屬性下放的方法有設定一些參數
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">Vuex</span>.<span style="color:#a6e22e">Store</span>({
   <span style="color:#a6e22e">state</span><span style="color:#f92672">:</span> {
     <span style="color:#a6e22e">num</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
@@ -283,7 +276,7 @@
 <li>使用第三步，元件使用 Vuex
 方法有二：</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 第一，已使用過 Vue.use(Vuex)，可通過 this.$store 使用
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 第一，已使用過 Vue.use(Vuex)，可通過 this.$store 使用
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">default</span> {
   <span style="color:#75715e">// ...
 </span><span style="color:#75715e"></span>  <span style="color:#a6e22e">computed</span><span style="color:#f92672">:</span> {
@@ -320,7 +313,7 @@
 }
 </code></pre></div><h2 id="其他">其他</h2>
 <p>Vuex 還有很多細節是兩篇文章講不完的，麻煩自己到官方文件看，這邊還要介紹一個好用的功能，註冊/卸載 module，用法類似 Vue 的 mixin，重點在於動態、重用，不過記得要在 beforeDestroy 時把 module 和監聽事件一起卸載掉。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 註冊
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#75715e">// 註冊
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">store</span>.<span style="color:#a6e22e">registerModule</span>(<span style="color:#e6db74">&#39;myModule&#39;</span>, {
   <span style="color:#75715e">// ...
 </span><span style="color:#75715e"></span>})
@@ -432,7 +425,7 @@
                 <footer class="footer">
     <div class="footer__inner">
         <div class="footer__content">
-            <span>&copy; 2021</span>
+            <span>&copy; 2022</span>
             <span><a href="https://mix-liten.github.io/">Mix_Liten</a></span>
             
         </div>
@@ -452,7 +445,7 @@
 
 
 
-<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.af435e44374f1e99a669ea8cd5bb9a2fceed80588941a451bfddb66b86a67c9f40b0f417e9543a763f809aa7e9300d7b1d69bf99615810ba02ac70396d50fad5.js" integrity="sha512-r0NeRDdPHpmmaeqM1buaL87tgFiJQaRRv922a4amfJ9AsPQX6VQ6dj&#43;AmqfpMA17HWm/mWFYELoCrHA5bVD61Q=="></script>
+<script type="text/javascript" src="https://mix-liten.github.io/bundle.min.2ce64ea6ea44a72b13dd812fc2eb5cca3efe878cce258a47c137c17edf46e0602a05e422b618a5b80b5939c731b7a293351c2f2222a21f6ee27e54a8448dd20e.js" integrity="sha512-LOZOpupEpysT3YEvwutcyj7&#43;h4zOJYpHwTfBft9G4GAqBeQithiluAtZOccxt6KTNRwvIiKiH27iflSoRI3SDg=="></script>
 
 
 
